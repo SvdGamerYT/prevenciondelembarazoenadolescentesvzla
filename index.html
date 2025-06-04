@@ -1,0 +1,196 @@
+<div class="portada-global">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@300;400;700&display=swap');
+    
+    :root {
+      --color-primario: #E63946;    /* Azul vibrante */
+      --color-secundario: #FF758F;  /* Azul claro */
+      --fondo: #FFF0F3;             /* Fondo azul suave */
+      --texto: #2D3748;             /* Azul oscuro para texto */
+      --decoracion: #E63946;        /* Azul decorativo */
+    }
+
+    body {
+      overflow-y: hidden;
+      margin: 0;
+    }
+
+    .portada-global {
+      background:
+      color: var(--texto);
+      text-align: center;
+      padding: 6rem 2rem;
+      font-family: 'Open Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portada-global::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background;
+      z-index: 0;
+    }
+
+    .portada-global h1 {
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      color: var(--color-primario);
+      margin: 0 auto 1.5rem;
+      line-height: 1.1;
+      max-width: 900px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .portada-global p {
+      font-size: clamp(1.2rem, 2vw, 1.4rem);
+      line-height: 1.7;
+      margin: 0 auto 3rem;
+      max-width: 700px;
+      padding: 0 1rem;
+      font-weight: 400;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .botones-accion {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .boton-global {
+      background: var(--color-primario);
+      color: white !important;
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--color-secundario);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .boton-global::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: all 0.6s;
+    }
+
+    .boton-global:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+      background: #1D4ED8;
+    }
+
+    .boton-global:hover::before {
+      left: 100%;
+    }
+
+    .decoracion-global {
+      width: 150px;
+      height: 4px;
+      background:
+      margin: 2.5rem auto;
+      border-radius: 2px;
+      opacity: 0.8;
+      position: relative;
+      animation: flotar 3s ease-in-out infinite;
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .elemento-destacado {
+      position: absolute;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .elemento-destacado.mundo {
+      width: 80vw;
+      height: 80vw;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232563EB" stroke-width="0.5"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20M12 2v20"/></svg>');
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 768px) {
+      .portada-global {
+        padding: 5rem 1.5rem;
+      }
+      
+      .boton-global {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 2rem;
+      }
+      
+      .decoracion-global {
+        margin: 2rem auto;
+      }
+    }
+  </style>
+
+  <div class="elemento-destacado mundo"></div>
+
+  <h1>Prevencion del Embarazo en Adolescentes</h1>
+  
+  <div class="decoracion-global"></div>
+
+  <p>Información verificada y recursos esenciales para una toma de decisiones informada sobre tu salud sexual y reproductiva.</p>
+
+  <div class="botones-accion">
+    <a href="#estadisticas" class="boton-global" aria-label="Ver estadísticas globales">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2.5v19M2.5 12h19"/>
+      </svg>
+      Educacion Sexual
+    </a>
+    
+    <a href="#estrategias" class="boton-global" aria-label="Estrategias internacionales">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/>
+      </svg>
+      Apoyo Local
+    </a>
+    
+    <a href="#recursos" class="boton-global" aria-label="Recursos globales">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+                <path d="M16 8l-8 8M8 8l8 8"/>
+      </svg>
+      Metodos Preventivos
+    </a>
+  </div>
+</div>
