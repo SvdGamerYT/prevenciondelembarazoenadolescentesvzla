@@ -66,7 +66,7 @@ img {
 
 /* === PORTADA GLOBAL === */
 .portada-global {
-    background: linear-gradient(160deg, var(--fondo) 60%, #DBEAFE 100%);
+    background: var(--fondo) 60%, #DBEAFE 100%);
     color: var(--texto);
     text-align: center;
     padding: 6rem 2rem;
