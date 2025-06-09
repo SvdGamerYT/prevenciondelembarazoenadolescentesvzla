@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Información completa sobre la prevención del embarazo adolescente: causas, consecuencias, estadísticas y recursos de ayuda. Un proyecto de investigación.">
+    <title>Prevención del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Estilos Globales y Variables */
+        :root {
+            --azul-oms: #2563EB; /* Azul vibrante para acentos */
+            --azul-profundo: #1E3A8A; /* Azul oscuro para texto o fondos */
+            --azul-profundo2: #1D4ED8; /* Otro tono de azul oscuro */
+            --azul-claro: #93C5FD; /* Azul claro para elementos secundarios */
+            
+            --rojo-oms: #DC2626; /* Rojo para alertas o destaques importantes */
+            --verde-oms: #16A34A; /* Verde para éxito o información positiva */
+            
+            --vzla-yellow: #FFD700; /* Amarillo (si es parte de una paleta temática) */
+            --vzla-blue: #00247D;   /* Azul oscuro (si es parte de una paleta temática) */
+            --vzla-red: #CF142B;    /* Rojo (si es parte de una paleta temática) */
+
+            --gris-texto: #4B5563; /* Gris oscuro para texto principal */
+            --gris-azulado-texto: #374151; /* Un gris más azulado para cuerpo de texto */
+            --gris-claro-bordes: #D1D5DB; /* Gris claro para bordes o líneas */
+            --gris-fondo-seccion: #F3F4F6; /* Un gris muy claro para fondos de sección */
+
+            --blanco: #FFFFFF;
+            --negro-azulado-titulos: #111827; /* Casi negro para títulos fuertes */
+
+            --text-dark: var(--negro-azulado-titulos);
+            --text-light: var(--blanco);
+            --text-medium: var(--gris-azulado-texto);
+            
+            --bg-light: var(--gris-fondo-seccion);
+            --bg-white: var(--blanco);
+
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+
+            --border-radius-sm: 8px;
+            --border-radius-md: 15px;
+            --border-radius-lg: 25px;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* Colores por región para la sección de estadísticas */
+            --africa: #E53E3E; 
+            --america: #DD6B20;
+            --asia: #38A169; 
+            --europa: #3182CE; 
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--text-medium);
+            background-color: var(--bg-white); /* Fondo general blanco para limpieza */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Estilos para las secciones principales (reemplaza .contenedor-principal y .encabezado-global) */
+        .seccion-con-titulo {
+            padding: 3rem 1.5rem 4rem; /* Espaciado generoso */
+            background-color: var(--bg-light); /* Fondo suave para estas secciones */
+        }
+        .seccion-con-titulo:nth-child(even) { /* Alternar color de fondo para distinción visual */
+             background-color: var(--bg-white);
+        }
+
+
+        /* Títulos y Decoraciones Globales */
+        .titulo-destacado { /* */
+            font-size: clamp(2.5rem, 7vw, 4rem); /* */
+            background: linear-gradient(90deg, var(--azul-oms) 0%, var(--azul-profundo2) 100%); /* */
+            -webkit-background-clip: text; /* */
+            -webkit-text-fill-color: transparent; /* */
+            margin: 0 auto 1rem; /* */
+            line-height: 1.15; /* */
+            max-width: 1200px; /* */
+            font-family: var(--font-title); /* */
+            font-weight: 800; /* */
+            text-transform: uppercase; /* */
+            letter-spacing: -0.02em; /* */
+            padding: 0 1rem; /* */
+            text-align: center;
+        }
+
+        .subtitulo-global { /* */
+            font-size: clamp(1.1rem, 2vw, 1.3rem); /* */
+            color: var(--azul-profundo); /* */
+            max-width: 800px; /* */
+            margin: 0 auto 1.5rem; /* */
+            font-family: var(--font-body); /* */
+            font-weight: 400; /* */
+            line-height: 1.7; /* */
+            padding: 0.5rem 1rem; /* */
+            text-align: center;
+            background: rgba(255,255,255,0.8); /* */
+            border-radius: var(--border-radius-sm); /* */
+        }
+
+        .decoracion-global { /* */
+            width: 120px; /* */
+            height: 5px; /* */
+            background: linear-gradient(90deg, var(--azul-oms) 30%, var(--azul-profundo2) 100%); /* */
+            margin: 0 auto 2.5rem; /* */
+            border-radius: 3px; /* */
+        }
+
+        /* Sección 1: Definición y estadística (Hero) */
+        .seccion-contenido { /* */
+            background: #F8F9FF; 
+            padding: 3rem 1.5rem;
+            min-height: 80vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contenedor-informacion { /* */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: stretch; 
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .definicion-oms, .destacado-estadistica, .llamado-accion { /* */
+            background: var(--bg-white); /* */
+            padding: 2rem;
+            border-radius: var(--border-radius-md); /* */
+            box-shadow: var(--shadow-md); /* */
+            border-left: 5px solid var(--azul-oms);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .definicion-oms h3 { /* */
+            font-family: var(--font-title); /* */
+            color: var(--azul-oms); /* */
+            font-size: 1.6rem; /* */
+            margin-bottom: 1rem; /* */
+        }
+        .definicion-oms p { /* */
+            color: var(--text-medium); /* */
+            font-size: 1.05rem; /* */
+            line-height: 1.8; /* */
+            margin-bottom: 0; /* */
+        }
+        .destacado-estadistica { /* */
+            text-align: center; /* */
+            background-color: var(--azul-oms); /* */
+            color: var(--text-light); /* */
+            border-left: 5px solid var(--azul-profundo); /* */
+        }
+        .numero-destacado { /* */
+            font-family: var(--font-title); /* */
+            font-size: clamp(2.8rem, 8vw, 4.5rem); /* */
+            font-weight: 700; /* */
+            line-height: 1; /* */
+            margin-bottom: 0.5rem; /* */
+        }
+        .destacado-estadistica p { /* */
+            font-size: 1rem; /* */
+            margin-bottom: 0.5rem; /* */
+            color: rgba(255,255,255,0.95); /* */
+        }
+        .fuente-estadistica { /* */
+            font-size: 0.85rem; /* */
+            opacity: 0.85; /* */
+            display: block; /* */
+            margin-top: auto; /* */
+        }
+        .llamado-accion { /* */
+            grid-column: 1 / -1; /* */
+            text-align: center; /* */
+            border-left-color: var(--verde-oms); /* */
+            padding: 2rem; /* */
+            display: flex; /* */
+            align-items: center; /* */
+            justify-content: center; /* */
+        }
+        .boton-accion { /* */
+            background: var(--verde-oms); /* */
+            color: var(--text-light); /* */
+            padding: 1rem 2.5rem; /* */
+            border-radius: 50px; /* */
+            text-decoration: none; /* */
+            font-family: var(--font-title); /* */
+            font-weight: 600; /* */
+            font-size: 1.1rem; /* */
+            display: inline-flex; /* */
+            align-items: center; /* */
+            gap: 0.8rem; /* */
+            transition: var(--transition); /* */
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3); /* */
+        }
+        .boton-accion:hover { /* */
+            background: #15803d; /* */
+            transform: translateY(-3px); /* */
+            box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4); /* */
+        }
+        .boton-accion svg { /* */
+            stroke-width: 2.5; /* */
+        }
+
+        /* Sección de causas y consecuencias (tarjetas) */
+        .grid-causas { /* */
+            display: grid; /* */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* */
+            gap: 2rem; /* */
+            max-width: 1200px; /* */
+            margin: 0 auto; /* */
+            padding: 20px 0; /* */
+        }
+
+        .causa-card { /* */
+            background: var(--bg-white); /* */
+            border-radius: var(--border-radius-md); /* */
+            padding: 25px; /* */
+            box-shadow: var(--shadow-md); /* */
+            border: 1px solid var(--gris-claro-bordes); /* */
+            transition: var(--transition); /* */
+            cursor: pointer; /* */
+            overflow: hidden; /* */
+            position: relative; /* */
+            padding-bottom: 80px; /* Espacio para el icono */
+            display: flex;
+            flex-direction: column;
+        }
+        .causa-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .causa-badge { /* */
+            background: var(--azul-oms); /* */
+            color: var(--text-light); /* */
+            padding: 8px 18px; /* */
+            border-radius: var(--border-radius-lg); /* */
+            font-weight: bold; /* */
+            display: inline-block; /* */
+            margin-bottom: 20px; /* */
+            font-size: 0.9rem; /* */
+            text-transform: uppercase; /* */
+            align-self: flex-start;
+        }
+        .consecuencias-badge { /* Para diferenciar visualmente consecuencias */
+            background: var(--rojo-oms);
+        }
+
+        .causa-imagen { /* */
+            height: 200px; /* */
+            border-radius: var(--border-radius-sm); /* */
+            overflow: hidden; /* */
+            margin-bottom: 20px; /* */
+            border: 1px solid var(--gris-claro-bordes); /* */
+        }
+        .causa-imagen img { /* */
+            width: 100%; /* */
+            height: 100%; /* */
+            object-fit: cover; /* */
+            transition: transform 0.3s ease; /* */
+        }
+        .causa-card:hover .causa-imagen img {
+            transform: scale(1.05);
+        }
+
+        .causa-titulo { /* */
+            color: var(--negro-azulado-titulos); /* */
+            font-family: var(--font-title);
+            font-size: 1.35em; /* */
+            margin: 0 0 10px; /* */
+            font-weight: 700; /* */
+        }
+        .consecuencias-titulo { /* Para diferenciar visualmente consecuencias */
+            color: var(--rojo-oms);
+        }
+
+        .causa-descripcion { /* */
+            color: var(--text-medium); /* */
+            line-height: 1.6; /* */
+            font-size: 0.95em; /* */
+            margin-bottom: 15px; /* */
+            flex-grow: 1; /* Para que el texto ocupe espacio y alinee el botón "ver más" si lo hubiera */
+        }
+
+        .causa-info { /* */
+            max-height: 0; /* */
+            opacity: 0; /* */
+            overflow: hidden; /* */
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* */
+            border-top: 2px solid transparent; /* */
+        }
+        /* El JS maneja la expansión ahora, no :hover para .causa-info */
+
+        .causa-lista { /* */
+            padding-left: 20px; /* */
+            margin: 15px 0; /* */
+            list-style: none;
+        }
+        .causa-lista li { /* */
+            margin: 10px 0; /* */
+            position: relative; /* */
+            padding-left: 25px; /* */
+            color: var(--text-medium); /* */
+            font-size: 0.9em;
+        }
+        .causa-lista li::before { /* */
+            content: "•"; /* */
+            color: var(--azul-oms); /* */
+            position: absolute; /* */
+            left: 0; /* */
+            font-weight: bold; /* */
+            font-size: 1.4em; /* */
+            line-height: 1;
+        }
+        .consecuencias-lista li::before { /* Para diferenciar visualmente consecuencias */
+            color: var(--rojo-oms);
+        }
+
+        .causa-dato { /* */
+            background: rgba(37, 99, 235, 0.05); /* */
+            padding: 15px; /* */
+            border-radius: var(--border-radius-sm); /* */
+            margin: 15px 0; /* */
+            border-left: 4px solid var(--azul-oms); /* */
+            font-size: 0.9em; /* */
+            color: var(--azul-profundo);
+        }
+         .consecuencias-dato { /* Para diferenciar visualmente consecuencias */
+            background: rgba(220, 38, 38, 0.05);
+            border-left-color: var(--rojo-oms);
+            color: var(--rojo-oms);
+        }
+
+        .icono-causa { /* */
+            position: absolute; /* */
+            bottom: 20px; /* */
+            right: 20px; /* */
+            background: var(--azul-oms); /* */
+            color: var(--text-light); /* */
+            width: 45px; /* */
+            height: 45px; /* */
+            border-radius: var(--border-radius-sm); /* */
+            display: flex; /* */
+            align-items: center; /* */
+            justify-content: center; /* */
+            font-size: 1.3em; /* */
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); /* */
+            border: none; /* */
+            transition: var(--transition); /* */
+        }
+        .causa-card:hover .icono-causa { /* */
+            transform: scale(1.1); /* */
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3); /* */
+        }
+        .icono-consecuencia {
+             background: var(--rojo-oms);
+             box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
+        }
+        .causa-card:hover .icono-consecuencia {
+            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.3);
+        }
+
+
+        /* Sección de tasas por región */
+        .seccion-estadisticas { /* Anteriormente .seccion-regiones */
+            background: var(--bg-white); /* */
+            padding: 3rem 1.5rem 4rem; /* */
+            /* border-radius: 20px; No es necesario si es parte del flujo normal de secciones */
+            max-width: 1300px; /* Un poco más ancho para el contenido del mapa y tarjetas */
+            margin: 0 auto; /* */
+            /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); No es necesario si es parte del flujo normal de secciones */
+            /* border: 4px solid var(--azul-profundo2); No es necesario */
+        }
+
+        .subtitulo-fuente-mapa { /* Para el "Datos globales por cada 1,000..." */
+            color: var(--text-medium); /* */
+            text-align: center; /* */
+            margin-bottom: 2rem; /* */
+            font-size: 0.95rem; /* */
+            max-width: 700px; /* */
+            margin-left: auto; /* */
+            margin-right: auto; /* */
+            line-height: 1.6; /* */
+        }
+
+        .mapa-container { /* */
+            position: relative; /* */
+            max-width: 800px; /* */
+            margin: 0 auto 2rem; /* */
+            text-align: center; /* */
+        }
+        .mapa-img { /* */
+            max-width: 100%; /* */
+            height: auto; /* */
+            border-radius: var(--border-radius-md); /* */
+            box-shadow: var(--shadow-md); /* */
+            display: block; /* */
+            margin: 0 auto; /* */
+        }
+        .mapa-leyenda { /* */
+            display: flex; /* */
+            justify-content: center; /* */
+            flex-wrap: wrap; /* */
+            gap: 1rem; /* */
+            margin-top: 1.5rem; /* */
+            font-family: var(--font-body);
+        }
+        .leyenda-item { /* */
+            display: flex; /* */
+            align-items: center; /* */
+            gap: 0.5rem; /* */
+            font-size: 0.85rem; /* */
+            color: var(--text-medium);
+        }
+        .leyenda-color { /* */
+            width: 16px; /* */
+            height: 16px; /* */
+            border-radius: 3px; /* */
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .contenedor-regiones { /* */
+            display: grid; /* */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* */
+            gap: 1.5rem; /* */
+            margin-top: 2.5rem; /* */
+        }
+
+        .region-especial { /* */
+            grid-column: 1 / -1; /* Ocupa todo el ancho disponible */
+            display: grid; /* */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas internas */
+            gap: 1.5rem; /* */
+        }
+
+        .region, .comparativa-global { /* */
+            background: var(--bg-white); /* */
+            padding: 1.5rem; /* */
+            border-radius: var(--border-radius-md); /* */
+            box-shadow: var(--shadow-sm); /* */
+            position: relative; /* */
+            overflow: hidden; /* */
+            border-top: 4px solid; /* Borde superior con color distintivo */
+            display: flex;
+            flex-direction: column;
+        }
+        #region-africa { border-top-color: var(--africa); } /* */
+        #region-america { border-top-color: var(--america); } /* */
+        #region-asia { border-top-color: var(--asia); } /* */
+        #region-europa { border-top-color: var(--europa); } /* */
+
+        .nombre-region { /* */
+            font-family: var(--font-title); /* */
+            font-weight: 700; /* */
+            margin-top: 0; /* */
+            margin-bottom: 0.8rem; /* */
+            font-size: 1.4rem; /* */
+            display: flex; /* */
+            align-items: center; /* */
+            justify-content: space-between;
+            gap: 0.6rem; /* */
+            color: var(--negro-azulado-titulos);
+        }
+        .nombre-region i { /* Icono de FontAwesome en el nombre de la región */
+            margin-right: 0.5rem;
+            color: currentColor; /* Hereda el color del borde superior */
+        }
+        #region-africa .nombre-region i { color: var(--africa); }
+        #region-america .nombre-region i { color: var(--america); }
+        #region-asia .nombre-region i { color: var(--asia); }
+        #region-europa .nombre-region i { color: var(--europa); }
+
+
+        .tasa-container { /* */
+            display: flex; /* */
+            align-items: baseline; /* */
+            gap: 0.5rem; /* */
+            margin: 0.5rem 0 1rem; /* */
+        }
+        .tasa { /* */
+            font-size: 2.2rem; /* */
+            font-weight: 700; /* */
+            line-height: 1; /* */
+            color: var(--negro-azulado-titulos);
+        }
+        .unidad { /* */
+            font-size: 0.9rem; /* */
+            color: var(--text-medium); /* */
+            opacity: 0.9; /* */
+        }
+
+        .ejemplo { /* */
+            font-size: 0.9rem; /* */
+            color: var(--text-medium); /* */
+            font-style: italic; /* */
+            margin-bottom: 1rem; /* */
+            padding-left: 1.5rem; /* */
+            position: relative; /* */
+        }
+        .ejemplo::before { /* */
+            content: "→"; /* */
+            position: absolute; /* */
+            left: 0; /* */
+            color: currentColor; /* Hereda color de su region */
+            opacity: 0.7;
+        }
+
+        .factores { /* */
+            background: rgba(0, 0, 0, 0.02); /* */
+            padding: 1rem; /* */
+            border-radius: var(--border-radius-sm); /* */
+            margin-top: auto; /* Empuja al final */
+            border-left: 3px solid; /* */
+            border-left-color: currentColor; /* Hereda color de su región */
+        }
+        #region-africa .factores { border-left-color: var(--africa); }
+        #region-america .factores { border-left-color: var(--america); }
+        #region-asia .factores { border-left-color: var(--asia); }
+        #region-europa .factores { border-left-color: var(--europa); }
+
+        .factores-titulo { /* */
+            font-weight: 600; /* */
+            color: var(--negro-azulado-titulos); /* */
+            margin-bottom: 0.5rem; /* */
+            font-size: 0.95rem; /* */
+        }
+        .factores p { /* */
+            margin: 0.4rem 0; /* */
+            font-size: 0.85rem; /* */
+            line-height: 1.5; /* */
+            color: var(--text-medium); /* */
+        }
+
+        .tendencia { /* */
+            display: inline-flex; /* */
+            align-items: center; /* */
+            gap: 0.3rem; /* */
+            font-size: 0.75rem; /* */
+            padding: 0.3rem 0.7rem; /* */
+            border-radius: var(--border-radius-lg); /* */
+            font-weight: 600;
+        }
+        #region-africa .tendencia { background: rgba(229, 62, 62, 0.1); color: var(--africa); } /* */
+        #region-america .tendencia { background: rgba(221, 107, 32, 0.1); color: var(--america); } /* */
+        #region-asia .tendencia { background: rgba(56, 161, 105, 0.1); color: var(--asia); } /* */
+        #region-europa .tendencia { background: rgba(49, 130, 206, 0.1); color: var(--europa); } /* */
+
+        .comparativa-global { /* */
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(255,255,255,0)); /* */
+            padding: 1.5rem; /* */
+            border-radius: var(--border-radius-md); /* */
+            border: 1px solid var(--azul-claro); /* */
+            text-align: center;
+        }
+        .comparativa-global h4 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--azul-profundo);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+        .media-global { /* */
+            font-size: 2.5rem; /* */
+            font-weight: 700; /* */
+            color: var(--azul-profundo); /* */
+            margin: 0.5rem 0; /* */
+        }
+        .comparativa-global p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+
+        /* Footer */
+        .footer { /* */
+            background-color: var(--negro-azulado-titulos); /* Un fondo oscuro y elegante */
+            color: #A9B4C4; /* Un gris claro para el texto del footer */
+            padding: 3.5rem 1.5rem 2rem; /* */
+            text-align: center; /* */
+        }
+        .footer-content { /* */
+            max-width: 900px; /* */
+            margin: 0 auto; /* */
+        }
+        .footer-logo { /* */
+            font-family: var(--font-title); /* */
+            font-size: 1.7rem; /* */
+            font-weight: 700; /* */
+            margin-bottom: 1rem; /* */
+            display: inline-block; /* */
+            color: var(--text-light);
+        }
+        .footer-text { /* */
+            opacity: 0.85; /* */
+            margin-bottom: 2rem; /* */
+            line-height: 1.8; /* */
+            font-size: 0.95rem; /* */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-links { /* */
+            display: flex; /* */
+            justify-content: center; /* */
+            flex-wrap: wrap; /* */
+            gap: 1rem 1.5rem; /* */
+            margin-bottom: 2rem; /* */
+        }
+        .footer-link { /* */
+            color: #DCE2EC; /* */
+            text-decoration: none; /* */
+            transition: var(--transition); /* */
+            display: flex; /* */
+            align-items: center; /* */
+            gap: 0.5rem; /* */
+            font-size: 0.95rem; /* */
+            font-weight: 600;
+        }
+        .footer-link:hover { /* */
+            color: var(--azul-claro); /* */
+            text-decoration: underline; /* */
+        }
+        .footer-social { /* */
+            display: flex; /* */
+            justify-content: center; /* */
+            gap: 1.2rem; /* */
+            margin-bottom: 2rem; /* */
+        }
+        .social-icon { /* */
+            width: 40px; /* */
+            height: 40px; /* */
+            border-radius: 50%; /* */
+            background-color: rgba(255, 255, 255, 0.08); /* */
+            color: #DCE2EC;
+            display: flex; /* */
+            align-items: center; /* */
+            justify-content: center; /* */
+            transition: var(--transition); /* */
+            font-size: 1.1rem;
+        }
+        .social-icon:hover { /* */
+            background-color: var(--azul-oms); /* */
+            color: var(--text-light); /* */
+            transform: translateY(-3px); /* */
+        }
+        .creditos {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-sm);
+        }
+        .creditos p {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .creditos p strong {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        .footer-copyright { /* */
+            font-size: 0.85rem; /* */
+            opacity: 0.7; /* */
+            margin-top: 2rem; /* */
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .region-especial {
+                grid-template-columns: 1fr; /* Stack Europa y Media Global en tablets */
+            }
+        }
+
+        @media (max-width: 768px) { /* */
+            .contenedor-informacion { /* */
+                grid-template-columns: 1fr; /* */
+                padding: 1rem; /* */
+            }
+            .seccion-contenido { /* */
+                padding: 2rem 1rem; /* */
+                min-height: auto; /* */
+            }
+            .numero-destacado { font-size: 3rem; } /* */
+            .definicion-oms, .destacado-estadistica { padding: 1.5rem; } /* */
+
+            .grid-causas { /* */
+                grid-template-columns: 1fr; /* */
+                gap: 1.5rem; /* */
+            }
+            .causa-card { padding: 20px; padding-bottom: 70px; } /* */
+            .causa-imagen { height: 180px; } /* */
+            .icono-causa { width: 40px; height: 40px; font-size: 1.2em; } /* */
+
+            .titulo-destacado { font-size: clamp(2rem, 6vw, 2.8rem); } /* */
+            .subtitulo-global { padding: 0.8rem; margin-bottom: 1.5rem; font-size: clamp(1rem, 1.8vw, 1.1rem); } /* */
+            .decoracion-global { margin: 1.5rem auto 2rem; width: 100px; } /* */
+
+            .seccion-estadisticas { /* */
+                padding: 2rem 1rem 3rem; /* */
+            }
+            .mapa-leyenda { gap: 0.5rem 0.8rem; }
+            .contenedor-regiones { grid-template-columns: 1fr; } /* */
+            .nombre-region { font-size: 1.25rem; } /* */
+            .tasa { font-size: 1.8rem; } /* */
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <section class="seccion-contenido" id="inicio">
+            <div class="contenedor-informacion">
+                <div class="definicion-oms">
+                    <h3>Según la OMS:</h3>
+                    <p>El embarazo adolescente es aquel que ocurre entre los 10 y 19 años, considerado de alto riesgo por sus implicaciones en la salud física, emocional y social, así como su impacto en el desarrollo educativo y oportunidades futuras de las jóvenes.</p>
+                </div>
+
+                <div class="destacado-estadistica">
+                    <div class="numero-destacado">21 Millones</div>
+                    <p>de embarazos anuales en adolescentes (15-19 años) ocurren en países en desarrollo, según estimaciones.</p>
+                    <span class="fuente-estadistica">Fuente: UNFPA / OMS (Datos globales)</span>
+                </div>
+
+                <div class="llamado-accion">
+                    <a href="#causas" class="boton-accion">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14"></path>
+                            <path d="m19 12-7 7-7-7"></path>
+                        </svg>
+                        Explorar Causas y Consecuencias
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-con-titulo" id="causas">
+            <h1 class="titulo-destacado">Principales Causas</h1>
+            <div class="decoracion-global"></div>
+            <div class="grid-causas">
+                <div class="causa-card">
+                    <div class="icono-causa">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="causa-badge">Educación</span>
+                    <div class="causa-imagen">
+                        <img src="https://dukx4ewcvnyp6.cloudfront.net/wp-content/uploads/2023/09/EDUCACION-SEXUAL.webp" alt="Jóvenes en aula aprendiendo sobre educación sexual integral.">
+                    </div>
+                    <h3 class="causa-titulo">Falta de Educación Integral</h3>
+                    <p class="causa-descripcion">Programas educativos incompletos, desactualizados o inexistentes sobre salud sexual y reproductiva y consentimiento.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato">
+                            <strong>Según UNESCO:</strong> Un alto porcentaje de adolescentes a nivel global no recibe educación sexual formal completa y basada en evidencia.
+                        </div>
+                        <ul class="causa-lista">
+                            <li>Escasa inclusión de información detallada sobre métodos anticonceptivos y su uso correcto.</li>
+                            <li>Falta de capacitación especializada para docentes en la impartición de educación sexual sensible y efectiva.</li>
+                            <li>Brecha digital y desinformación en el acceso a recursos confiables sobre sexualidad para adolescentes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa">
+                        <i class="fa-solid fa-pills"></i>
+                    </div>
+                    <span class="causa-badge">Acceso</span>
+                    <div class="causa-imagen">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkvbM8LNBNfBF0RRSrwB6CSK6Z7tYU-WuWNaelnXXIZlyyQHucUVShXQt6QIPSOoSbylI&usqp=CAU" alt="Variedad de métodos anticonceptivos disponibles.">
+                    </div>
+                    <h3 class="causa-titulo">Acceso Limitado a Anticonceptivos</h3>
+                    <p class="causa-descripcion">Barreras económicas, geográficas, culturales y legales dificultan el acceso y uso de métodos anticonceptivos modernos.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato">
+                            <strong>Guttmacher Institute / OMS:</strong> Millones de adolescentes en países en desarrollo tienen necesidades insatisfechas de anticoncepción.
+                        </div>
+                        <ul class="causa-lista">
+                            <li>Costos prohibitivos de los métodos anticonceptivos y servicios de salud sexual y reproductiva.</li>
+                            <li>Estigma social y juicios de valor hacia adolescentes que buscan o usan anticonceptivos.</li>
+                            <li>Distancia a centros de salud amigables para jóvenes y falta de personal capacitado.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <span class="causa-badge">Social</span>
+                    <div class="causa-imagen">
+                        <img src="https://assets.childrens.com/m/a55c13548f461e5/webimage-shutterstock_160647278_800x480.jpg" alt="Grupo de adolescentes interactuando, representando presiones sociales y culturales.">
+                    </div>
+                    <h3 class="causa-titulo">Presión Social y Cultural</h3>
+                    <p class="causa-descripcion">Influencia de normas culturales, tradiciones, expectativas sociales y desigualdad de género.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato">
+                            <strong>Factores socioculturales prevalentes:</strong>
+                        </div>
+                        <ul class="causa-lista">
+                            <li>Práctica del matrimonio infantil y uniones tempranas forzadas.</li>
+                            <li>Estereotipos de género que limitan la autonomía y poder de decisión de las adolescentes.</li>
+                            <li>Normalización o romantización de la maternidad y paternidad a temprana edad.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <span class="causa-badge">Económico</span>
+                    <div class="causa-imagen">
+                        <img src="https://images.pagina12.com.ar/styles/focal_3_2_470x313/public/media/articles/56468/panza_0.jpg?h=602a36b5&itok=RiqM2TU3" alt="Representación visual de la pobreza y su impacto en adolescentes.">
+                    </div>
+                    <h3 class="causa-titulo">Pobreza y Desigualdad</h3>
+                    <p class="causa-descripcion">La situación socioeconómica precaria es un factor determinante, aumentando la vulnerabilidad.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato">
+                            <strong>OMS:</strong> La gran mayoría de los embarazos adolescentes ocurren en países de bajos y medianos ingresos.
+                        </div>
+                        <ul class="causa-lista">
+                            <li>Falta de oportunidades educativas y laborales que perpetúan ciclos de pobreza.</li>
+                            <li>Mayor exposición a la violencia y explotación en contextos de vulnerabilidad económica.</li>
+                            <li>Acceso limitado a servicios básicos de salud, educación de calidad y protección social.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <span class="causa-badge">Psicológico</span>
+                    <div class="causa-imagen">
+                        <img src="https://www.mundopsicologos.com/site/article/62844/56147/depresion-y-baja-autoestima_ai1.jpg" alt="Ilustración sobre salud mental, autoestima y toma de decisiones en adolescentes.">
+                    </div>
+                    <h3 class="causa-titulo">Factores Emocionales y Psicológicos</h3>
+                    <p class="causa-descripcion">Baja autoestima, depresión, falta de un proyecto de vida claro, y búsqueda de afecto o validación.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato">
+                            <strong>Investigaciones sugieren:</strong> Problemas de salud mental no atendidos pueden incrementar comportamientos de riesgo.
+                        </div>
+                        <ul class="causa-lista">
+                            <li>Búsqueda de afecto o validación a través de relaciones sexuales tempranas o no protegidas.</li>
+                            <li>Falta de habilidades sociales, asertividad y capacidad para la toma de decisiones informadas.</li>
+                            <li>Presencia de depresión, ansiedad u otros trastornos mentales no diagnosticados o tratados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <span class="causa-badge">Seguridad</span>
+                    <div class="causa-imagen">
+                        <img src="https://congresonayarit.gob.mx/wp-content/uploads/QUE_HACEMOS/SALA_PRENSA/FOTOS/2022/noviembre/251122_penaliza_poder_legislativo_abuso_sexual_4.jpeg" alt="Símbolo de protección contra la violencia de género y abuso sexual.">
+                    </div>
+                    <h3 class="causa-titulo">Violencia y Coerción</h3>
+                    <p class="causa-descripcion">Relaciones sexuales no consensuadas, abuso sexual, explotación y coerción son causas directas y graves.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato">
+                            <strong>UNFPA / UNICEF:</strong> Un porcentaje alarmante de embarazos adolescentes es resultado de violencia sexual.
+                        </div>
+                        <ul class="causa-lista">
+                            <li>Bajo índice de denuncia de casos de abuso sexual por miedo, estigma o falta de sistemas de apoyo.</li>
+                            <li>Normalización de la violencia de género y relaciones de poder desiguales.</li>
+                            <li>Falta de educación sobre consentimiento, derechos sexuales y reproductivos y relaciones saludables.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-con-titulo" id="consecuencias">
+            <h1 class="titulo-destacado">Principales Consecuencias</h1>
+            <div class="decoracion-global"></div>
+            <div class="grid-causas"> <div class="causa-card">
+                    <div class="icono-causa icono-consecuencia">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <span class="causa-badge consecuencias-badge">Salud</span>
+                    <div class="causa-imagen">
+                        <img src="https://consumer.healthday.com/media-library/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8zMzI2ODczMi9vcmlnaW4uanBnIiwiZXhwaXJlc19hdCI6MTY5Njc2MzU2MH0.Pljs0Iaw2o1izqc3XpfGTtW2MAjRTWzJ6ZkkO7L3DoQ/image.jpg?width=1245&height=700&coordinates=0%2C41%2C0%2C42" alt="Adolescente embarazada recibiendo atención médica especializada.">
+                    </div>
+                    <h3 class="causa-titulo consecuencias-titulo">Riesgos Médicos Graves</h3>
+                    <p class="causa-descripcion">Mayor riesgo de complicaciones durante el embarazo y parto, como preeclampsia, eclampsia, anemia grave, fístula obstétrica y parto prematuro.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato consecuencias-dato">
+                            <strong>Según OMS:</strong> Las complicaciones del embarazo y el parto son una de las principales causas de muerte en adolescentes de 15 a 19 años a nivel mundial.
+                        </div>
+                        <ul class="causa-lista consecuencias-lista">
+                            <li>Mayor probabilidad de desarrollar anemia severa y desnutrición.</li>
+                            <li>Incremento en la incidencia de parto prematuro, bajo peso al nacer y mortalidad neonatal.</li>
+                            <li>Impacto en la salud física y mental a largo plazo de la madre adolescente.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="causa-card">
+                    <div class="icono-causa icono-consecuencia">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <span class="causa-badge consecuencias-badge">Educación</span>
+                    <div class="causa-imagen">
+                        <img src="https://eresmama.com/wp-content/uploads/2016/10/o-ABANDONO-ESCOLAR-facebook-1600x800.jpg" alt="Pupitre vacío simbolizando el abandono escolar.">
+                    </div>
+                    <h3 class="causa-titulo consecuencias-titulo">Abandono Escolar</h3>
+                    <p class="causa-descripcion">Interrupción prematura de la trayectoria educativa, limitando oportunidades de desarrollo personal y profesional.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato consecuencias-dato">
+                            <strong>UNICEF / UNESCO:</strong> El embarazo es una de las principales razones por las que las adolescentes abandonan la escuela.
+                        </div>
+                        <ul class="causa-lista consecuencias-lista">
+                            <li>Reducción drástica de oportunidades laborales y de ingresos futuros.</li>
+                            <li>Mayor dependencia económica y perpetuación de ciclos de pobreza.</li>
+                            <li>Impacto en la autoestima y el desarrollo de habilidades para la vida.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa icono-consecuencia">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <span class="causa-badge consecuencias-badge">Económicas</span>
+                    <div class="causa-imagen">
+                        <img src="https://www.virginia-abogados-de-accidentes.com/images/blog/Barrera-Rectangle.46).jpg" alt="Manos tratando de alcanzar monedas, simbolizando dificultades económicas.">
+                    </div>
+                    <h3 class="causa-titulo consecuencias-titulo">Impacto Económico y Pobreza</h3>
+                    <p class="causa-descripcion">Reducción significativa del potencial económico futuro de la madre adolescente y su familia, perpetuando el ciclo de pobreza.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato consecuencias-dato">
+                            <strong>Banco Mundial / UNFPA:</strong> El embarazo adolescente tiene un alto costo económico para los individuos, las familias y los países.
+                        </div>
+                        <ul class="causa-lista consecuencias-lista">
+                            <li>Menores ingresos a lo largo de la vida y mayor probabilidad de desempleo o empleo precario.</li>
+                            <li>Incremento de los gastos en salud y cuidado infantil.</li>
+                            <li>Limitación de la capacidad de inversión en la educación y salud de los hijos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa icono-consecuencia">
+                        <i class="fa-solid fa-user-shield"></i> </div>
+                    <span class="causa-badge consecuencias-badge">Psicológicas</span>
+                    <div class="causa-imagen">
+                        <img src="https://www.lavanguardia.com/files/image_449_253/files/fp/uploads/2022/02/14/620a5ea99ef3f.r_d.6370-3982.jpeg" alt="Silueta de una persona pensativa, representando la salud mental.">
+                    </div>
+                    <h3 class="causa-titulo consecuencias-titulo">Salud Mental y Bienestar</h3>
+                    <p class="causa-descripcion">Carga emocional significativa, mayor riesgo de depresión, ansiedad, estrés postraumático y aislamiento social.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato consecuencias-dato">
+                            <strong>JAMA Pediatrics / The Lancet:</strong> Las madres adolescentes presentan tasas más altas de depresión postparto y otros problemas de salud mental.
+                        </div>
+                        <ul class="causa-lista consecuencias-lista">
+                            <li>Sentimientos de soledad, culpa, vergüenza y baja autoestima.</li>
+                            <li>Dificultad para afrontar las responsabilidades de la maternidad temprana.</li>
+                            <li>Falta de apoyo emocional y social por parte de la familia, pareja y comunidad.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa icono-consecuencia">
+                        <i class="fa-solid fa-people-arrows"></i>
+                    </div>
+                    <span class="causa-badge consecuencias-badge">Sociales</span>
+                    <div class="causa-imagen">
+                        <img src="https://www.comunidad.madrid/sites/default/files/styles/image_style_16_9/public/img/anatomia/shutterstock_45390055.jpg?itok=8IHUYrHd" alt="Persona aislada de un grupo, simbolizando exclusión social.">
+                    </div>
+                    <h3 class="causa-titulo consecuencias-titulo">Exclusión Social y Estigma</h3>
+                    <p class="causa-descripcion">Discriminación, rechazo y limitación de oportunidades sociales, educativas y laborales debido al estigma asociado.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato consecuencias-dato">
+                            <strong>Estudios Sociológicos:</strong> Las adolescentes embarazadas o madres a menudo enfrentan juicios morales y exclusión.
+                        </div>
+                        <ul class="causa-lista consecuencias-lista">
+                            <li>Abandono o rechazo por parte de la familia, pareja o amigos.</li>
+                            <li>Limitación de la participación en actividades sociales y comunitarias.</li>
+                            <li>Vulnerabilidad a la violencia y discriminación en diversos entornos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="causa-card">
+                    <div class="icono-causa icono-consecuencia">
+                        <i class="fa-solid fa-baby"></i>
+                    </div>
+                    <span class="causa-badge consecuencias-badge">Desarrollo Infantil</span>
+                    <div class="causa-imagen">
+                        <img src="https://imagenes.elpais.com/resizer/v2/LV3VBL7ML5JLZ7VGLWKM7TFILM.jpg?auth=7ed2363eeadbcddc0fa1d53bbd07c898dc145d9f8a537ffb1c31490390fe3a3f&width=414" alt="Bebé siendo cuidado, representando el desarrollo infantil.">
+                    </div>
+                    <h3 class="causa-titulo consecuencias-titulo">Impacto en Hijos e Hijas</h3>
+                    <p class="causa-descripcion">Los hijos de madres adolescentes pueden enfrentar mayores riesgos de salud, desarrollo y bienestar a lo largo de su vida.</p>
+                    <div class="causa-info">
+                        <div class="causa-dato consecuencias-dato">
+                            <strong>UNFPA / OMS:</strong> Los hijos de madres adolescentes tienen mayor riesgo de mortalidad, desnutrición y problemas de desarrollo.
+                        </div>
+                        <ul class="causa-lista consecuencias-lista">
+                            <li>Mayor incidencia de bajo peso al nacer, prematuridad y complicaciones neonatales.</li>
+                            <li>Riesgos de desnutrición crónica y retraso en el desarrollo psicomotor.</li>
+                            <li>Menores oportunidades educativas y mayor probabilidad de repetir el ciclo de pobreza.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-estadisticas seccion-con-titulo" id="estadisticas">
+            <h1 class="titulo-destacado">Embarazo Adolescente: Panorama Mundial</h1>
+            <div class="subtitulo-global">
+                Análisis comparativo de las tasas de embarazo adolescente en diferentes regiones del mundo, revelando disparidades y tendencias.
+            </div>
+            <div class="decoracion-global"></div>
+
+            <p class="subtitulo-fuente-mapa">Tasas estimadas por cada 1,000 mujeres de 15 a 19 años (Fuente: OMS, UNFPA - Datos recientes)</p>
+            
+            <div class="mapa-container">
+                <img src="https://i.ibb.co/ycT9WmkP/world-2.png" 
+                     alt="Mapa coroplético mundial mostrando las tasas de embarazo adolescente por región. Los colores más oscuros indican tasas más altas." 
+                     class="mapa-img">
+                <div class="mapa-leyenda">
+                    <div class="leyenda-item"><span class="leyenda-color" style="background: var(--africa);"></span> África (100+)</div>
+                    <div class="leyenda-item"><span class="leyenda-color" style="background: var(--america);"></span> América Latina (60-99)</div>
+                    <div class="leyenda-item"><span class="leyenda-color" style="background: var(--asia);"></span> Asia Meridional (30-59)</div>
+                    <div class="leyenda-item"><span class="leyenda-color" style="background: var(--europa);"></span> Europa Occidental (&lt;30)</div>
+                </div>
+            </div>
+            
+            <div class="contenedor-regiones">
+                <div class="region" id="region-africa">
+                    <h3 class="nombre-region">
+                        <i class="fa-solid fa-earth-africa"></i> África Subsahariana
+                        <span class="tendencia"><i class="fa-solid fa-arrow-up-right-dots"></i> +2% anual</span>
+                    </h3>
+                    <div class="tasa-container">
+                        <div class="tasa">~115</div> <div class="unidad">por 1,000</div>
+                    </div>
+                    <p class="ejemplo">Níger: ~175 (una de las tasas más altas del mundo)</p>
+                    <div class="factores">
+                        <div class="factores-titulo">Factores clave:</div>
+                        <p>• Matrimonio infantil (prevalencia ~40% antes de los 18).<br>
+                        • Acceso limitado a anticonceptivos modernos (cobertura ~25%).<br>
+                        • Altas tasas de abandono escolar femenino y desigualdad de género.</p>
+                    </div>
+                </div>
+                
+                <div class="region" id="region-america">
+                    <h3 class="nombre-region">
+                        <i class="fa-solid fa-earth-americas"></i> América Latina y Caribe
+                        <span class="tendencia"><i class="fa-solid fa-arrow-right-arrow-left"></i> -1% anual</span>
+                    </h3>
+                    <div class="tasa-container">
+                        <div class="tasa">~62</div> <div class="unidad">por 1,000</div>
+                    </div>
+                    <p class="ejemplo">Rep. Dominicana: ~90 (entre las más altas de la región)</p>
+                    <div class="factores">
+                        <div class="factores-titulo">Factores clave:</div>
+                        <p>• Desigualdad de género estructural y persistente.<br>
+                        • Alta prevalencia de violencia sexual (subregistro importante).<br>
+                        • Barreras culturales y acceso limitado a educación sexual integral.</p>
+                    </div>
+                </div>
+                
+                <div class="region" id="region-asia">
+                    <h3 class="nombre-region">
+                        <i class="fa-solid fa-earth-asia"></i> Asia Meridional
+                        <span class="tendencia"><i class="fa-solid fa-arrow-trend-down"></i> -3% anual</span>
+                    </h3>
+                    <div class="tasa-container">
+                        <div class="tasa">~45</div> <div class="unidad">por 1,000</div>
+                    </div>
+                    <p class="ejemplo">Bangladesh: ~83 (ha reducido significativamente en las últimas décadas)</p>
+                    <div class="factores">
+                        <div class="factores-titulo">Factores clave:</div>
+                        <p>• Normas culturales restrictivas y matrimonio temprano aún presentes.<br>
+                        • Mejoras notables en educación femenina y empoderamiento.<br>
+                        • Expansión de programas comunitarios de planificación familiar.</p>
+                    </div>
+                </div>
+                
+                <div class="region-especial">
+                    <div class="region" id="region-europa">
+                        <h3 class="nombre-region">
+                           <i class="fa-solid fa-earth-europe"></i> Europa Occidental
+                            <span class="tendencia"><i class="fa-solid fa-arrow-down-long"></i> -0.5% anual</span>
+                        </h3>
+                        <div class="tasa-container">
+                            <div class="tasa">~8</div> <div class="unidad">por 1,000</div>
+                        </div>
+                        <p class="ejemplo">Suiza: ~4 (entre las más bajas del mundo)</p>
+                        <div class="factores">
+                            <div class="factores-titulo">Factores clave:</div>
+                            <p>• Educación sexual integral desde la educación primaria.<br>
+                            • Acceso universal y gratuito a anticonceptivos y servicios de salud.<br>
+                            • Políticas robustas de igualdad de género y apoyo social.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="comparativa-global">
+                        <h4>Media Global Estimada</h4>
+                        <div class="media-global">~46 <span class="unidad" style="font-size:1.2rem;">por 1,000</span></div>
+                        <p>La tasa mundial ha disminuido aproximadamente un 15% en la última década, pero las disparidades regionales persisten, siendo alarmantemente alta en muchas regiones en desarrollo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacto">
+        <div class="footer-content">
+            <div class="footer-logo">Educación Sexual Integral Venezuela</div>
+            <p class="footer-text">Plataforma informativa como parte de un proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela. Recopilamos y presentamos recursos para jóvenes, familias y educadores.</p>
+            
+            <div class="footer-links">
+                <a href="#inicio" class="footer-link"><i class="fas fa-home"></i> Inicio</a>
+                <a href="#causas" class="footer-link"><i class="fas fa-info-circle"></i> Causas</a>
+                <a href="#consecuencias" class="footer-link"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
+                <a href="#estadisticas" class="footer-link"><i class="fas fa-chart-bar"></i> Estadísticas</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="creditos">
+                <p>Proyecto de investigación realizado por:</p>
+                <p><strong>JHANBERN AMAYA</strong> y <strong>SOLISMAR DIAZ</strong></p>
+                <p>Estudiantes del Liceo Nacional Hugo Chávez Frías</p>
+                <p>Municipio Los Taques, Estado Falcón - Venezuela</p>
+            </div>
+            
+            <p class="footer-copyright">© 2024 Proyecto ESI Venezuela. Todos los derechos reservados. La información aquí presentada tiene fines educativos e informativos y no sustituye el consejo médico o profesional especializado.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad para las tarjetas de causas/consecuencias (Click para expandir)
+        document.querySelectorAll('.causa-card').forEach(card => {
+            card.addEventListener('click', (event) => {
+                // Evitar que el click en un enlace dentro de la tarjeta la cierre/abra
+                if (event.target.tagName === 'A' || event.target.closest('A')) {
+                    return;
+                }
+
+                const info = card.querySelector('.causa-info');
+                const isExpanded = info.style.maxHeight && info.style.maxHeight !== '0px';
+
+                if (isExpanded) {
+                    info.style.maxHeight = null;
+                    info.style.opacity = '0';
+                    info.style.marginTop = null;
+                    info.style.paddingTop = null;
+                    info.style.borderTopColor = 'transparent';
+                } else {
+                    info.style.maxHeight = info.scrollHeight + "px"; // Ajustar al contenido real
+                    info.style.opacity = '1';
+                    info.style.marginTop = '20px';
+                    info.style.paddingTop = '20px';
+                    // Determinar color del borde basado en si es causa o consecuencia
+                    if (card.querySelector('.consecuencias-badge')) {
+                        info.style.borderTopColor = 'var(--rojo-oms)';
+                    } else {
+                        info.style.borderTopColor = 'var(--azul-oms)';
+                    }
+                }
+            });
+        });
+
+        // Smooth scrolling para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return; // Evitar error si href es solo "#"
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Considerar la altura de una barra de navegación fija si la tuvieras
+                    // const navbarHeight = document.querySelector('.tu-navbar-fija')?.offsetHeight || 0;
+                    // const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    // const offsetPosition = elementPosition - navbarHeight;
+
+                    window.scrollTo({
+                        top: targetElement.offsetTop, // Ajustar 'offsetTop' si hay navbar fija
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
