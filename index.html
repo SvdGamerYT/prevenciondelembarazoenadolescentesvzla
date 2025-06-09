@@ -1,196 +1,257 @@
-<div class="portada-global">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@300;400;700&display=swap');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Plataforma interactiva sobre prevención del embarazo adolescente con información confiable, métodos anticonceptivos, test de conocimientos, mitos y realidades, y recursos educativos.">
+    <title>Plataforma de Prevención del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
     
-    :root {
-      --color-primario: #E63946;    /* Azul vibrante */
-      --color-secundario: #FF758F;  /* Azul claro */
-      --fondo: #FFF0F3;             /* Fondo azul suave */
-      --texto: #2D3748;             /* Azul oscuro para texto */
-      --decoracion: #E63946;        /* Azul decorativo */
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-    body {
-      overflow-y: hidden;
-      margin: 0;
-    }
+    <header class="portada-global" id="inicio">
+        <div id="particles-js"></div>
+        <div class="portada-contenido">
+            <h1>Prevención del Embarazo en Adolescentes</h1>
+            <div class="decoracion-global"></div>
+            <p>Información verificada y recursos esenciales para una toma de decisiones informada sobre tu salud sexual y reproductiva.</p>
+            <div class="botones-accion">
+                <a href="#metodos" class="boton-global"><i class="fas fa-shield-alt"></i> Métodos Preventivos</a>
+                <a href="#test" class="boton-global"><i class="fas fa-question-circle"></i> Test de Conocimientos</a>
+                <a href="#calculadora" class="boton-global"><i class="fas fa-calendar-alt"></i> Calculadora de Ciclo</a>
+            </div>
+        </div>
+    </header>
 
-    .portada-global {
-      background:
-      color: var(--texto);
-      text-align: center;
-      padding: 6rem 2rem;
-      font-family: 'Open Sans', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
+    <main>
+        <section class="seccion" id="metodos">
+            <div class="container">
+                <h2 class="titulo-seccion">Métodos Anticonceptivos</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Conoce las opciones disponibles para una planificación responsable. Consulta siempre a un profesional de la salud.</p>
+                <div class="metodos-grid">
+                     <div class="metodo-card">
+                        <div class="metodo-header"><i class="fas fa-user-shield"></i><h3>Preservativo (Condón)</h3></div>
+                        <div class="metodo-body">
+                            <p>Es una barrera que impide el paso de espermatozoides. Es el único método que también protege de la mayoría de las Infecciones de Transmisión Sexual (ITS).</p>
+                            <div class="metodo-stats"><span class="eficacia">82-98% Eficacia</span><span><i class="fas fa-redo"></i> En cada relación</span></div>
+                        </div>
+                    </div>
+                     <div class="metodo-card">
+                        <div class="metodo-header"><i class="fas fa-pills"></i><h3>Pastillas Anticonceptivas</h3></div>
+                        <div class="metodo-body">
+                            <p>Contienen hormonas para prevenir la ovulación. Para ser efectivas, deben tomarse diariamente y a la misma hora.</p>
+                            <div class="metodo-stats"><span class="eficacia">91-99% Eficacia</span><span><i class="fas fa-clock"></i> Diario</span></div>
+                        </div>
+                    </div>
+                     <div class="metodo-card">
+                        <div class="metodo-header"><i class="fas fa-syringe"></i><h3>Inyectables</h3></div>
+                        <div class="metodo-body">
+                            <p>Inyección hormonal aplicada por un profesional de la salud cada 1-3 meses, según el tipo.</p>
+                            <div class="metodo-stats"><span class="eficacia">94-99% Eficacia</span><span><i class="fas fa-calendar-alt"></i> Mensual/Trimestral</span></div>
+                        </div>
+                    </div>
+                    <div class="metodo-card">
+                        <div class="metodo-header"><i class="fas fa-shield-alt"></i><h3>DIU y SIU</h3></div>
+                        <div class="metodo-body">
+                            <p>Dispositivos intrauterinos de larga duración (3 a 10 años). Son colocados por un médico.</p>
+                            <div class="metodo-stats"><span class="eficacia">+99% Eficacia</span><span><i class="fas fa-calendar-check"></i> Larga duración</span></div>
+                        </div>
+                    </div>
+                    <div class="metodo-card">
+                        <div class="metodo-header"><i class="fas fa-exclamation-triangle"></i><h3>Píldora de Emergencia</h3></div>
+                        <div class="metodo-body">
+                            <p>Para uso después de una relación sexual sin protección. Debe tomarse lo antes posible, máximo 72 horas después.</p>
+                            <div class="metodo-stats"><span class="eficacia">75-89% Eficacia</span><span><i class="fas fa-clock"></i> Solo emergencias</span></div>
+                        </div>
+                    </div>
+                    <div class="metodo-card">
+                        <div class="metodo-header"><i class="fas fa-band-aid"></i><h3>Parche Anticonceptivo</h3></div>
+                        <div class="metodo-body">
+                            <p>Parche que se adhiere a la piel y libera hormonas. Se cambia semanalmente durante 3 semanas.</p>
+                            <div class="metodo-stats"><span class="eficacia">91-99% Eficacia</span><span><i class="fas fa-calendar-week"></i> Semanal</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nota-importante">
+                    <p><i class="fas fa-info-circle"></i>Consulta siempre con un profesional de la salud para elegir el método más adecuado para ti.</p>
+                </div>
+            </div>
+        </section>
 
-    .portada-global::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background;
-      z-index: 0;
-    }
+        <section class="seccion" id="test">
+            <div class="container">
+                <h2 class="titulo-seccion">Test de Conocimientos</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Evalúa lo que sabes de forma rápida y anónima. ¡Aquí aprendemos todos!</p>
+                <div class="test-container">
+                </div>
+            </div>
+        </section>
 
-    .portada-global h1 {
-      font-size: clamp(2.8rem, 8vw, 4.5rem);
-      color: var(--color-primario);
-      margin: 0 auto 1.5rem;
-      line-height: 1.1;
-      max-width: 900px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: -0.03em;
-      position: relative;
-      z-index: 1;
-    }
+        <section class="seccion" id="calculadora">
+            <div class="container">
+                <h2 class="titulo-seccion">Calculadora de Ciclo Menstrual</h2>
+                 <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Estima tus días fértiles y tu próximo periodo. <strong>Recuerda: esta es una estimación y NO un método anticonceptivo.</strong></p>
+                <div class="calculadora-container">
+                    <form id="calculadora-form">
+                        <div class="input-group">
+                            <label for="fecha-ultimo-periodo">Fecha de inicio de tu último periodo:</label>
+                            <input type="date" id="fecha-ultimo-periodo" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="duracion-ciclo">Duración promedio de tu ciclo (días):</label>
+                            <input type="number" id="duracion-ciclo" min="20" max="45" value="28" required>
+                        </div>
+                        <button type="submit" class="boton-calcular">Calcular Periodo</button>
+                    </form>
+                    <div class="resultado-calculadora" style="display: none;">
+                        <h4>Resultados Estimados:</h4>
+                        <p id="proximo-periodo-resultado"></p>
+                        <p id="dias-fertiles-resultado"></p>
+                        <div class="nota-importante" style="margin-top: 1rem;">
+                            <p><i class="fas fa-exclamation-triangle"></i>Esta calculadora es solo una estimación. No uses esta información como método anticonceptivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    .portada-global p {
-      font-size: clamp(1.2rem, 2vw, 1.4rem);
-      line-height: 1.7;
-      margin: 0 auto 3rem;
-      max-width: 700px;
-      padding: 0 1rem;
-      font-weight: 400;
-      opacity: 0.9;
-      position: relative;
-      z-index: 1;
-    }
+        <section class="seccion" id="mitos">
+            <div class="container">
+                <h2 class="titulo-seccion">Mitos y Realidades</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Desmintiendo información falsa que puede poner en riesgo tu salud.</p>
+                <div class="mitos-grid">
+                    <div class="mito-card">
+                        <div class="mito-header mito">
+                            <i class="fas fa-times-circle"></i>
+                            <h3>MITO</h3>
+                        </div>
+                        <div class="mito-body">
+                            <p><strong>"No puedes quedar embarazada en tu primera vez"</strong></p>
+                            <p>FALSO. Puedes quedar embarazada en cualquier relación sexual sin protección, incluyendo la primera vez.</p>
+                        </div>
+                    </div>
+                    <div class="mito-card">
+                        <div class="mito-header realidad">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>REALIDAD</h3>
+                        </div>
+                        <div class="mito-body">
+                            <p><strong>"El condón es el único método que protege de ITS"</strong></p>
+                            <p>VERDADERO. Solo el preservativo protege tanto del embarazo como de la mayoría de infecciones de transmisión sexual.</p>
+                        </div>
+                    </div>
+                    <div class="mito-card">
+                        <div class="mito-header mito">
+                            <i class="fas fa-times-circle"></i>
+                            <h3>MITO</h3>
+                        </div>
+                        <div class="mito-body">
+                            <p><strong>"La píldora del día después es abortiva"</strong></p>
+                            <p>FALSO. La píldora de emergencia previene la ovulación, no interrumpe un embarazo ya establecido.</p>
+                        </div>
+                    </div>
+                    <div class="mito-card">
+                        <div class="mito-header realidad">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>REALIDAD</h3>
+                        </div>
+                        <div class="mito-body">
+                            <p><strong>"Hablar de sexualidad no promueve la actividad sexual"</strong></p>
+                            <p>VERDADERO. La educación sexual integral retrasa el inicio de la actividad sexual y promueve decisiones responsables.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    .botones-accion {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
+        <section class="seccion" id="recursos">
+            <div class="container">
+                <h2 class="titulo-seccion">Recursos y Ayuda</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Organizaciones y centros donde puedes recibir orientación confidencial y profesional.</p>
+                <div class="recursos-grid">
+                    <div class="recurso-card">
+                        <div class="recurso-header">
+                            <i class="fas fa-hospital"></i>
+                            <h3>Centros de Salud Públicos</h3>
+                        </div>
+                        <div class="recurso-body">
+                            <p>Hospitales y ambulatorios ofrecen consultas gratuitas de planificación familiar.</p>
+                            <ul>
+                                <li>Consulta médica especializada</li>
+                                <li>Métodos anticonceptivos gratuitos</li>
+                                <li>Atención confidencial</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="recurso-card">
+                        <div class="recurso-header">
+                            <i class="fas fa-heart"></i>
+                            <h3>PLAFAM</h3>
+                        </div>
+                        <div class="recurso-body">
+                            <p>Asociación Civil de Planificación Familiar</p>
+                            <ul>
+                                <li>Educación sexual integral</li>
+                                <li>Consultas especializadas</li>
+                                <li>Programas para adolescentes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="recurso-card">
+                        <div class="recurso-header">
+                            <i class="fas fa-users"></i>
+                            <h3>AVESA</h3>
+                        </div>
+                        <div class="recurso-body">
+                            <p>Asociación Venezolana para una Educación Sexual Alternativa</p>
+                            <ul>
+                                <li>Talleres educativos</li>
+                                <li>Orientación psicológica</li>
+                                <li>Recursos informativos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    .boton-global {
-      background: var(--color-primario);
-      color: white !important;
-      padding: 1.2rem 3rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      border: 2px solid var(--color-secundario);
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
-      position: relative;
-      overflow: hidden;
-    }
+    <footer class="footer">
+        <div class="container">
+            <h2 class="titulo-seccion" style="color: var(--rojo-secundario);">ESI Venezuela</h2>
+            <p class="subtitulo-seccion" style="color: rgba(255,255,255,0.8);">Un proyecto educativo para la prevención y la toma de decisiones informadas.</p>
+            <div class="creditos">
+                 <p>Realizado por: <strong>JHANBERN AMAYA</strong> & <strong>SOLISMAR DIAZ</strong></p>
+                 <p>Liceo Nacional Hugo Chávez Frías | Los Taques, Falcón</p>
+                 <p>© 2025. La información aquí presentada no sustituye la consulta médica profesional.</p>
+            </div>
+        </div>
+    </footer>
 
-    .boton-global::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: all 0.6s;
-    }
+    <div class="boton-chatbot" id="chatbot-toggle" title="Asistente Virtual">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-header">
+            <span>Asistente Virtual</span>
+            <button class="cerrar-chatbot" aria-label="Cerrar">&times;</button>
+        </div>
+        <div class="chatbot-mensajes"></div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Escribe tu pregunta...">
+            <button aria-label="Enviar"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
-    .boton-global:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
-      background: #1D4ED8;
-    }
-
-    .boton-global:hover::before {
-      left: 100%;
-    }
-
-    .decoracion-global {
-      width: 150px;
-      height: 4px;
-      background:
-      margin: 2.5rem auto;
-      border-radius: 2px;
-      opacity: 0.8;
-      position: relative;
-      animation: flotar 3s ease-in-out infinite;
-    }
-
-    @keyframes flotar {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .elemento-destacado {
-      position: absolute;
-      opacity: 0.1;
-      z-index: 0;
-    }
-
-    .elemento-destacado.mundo {
-      width: 80vw;
-      height: 80vw;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232563EB" stroke-width="0.5"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20M12 2v20"/></svg>');
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    @media (max-width: 768px) {
-      .portada-global {
-        padding: 5rem 1.5rem;
-      }
-      
-      .boton-global {
-        width: 100%;
-        justify-content: center;
-        padding: 1rem 2rem;
-      }
-      
-      .decoracion-global {
-        margin: 2rem auto;
-      }
-    }
-  </style>
-
-  <div class="elemento-destacado mundo"></div>
-
-  <h1>Prevencion del Embarazo en Adolescentes</h1>
-  
-  <div class="decoracion-global"></div>
-
-  <p>Información verificada y recursos esenciales para una toma de decisiones informada sobre tu salud sexual y reproductiva.</p>
-
-  <div class="botones-accion">
-    <a href="#estadisticas" class="boton-global" aria-label="Ver estadísticas globales">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 2.5v19M2.5 12h19"/>
-      </svg>
-      Educacion Sexual
-    </a>
-    
-    <a href="#estrategias" class="boton-global" aria-label="Estrategias internacionales">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/>
-      </svg>
-      Apoyo Local
-    </a>
-    
-    <a href="#recursos" class="boton-global" aria-label="Recursos globales">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"/>
-                <path d="M16 8l-8 8M8 8l8 8"/>
-      </svg>
-      Metodos Preventivos
-    </a>
-  </div>
-</div>
+    <script src="script.js"></script>
+</body>
+</html>
