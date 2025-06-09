@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+/* === Variables Globales y Básicas === */
+:root {
+    --azul-oms: #2563EB; /* Azul vibrante para acentos */
+    --azul-profundo: #1E3A8A; /* Azul oscuro para texto o fondos */
+    --azul-profundo2: #1D4ED8; /* Otro tono de azul oscuro */
+    --azul-claro: #93C5FD; /* Azul claro para elementos secundarios */
+    --rojo-oms: #DC2626; /* Rojo para alertas o destaques importantes */
+    --verde-oms: #16A34A; /* Verde para éxito o información positiva */
+    --gris-texto: #4B5563; /* Gris oscuro para texto principal */
+    --gris-azulado-texto: #374151; /* Un gris más azulado para cuerpo de texto */
+    --gris-claro-bordes: #D1D5DB; /* Gris claro para bordes o líneas */
+    --gris-fondo-seccion: #F3F4F6; /* Un gris muy claro para fondos de sección */
+    --blanco: #FFFFFF;
+    --negro-azulado-titulos: #111827; /* Casi negro para títulos fuertes */
+    --text-dark: var(--negro-azulado-titulos);
+    --text-light: var(--blanco);
+    --text-medium: var(--gris-azulado-texto);
+    --bg-light: var(--gris-fondo-seccion);
+    --bg-white: var(--blanco);
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --border-radius-sm: 8px;
+    --border-radius-md: 15px;
+    --border-radius-lg: 25px;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    /* Colores por región para la sección de estadísticas */
+    --africa: #E53E3E; 
+    --america: #DD6B20;
+    --asia: #38A169; 
+    --europa: #3182CE; 
+
+    /* PORTADA GLOBAL */
+    --color-primario: #2563EB;    /* Azul vibrante portada */
+    --color-secundario: #60A5FA;  /* Azul claro portada */
+    --fondo: #F0F9FF;             /* Fondo azul suave portada */
+    --texto: #1E3A8A;             /* Azul oscuro portada */
+    --decoracion: #93C5FD;        /* Azul decorativo portada */
+}
+
+/* === Reset y Base === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    color: var(--text-medium);
+    background-color: var(--bg-white);
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* === PORTADA GLOBAL === */
+.portada-global {
+    background: linear-gradient(160deg, var(--fondo) 60%, #DBEAFE 100%);
+    color: var(--texto);
+    text-align: center;
+    padding: 6rem 2rem;
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.portada-global::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0h50v50H50zM0 50h50v50H0z" fill="%2393C5FD" opacity="0.1"/></svg>');
+    z-index: 0;
+}
+.portada-global h1 {
+    font-size: clamp(2.8rem, 8vw, 4.5rem);
+    color: var(--color-primario);
+    margin: 0 auto 1.5rem;
+    line-height: 1.1;
+    max-width: 900px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 1;
+}
+.portada-global p {
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
+    line-height: 1.7;
+    margin: 0 auto 3rem;
+    max-width: 700px;
+    padding: 0 1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+.botones-accion {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+.boton-global {
+    background: var(--color-primario);
+    color: white !important;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--color-secundario);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+.boton-global::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: all 0.6s;
+}
+.boton-global:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+    background: #1D4ED8;
+}
+.boton-global:hover::before {
+    left: 100%;
+}
+.decoracion-global {
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+    margin: 2.5rem auto;
+    border-radius: 2px;
+    opacity: 0.8;
+    position: relative;
+    animation: flotar 3s ease-in-out infinite;
+}
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.elemento-destacado {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 0;
+}
+.elemento-destacado.mundo {
+    width: 80vw;
+    height: 80vw;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232563EB" stroke-width="0.5"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20M12 2v20"/></svg>');
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@media (max-width: 768px) {
+    .portada-global {
+        padding: 5rem 1.5rem;
+    }
+    .boton-global {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 2rem;
+    }
+    .decoracion-global {
+        margin: 2rem auto;
+    }
+}
+
+/* === SECCIONES PRINCIPALES Y HERO === */
+.seccion-con-titulo {
+    padding: 3rem 1.5rem 4rem;
+    background-color: var(--bg-light);
+}
+.seccion-con-titulo:nth-child(even) {
+    background-color: var(--bg-white);
+}
+.titulo-destacado {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    background: linear-gradient(90deg, var(--azul-oms) 0%, var(--azul-profundo2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto 1rem;
+    line-height: 1.15;
+    max-width: 1200px;
+    font-family: var(--font-title);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    padding: 0 1rem;
+    text-align: center;
+}
+.subtitulo-global {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: var(--azul-profundo);
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.7;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background: rgba(255,255,255,0.8);
+    border-radius: var(--border-radius-sm);
+}
+.decoracion-global {
+    width: 120px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--azul-oms) 30%, var(--azul-profundo2) 100%);
+    margin: 0 auto 2.5rem;
+    border-radius: 3px;
+}
+
+/* ...puedes seguir pegando aquí el resto de tus estilos para causas, consecuencias, estadísticas, footer, etc... */
