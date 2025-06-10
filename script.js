@@ -1,4 +1,110 @@
-document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Tarjetas expandibles
+    const cards = document.querySelectorAll('.causa-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Evitar que se cierre al hacer clic en enlaces
+            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                return;
+            }
+
+            const info = this.querySelector('.causa-info');
+            const isExpanded = info.style.maxHeight && info.style.maxHeight !== '0px';
+
+            // Cerrar todas las tarjetas primero
+            cards.forEach(otherCard => {
+                if (otherCard !== card) {
+                    const otherInfo = otherCard.querySelector('.causa-info');
+                    otherInfo.style.maxHeight = null;
+                    otherInfo.style.opacity = '0';
+                    otherInfo.style.marginTop = null;
+                    otherInfo.style.paddingTop = null;
+                    otherInfo.style.borderTopColor = 'transparent';
+                }
+            });
+
+            // Alternar estado de la tarjeta actual
+            if (isExpanded) {
+                info.style.maxHeight = null;
+                info.style.opacity = '0';
+                info.style.marginTop = null;
+                info.style.paddingTop = null;
+                info.style.borderTopColor = 'transparent';
+            } else {
+                info.style.maxHeight = info.scrollHeight + "px";
+                info.style.opacity = '1';
+                info.style.marginTop = '20px';
+                info.style.paddingTop = '20px';
+                
+                // Determinar color del borde
+                if (this.querySelector('.consecuencias-badge')) {
+                    info.style.borderTopColor = 'var(--rojo-oms)';
+                } else {
+                    info.style.borderTopColor = 'var(--azul-oms)';
+                }
+            }
+        });
+    });
+
+    // Smooth scrolling para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Calcular posición considerando header fijo si existe
+                const headerOffset = document.querySelector('header')?.offsetHeight || 0;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerOffset - 20; // 20px de margen
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Cerrar todas las tarjetas expandidas al navegar
+                document.querySelectorAll('.causa-info').forEach(info => {
+                    info.style.maxHeight = null;
+                    info.style.opacity = '0';
+                    info.style.marginTop = null;
+                    info.style.paddingTop = null;
+                    info.style.borderTopColor = 'transparent';
+                });
+            }
+        });
+    });
+
+    // Efecto de carga suave para las imágenes
+    const lazyLoadImages = () => {
+        const images = document.querySelectorAll('img[data-src]');
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => {
+            imageObserver.observe(img);
+        });
+    };
+
+    // Iniciar carga lazy si hay imágenes con data-src
+    if ('IntersectionObserver' in window) {
+        lazyLoadImages();
+    }
+});
 
     // --- Animación de Partículas ---
     if(document.getElementById('particles-js')){
