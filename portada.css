@@ -1,3 +1,6 @@
+/* ================================
+   VARIABLES GLOBALES
+   ================================ */
 :root {
     --color-primario: #2563EB;
     --color-secundario: #60A5FA;
@@ -6,6 +9,9 @@
     --decoracion: #93C5FD;
 }
 
+/* ================================
+   PORTADA PRINCIPAL
+   ================================ */
 .portada-global {
     background: linear-gradient(160deg, var(--fondo) 60%, #DBEAFE 100%);
     color: var(--texto);
@@ -21,6 +27,7 @@
     overflow: hidden;
 }
 
+/* Fondo decorativo SVG */
 .portada-global::before {
     content: '';
     position: absolute;
@@ -32,6 +39,7 @@
     z-index: 0;
 }
 
+/* Título principal */
 .portada-global h1 {
     font-size: clamp(2rem, 6vw, 3.5rem);
     color: var(--color-primario);
@@ -47,6 +55,7 @@
     padding: 0 1rem;
 }
 
+/* Párrafo principal */
 .portada-global p {
     font-size: clamp(1rem, 3vw, 1.2rem);
     line-height: 1.6;
@@ -59,6 +68,9 @@
     z-index: 1;
 }
 
+/* ================================
+   BOTONES DE ACCIÓN
+   ================================ */
 .botones-accion {
     display: flex;
     gap: 1rem;
@@ -104,11 +116,13 @@
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
     background: #1D4ED8;
 }
-
 .boton-global:hover::before {
     left: 100%;
 }
 
+/* ================================
+   DECORACIÓN Y ELEMENTOS EXTRA
+   ================================ */
 .decoracion-global {
     width: 100px;
     height: 4px;
@@ -120,53 +134,53 @@
     animation: flotar 3s ease-in-out infinite;
 }
 
+/* Animación de flotación para la decoración */
 @keyframes flotar {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
 }
 
+/* Elementos destacados decorativos */
 .elemento-destacado {
     position: absolute;
     opacity: 0.1;
     z-index: 0;
 }
-
 .elemento-destacado.mundo {
     width: 80vw;
     height: 80vw;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232563EB" stroke-width="0.5"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20M12 2v20"/></svg>');
+    /* Si tienes un background SVG, mantenlo aquí */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232563EB" stroke-width="0.5"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3[...]');
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+/* ================================
+   RESPONSIVE
+   ================================ */
 @media (max-width: 768px) {
     .portada-global {
         padding: 4rem 1.5rem;
     }
-    
     .portada-global h1 {
         font-size: 1.8rem;
         margin-bottom: 1rem;
     }
-    
     .portada-global p {
         font-size: 1rem;
         margin-bottom: 2rem;
     }
-    
     .botones-accion {
         flex-direction: column;
         gap: 0.8rem;
     }
-    
     .boton-global {
         width: 100%;
         max-width: 280px;
         justify-content: center;
         padding: 0.8rem;
     }
-    
     .decoracion-global {
         margin: 1rem auto;
         width: 80px;
