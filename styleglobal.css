@@ -1,247 +1,174 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap');
-
-/*============ VARIABLES ============*/
 :root {
-    --azul-oms: #2563EB;
-    --azul-profundo: #1E3A8A;
-    --azul-profundo2: #1D4ED8;
-    --azul-claro: #93C5FD;
-
-    --rojo-oms: #DC2626;
-    --verde-oms: #16A34A;
-
-    --gris-texto: #4B5563;
-    --gris-azulado-texto: #374151;
-    --gris-claro-bordes: #D1D5DB;
-    --gris-fondo-seccion: #F3F4F6;
-
-    --blanco: #FFFFFF;
-    --negro-azulado-titulos: #111827;
-
-    --text-dark: var(--negro-azulado-titulos);
-    --text-light: var(--blanco);
-    --text-medium: var(--gris-azulado-texto);
-
-    --bg-light: var(--gris-fondo-seccion);
-    --bg-white: var(--blanco);
-
-    --font-title: 'Montserrat', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
-
-    --border-radius-sm: 8px;
-    --border-radius-md: 15px;
-    --border-radius-lg: 25px;
-
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
-
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-    --africa: #E53E3E;
-    --america: #DD6B20;
-    --asia: #38A169;
-    --europa: #3182CE;
+    --color-primario: #2563EB;
+    --color-secundario: #60A5FA;
+    --fondo: #F0F9FF;
+    --texto: #1E3A8A;
+    --decoracion: #93C5FD;
 }
 
-/*============ RESET Y BASE ============*/
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-html {
-    scroll-behavior: smooth;
-}
-body {
-    font-family: var(--font-body);
-    line-height: 1.7;
-    color: var(--text-medium);
-    background-color: var(--bg-white);
-}
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/*============ SECCIONES PRINCIPALES ============*/
-.seccion-con-titulo {
-    padding: 3rem 1.5rem 4rem;
-    background-color: var(--bg-light);
-}
-.seccion-con-titulo:nth-child(even) {
-    background-color: var(--bg-white);
-}
-
-/*============ TÍTULOS Y DECORACIÓN ============*/
-.titulo-destacado {
-    font-size: clamp(2.5rem, 7vw, 4rem);
-    background: linear-gradient(90deg, var(--azul-oms) 0%, var(--azul-profundo2) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0 auto 1rem;
-    line-height: 1.15;
-    max-width: 1200px;
-    font-family: var(--font-title);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    padding: 0 1rem;
+.portada-global {
+    background: linear-gradient(160deg, var(--fondo) 60%, #DBEAFE 100%);
+    color: var(--texto);
     text-align: center;
-}
-.subtitulo-global {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    color: var(--azul-profundo);
-    max-width: 800px;
-    margin: 0 auto 1.5rem;
-    font-family: var(--font-body);
-    font-weight: 400;
-    line-height: 1.7;
-    padding: 0.5rem 1rem;
-    text-align: center;
-    background: rgba(255,255,255,0.8);
-    border-radius: var(--border-radius-sm);
-}
-.decoracion-global {
-    width: 120px;
-    height: 5px;
-    background: linear-gradient(90deg, var(--azul-oms) 30%, var(--azul-profundo2) 100%);
-    margin: 0 auto 2.5rem;
-    border-radius: 3px;
-}
-
-/*============ HERO / SECCIÓN INICIO ============*/
-.seccion-contenido {
-    background: #F8F9FF;
-    padding: 3rem 1.5rem;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.contenedor-informacion {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    align-items: stretch;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-}
-.definicion-oms,
-.destacado-estadistica,
-.llamado-accion {
-    background: var(--bg-white);
-    padding: 2rem;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md);
-    border-left: 5px solid var(--azul-oms);
+    padding: 6rem 2rem;
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-.definicion-oms h3 {
-    font-family: var(--font-title);
-    color: var(--azul-oms);
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-}
-.definicion-oms p {
-    color: var(--text-medium);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 0;
-}
-.destacado-estadistica {
-    text-align: center;
-    background-color: var(--azul-oms);
-    color: var(--text-light);
-    border-left: 5px solid var(--azul-profundo);
-}
-.numero-destacado {
-    font-family: var(--font-title);
-    font-size: clamp(2.8rem, 8vw, 4.5rem);
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-}
-.destacado-estadistica p {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: rgba(255,255,255,0.95);
-}
-.fuente-estadistica {
-    font-size: 0.85rem;
-    opacity: 0.85;
-    display: block;
-    margin-top: auto;
-}
-.llamado-accion {
-    grid-column: 1 / -1;
-    text-align: center;
-    border-left-color: var(--verde-oms);
-    padding: 2rem;
-    display: flex;
     align-items: center;
     justify-content: center;
-}
-.boton-accion {
-    background: var(--verde-oms);
-    color: var(--text-light);
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-family: var(--font-title);
-    font-weight: 600;
-    font-size: 1.1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
-}
-.boton-accion:hover {
-    background: #15803d;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
-}
-.boton-accion svg {
-    stroke-width: 2.5;
+    position: relative;
+    overflow: hidden;
 }
 
-/*============ RESPONSIVE ============*/
-@media (max-width: 992px) {
-    .region-especial {
-        grid-template-columns: 1fr;
-    }
+.portada-global::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0h50v50H50zM0 50h50v50H0z" fill="%2393C5FD" opacity="0.1"/></svg>');
+    z-index: 0;
 }
+
+.portada-global h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: var(--color-primario);
+    margin: 0 auto 1.5rem;
+    line-height: 1.2;
+    max-width: 900px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem;
+}
+
+.portada-global p {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    line-height: 1.6;
+    margin: 0 auto 3rem;
+    max-width: 700px;
+    padding: 0 1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+.botones-accion {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 800px;
+}
+
+.boton-global {
+    background: var(--color-primario);
+    color: white !important;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--color-secundario);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.15);
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+.boton-global::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: all 0.6s;
+}
+
+.boton-global:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    background: #1D4ED8;
+}
+
+.boton-global:hover::before {
+    left: 100%;
+}
+
+.decoracion-global {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+    margin: 1.5rem auto;
+    border-radius: 2px;
+    opacity: 0.8;
+    position: relative;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.elemento-destacado {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.elemento-destacado.mundo {
+    width: 80vw;
+    height: 80vw;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232563EB" stroke-width="0.5"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20M12 2v20"/></svg>');
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @media (max-width: 768px) {
-    .contenedor-informacion {
-        grid-template-columns: 1fr;
-        padding: 1rem;
+    .portada-global {
+        padding: 4rem 1.5rem;
     }
-    .seccion-contenido {
-        padding: 2rem 1rem;
-        min-height: auto;
+    
+    .portada-global h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
     }
-    .numero-destacado { font-size: 3rem; }
-    .definicion-oms, .destacado-estadistica { padding: 1.5rem; }
-    .grid-causas {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    
+    .portada-global p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
-    .causa-card { padding: 20px; padding-bottom: 70px; }
-    .causa-imagen { height: 180px; }
-    .icono-causa { width: 40px; height: 40px; font-size: 1.2em; }
-    .titulo-destacado { font-size: clamp(2rem, 6vw, 2.8rem); }
-    .subtitulo-global { padding: 0.8rem; margin-bottom: 1.5rem; font-size: clamp(1rem, 1.8vw, 1.1rem); }
-    .decoracion-global { margin: 1.5rem auto 2rem; width: 100px; }
-    .seccion-estadisticas {
-        padding: 2rem 1rem 3rem;
+    
+    .botones-accion {
+        flex-direction: column;
+        gap: 0.8rem;
     }
-    .mapa-leyenda { gap: 0.5rem 0.8rem; }
-    .contenedor-regiones { grid-template-columns: 1fr; }
-    .nombre-region { font-size: 1.25rem; }
-    .tasa { font-size: 1.8rem; }
+    
+    .boton-global {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 0.8rem;
+    }
+    
+    .decoracion-global {
+        margin: 1rem auto;
+        width: 80px;
+    }
 }
