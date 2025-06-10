@@ -1,14 +1,15 @@
+// ===============================
+// INICIALIZACIÓN AL CARGAR DOM
+// ===============================
+document.addEventListener('DOMContentLoaded', function () {
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Tarjetas expandibles
+    // ===============================
+    // 1. TARJETAS EXPANDIBLES CAUSAS/CONSECUENCIAS
+    // ===============================
     const cards = document.querySelectorAll('.causa-card');
-    
     cards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            // Evitar que se cierre al hacer clic en enlaces
-            if (e.target.tagName === 'A' || e.target.closest('a')) {
-                return;
-            }
+        card.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A' || e.target.closest('a')) return;
 
             const info = this.querySelector('.causa-info');
             const isExpanded = info.style.maxHeight && info.style.maxHeight !== '0px';
@@ -37,38 +38,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 info.style.opacity = '1';
                 info.style.marginTop = '20px';
                 info.style.paddingTop = '20px';
-                
-                // Determinar color del borde
-                if (this.querySelector('.consecuencias-badge')) {
-                    info.style.borderTopColor = 'var(--rojo-oms)';
-                } else {
-                    info.style.borderTopColor = 'var(--azul-oms)';
-                }
+                info.style.borderTopColor = this.querySelector('.consecuencias-badge')
+                    ? 'var(--rojo-oms)'
+                    : 'var(--azul-oms)';
             }
         });
     });
 
-    // Smooth scrolling para enlaces internos
+    // ===============================
+    // 2. SCROLL SUAVE PARA ENLACES INTERNOS
+    // ===============================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                // Calcular posición considerando header fijo si existe
                 const headerOffset = document.querySelector('header')?.offsetHeight || 0;
                 const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset - 20; // 20px de margen
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Cerrar todas las tarjetas expandidas al navegar
+                const offsetPosition = elementPosition - headerOffset - 20;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                // Cierra info expandida
                 document.querySelectorAll('.causa-info').forEach(info => {
                     info.style.maxHeight = null;
                     info.style.opacity = '0';
@@ -80,10 +71,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Efecto de carga suave para las imágenes
+    // ===============================
+    // 3. LAZY LOAD PARA IMÁGENES
+    // ===============================
     const lazyLoadImages = () => {
         const images = document.querySelectorAll('img[data-src]');
-        
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -94,20 +86,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-
-        images.forEach(img => {
-            imageObserver.observe(img);
-        });
+        images.forEach(img => imageObserver.observe(img));
     };
+    if ('IntersectionObserver' in window) lazyLoadImages();
 
-    // Iniciar carga lazy si hay imágenes con data-src
-    if ('IntersectionObserver' in window) {
-        lazyLoadImages();
-    }
-});
-
-    // --- Animación de Partículas ---
-    if(document.getElementById('particles-js')){
+    // ===============================
+    // 4. ANIMACIÓN DE PARTÍCULAS
+    // ===============================
+    if (document.getElementById('particles-js')) {
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
@@ -127,7 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- Lógica del Test Interactivo ---
+    // ===============================
+    // 5. TEST INTERACTIVO DE CONOCIMIENTOS
+    // ===============================
     const testContainer = document.querySelector('.test-container');
     if (testContainer) {
         const preguntasData = [
@@ -148,7 +136,11 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             {
                 pregunta: "4. ¿Cuál de estas afirmaciones sobre el embarazo adolescente es FALSA?",
-                opciones: ["No puedes quedar embarazada en tu primera relación sexual", "El embarazo puede ocurrir en cualquier relación sexual sin protección", "Los adolescentes necesitan educación sexual integral"],
+                opciones: [
+                    "No puedes quedar embarazada en tu primera relación sexual",
+                    "El embarazo puede ocurrir en cualquier relación sexual sin protección",
+                    "Los adolescentes necesitan educación sexual integral"
+                ],
                 correcta: 0
             },
             {
@@ -157,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 correcta: 1
             }
         ];
-        
+
         let preguntaActual = 0;
         const respuestas = new Array(preguntasData.length);
 
@@ -192,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     testContainer.querySelector('.boton-siguiente').disabled = false;
                 });
             });
-            
             testContainer.querySelector('.boton-siguiente').addEventListener('click', () => {
                 if (preguntaActual < preguntasData.length - 1) {
                     preguntaActual++;
@@ -201,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     mostrarResultados();
                 }
             });
-            
             testContainer.querySelector('.boton-anterior').addEventListener('click', () => {
                 if (preguntaActual > 0) {
                     preguntaActual--;
@@ -214,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const correctas = respuestas.filter(r => r).length;
             const puntaje = (correctas / preguntasData.length) * 100;
             let recomendacion = '';
-            
             if (puntaje < 60) {
                 recomendacion = '¡Hay mucho por aprender! Te recomendamos explorar con calma la información de nuestra página y consultar con un profesional de la salud.';
             } else if (puntaje < 100) {
@@ -222,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 recomendacion = '¡Excelente! Tienes un gran conocimiento sobre el tema. ¡Comparte esta información con tus amistades!';
             }
-            
             testContainer.innerHTML = `
                 <div class="resultado-test" style="display: block;">
                     <h3>¡Resultados del Test!</h3>
@@ -233,73 +221,73 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button class="boton-test boton-siguiente" id="reiniciar-test" style="margin-top: 1rem;">Intentar de Nuevo</button>
                 </div>
             `;
-            
             document.getElementById('reiniciar-test').addEventListener('click', () => {
                 preguntaActual = 0;
                 respuestas.fill(undefined);
                 renderizarTest();
             });
         }
-        
+
         renderizarTest();
     }
 
-    // --- Lógica de la Calculadora ---
+    // ===============================
+    // 6. CALCULADORA DE CICLO MENSTRUAL
+    // ===============================
     const formCalculadora = document.getElementById('calculadora-form');
-    if(formCalculadora) {
+    if (formCalculadora) {
         formCalculadora.addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const fechaInicioStr = document.getElementById('fecha-ultimo-periodo').value;
             const duracionCiclo = parseInt(document.getElementById('duracion-ciclo').value);
-            
-            if(!fechaInicioStr){ 
-                alert("Por favor, selecciona la fecha de tu último periodo."); 
-                return; 
+
+            if (!fechaInicioStr) {
+                alert("Por favor, selecciona la fecha de tu último periodo.");
+                return;
             }
-            
+
             const fechaInicio = new Date(fechaInicioStr + 'T00:00:00');
             const proximoPeriodo = new Date(fechaInicio);
             proximoPeriodo.setDate(proximoPeriodo.getDate() + duracionCiclo);
-            
+
             const ovulacion = new Date(proximoPeriodo);
             ovulacion.setDate(ovulacion.getDate() - 14);
-            
+
             const inicioFertil = new Date(ovulacion);
             inicioFertil.setDate(ovulacion.getDate() - 5);
-            
+
             const finFertil = new Date(ovulacion);
             finFertil.setDate(ovulacion.getDate() + 1);
-            
+
             const formatoFecha = { day: 'numeric', month: 'long', year: 'numeric' };
-            
-            document.getElementById('proximo-periodo-resultado').textContent = 
+
+            document.getElementById('proximo-periodo-resultado').textContent =
                 `Próximo periodo estimado: ${proximoPeriodo.toLocaleDateString('es-VE', formatoFecha)}`;
-            
-            document.getElementById('dias-fertiles-resultado').textContent = 
+            document.getElementById('dias-fertiles-resultado').textContent =
                 `Tus días más fértiles son aproximadamente del ${inicioFertil.toLocaleDateString('es-VE', formatoFecha)} al ${finFertil.toLocaleDateString('es-VE', formatoFecha)}.`;
-            
             document.querySelector('.resultado-calculadora').style.display = 'block';
         });
     }
-    
-    // --- Lógica del Chatbot ---
+
+    // ===============================
+    // 7. CHATBOT ASISTENTE VIRTUAL
+    // ===============================
     const chatbotToggle = document.getElementById('chatbot-toggle');
     const chatbotContainer = document.getElementById('chatbot-container');
     const cerrarChatbot = chatbotContainer.querySelector('.cerrar-chatbot');
     const chatInput = chatbotContainer.querySelector('input');
     const chatSendBtn = chatbotContainer.querySelector('button');
     const chatMessages = chatbotContainer.querySelector('.chatbot-mensajes');
-    
+
     chatbotToggle.addEventListener('click', () => {
         chatbotContainer.classList.toggle('abierto');
         if (chatbotContainer.classList.contains('abierto') && chatMessages.children.length === 0) {
             addMessage("¡Hola! Soy tu asistente virtual. Pregúntame sobre métodos anticonceptivos, causas del embarazo adolescente o dónde buscar ayuda.", 'bot');
         }
     });
-    
+
     cerrarChatbot.addEventListener('click', () => chatbotContainer.classList.remove('abierto'));
-    
+
     const respuestasBot = {
         "hola": "¡Hola! ¿En qué puedo ayudarte? Pregúntame sobre 'métodos', 'causas', 'ayuda' o 'emergencia'.",
         "causas": "Las principales causas del embarazo adolescente incluyen: falta de educación sexual integral, acceso limitado a métodos anticonceptivos, presión social, mitos sobre la sexualidad, y falta de comunicación familiar.",
@@ -312,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "its": "Las Infecciones de Transmisión Sexual se previenen principalmente con el uso del preservativo. Si tienes síntomas, busca atención médica inmediata.",
         "gracias": "¡De nada! Estoy aquí para ayudarte con información sobre salud sexual y reproductiva. ¿Hay algo más en lo que pueda ayudarte?"
     };
-    
+
     function addMessage(text, sender) {
         const message = document.createElement('div');
         message.classList.add('mensaje', `mensaje-${sender}`);
@@ -320,35 +308,33 @@ document.addEventListener('DOMContentLoaded', function() {
         chatMessages.appendChild(message);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-    
+
     function handleChat() {
         const userText = chatInput.value.trim();
-        if(!userText) return;
-        
+        if (!userText) return;
         addMessage(userText, 'usuario');
         chatInput.value = '';
-        
         setTimeout(() => {
             const userTextLower = userText.toLowerCase();
             let botResponse = "No entendí muy bien tu pregunta. Intenta usar palabras clave como 'métodos', 'causas', 'ayuda', 'emergencia', 'preservativo', 'pastillas' o 'its'.";
-            
             for (const key in respuestasBot) {
-                if (userTextLower.includes(key)) { 
-                    botResponse = respuestasBot[key]; 
-                    break; 
+                if (userTextLower.includes(key)) {
+                    botResponse = respuestasBot[key];
+                    break;
                 }
             }
-            
             addMessage(botResponse, 'bot');
         }, 800);
     }
-    
+
     chatSendBtn.addEventListener('click', handleChat);
-    chatInput.addEventListener('keypress', (e) => { 
-        if(e.key === 'Enter') handleChat(); 
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleChat();
     });
 
-    // --- Navegación suave ---
+    // ===============================
+    // 8. NAVEGACIÓN SUAVE (EXTRA)
+    // ===============================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -361,4 +347,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
+
+}); // Fin DOMContentLoaded
