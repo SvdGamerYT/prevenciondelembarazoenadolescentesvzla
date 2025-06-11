@@ -27,10 +27,15 @@
             --rojo-oms: #DC2626;
             --verde-oms: #16A34A;
             --amarillo-info: #FBBF24;
+            --texto-amarillo-oscuro: #713f12;
             
             --sombra-media: 0 8px 25px rgba(37, 99, 235, 0.15);
             --transicion: all 0.3s ease;
             --border-radius-md: 15px;
+			
+			/* --- NUEVA PALETA DE COLOR --- */
+            --purpura-global: #8B5CF6; /* Color principal para la sección Global */
+            --purpura-oscuro: #5B21B6; /* Color de texto y elementos oscuros */
             
             --africa: #E53E3E; 
             --america: #DD6B20;
@@ -283,7 +288,7 @@
         }
 
         /* GRID GENÉRICO PARA TARJETAS */
-        .grid-causas, .grid-global {
+        .grid-causas {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
@@ -322,28 +327,8 @@
         }
         
         .consecuencias-badge { background: var(--rojo-oms); }
-        .global-badge { background: var(--amarillo-info); color: #4b3403; }
 
-        .causa-imagen {
-            height: 200px;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0,0,0,0.08);
-        }
-        
-        .causa-imagen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .causa-card:hover .causa-imagen img {
-            transform: scale(1.05);
-        }
-
-        .causa-titulo, .global-titulo {
+        .causa-titulo {
             color: var(--texto-oscuro);
             font-family: 'Montserrat', sans-serif;
             font-size: 1.35em;
@@ -353,7 +338,7 @@
         
         .consecuencias-titulo { color: var(--rojo-oms); }
 
-        .causa-descripcion, .global-descripcion {
+        .causa-descripcion {
             color: var(--texto-medio);
             line-height: 1.6;
             font-size: 0.95em;
@@ -574,31 +559,102 @@
         .comparativa-global h4 { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; margin-bottom: 0.8rem; text-transform: uppercase; }
         .media-global { font-size: 2.5rem; font-weight: 700; margin: 0.5rem 0; }
 
-        /* NUEVA SECCIÓN: ÁMBITO GLOBAL */
-        .global-card {
-            border-left: 5px solid var(--amarillo-info);
+        /* --- NUEVA SECCIÓN: ÁMBITO GLOBAL (REIMAGINADA) --- */
+        #ambito-global .titulo-seccion { color: var(--azul-principal); }
+
+        .grid-global-reimaginado {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .global-card-nueva {
+		    padding: 2rem;
             display: flex;
             flex-direction: column;
-        }
-
-        .global-card .global-titulo {
-            color: #c28b00;
-        }
-
-        .global-card-header {
-            display: flex;
-            align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
+            border-left: 5px solid var(--rojo-oms);
+            transition: var(--transicion);
+            background-color: var(--fondo-tarjeta-translucido);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--sombra-media);
         }
 
-        .global-card-header .icono {
-            font-size: 2rem;
-            color: var(--amarillo-info);
-            min-width: 40px;
+        .global-card-nueva:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(91, 33, 182, 0.2);
+            background-color: var(--blanco);
+        }
+
+        .global-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
             text-align: center;
         }
+        
+        .global-icono {
+            font-size: 2.5rem;
+            color: var(--rojo-oms);
+            margin-bottom: 0.5rem;
+        }
 
+        .global-titulo-nuevo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--rojo-oms);
+        }
+
+        .global-stat {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            font-weight: 800;
+            color: var(--rojo-oms);
+            line-height: 1;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        .global-descripcion {
+            font-size: 1rem;
+            color: var(--texto-medio);
+            text-align: center;
+            margin-bottom: 1rem;
+            min-height: 60px; /* Para alinear tarjetas */
+        }
+        
+        .global-lista-nueva {
+            list-style: none;
+            padding: 0;
+            margin-top: auto; /* Empuja la lista hacia abajo */
+        }
+
+        .global-lista-nueva li {
+            font-size: 1rem;
+            padding: 0.5rem 0 0.5rem 25px;
+            position: relative;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .global-lista-nueva li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--rojo-oms);
+            font-weight: bold;
+        }
+
+        .fuente-dato {
+            font-size: 0.75rem;
+            text-align: center;
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+        
         /* FOOTER */
         .footer {
             background-color: var(--fondo-oscuro-translucido);
@@ -623,7 +679,7 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .grid-causas, .grid-global, .contenedor-regiones, .region-especial {
+            .grid-causas, .contenedor-regiones, .region-especial {
                 grid-template-columns: 1fr;
             }
             .botones-accion {
@@ -634,6 +690,14 @@
                 width: 100%;
                 max-width: 280px;
                 justify-content: center;
+            }
+            .bloque-global {
+                padding: 1.5rem;
+            }
+            .bloque-global-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
             }
         }
     </style>
@@ -918,69 +982,74 @@
                     </div>
                 </div>
             </div>
-        </section>
+</section>
 
         <section class="seccion" id="ambito-global">
             <div class="container">
                 <h2 class="titulo-seccion">Contexto y Estrategias a Nivel Global</h2>
-                <p class="subtitulo-seccion">El embarazo adolescente es un fenómeno mundial que requiere soluciones globales. Aquí exploramos los factores, estrategias y marcos legales que definen el problema a nivel internacional.</p>
+                <p class="subtitulo-seccion">El embarazo adolescente es un fenómeno mundial que requiere soluciones globales, respaldadas por datos y marcos de acción claros.</p>
                 
-                <div class="grid-global">
-                    <div class="causa-card global-card">
-                        <div class="global-card-header">
-                            <div class="icono"><i class="fas fa-exclamation-triangle"></i></div>
-                            <h3 class="global-titulo">Factores de Riesgo Globales</h3>
+                <div class="grid-global-reimaginado">
+                    
+                    <div class="global-card-nueva glass-card">
+                        <div class="global-header">
+                            <div class="global-icono"><i class="fas fa-exclamation-triangle"></i></div>
+                            <h3 class="global-titulo-nuevo">Factores de Riesgo</h3>
                         </div>
-                        <p class="global-descripcion">Más allá de las fronteras, ciertos factores aumentan la vulnerabilidad de las adolescentes en todo el mundo.</p>
-                        <ul class="global-lista">
-                            <li><strong>Pobreza y Desigualdad:</strong> Limitan el acceso a educación y oportunidades.</li>
-                            <li><strong>Falta de Educación Sexual Integral:</strong> Deja a los jóvenes sin información clave.</li>
-                            <li><strong>Barreras a la Anticoncepción:</strong> Dificultan la planificación familiar.</li>
-                            <li><strong>Normas Sociales y Matrimonio Infantil:</strong> Presionan a las niñas a la maternidad temprana.</li>
-                            <li><strong>Violencia de Género:</strong> El abuso y la coerción son causas directas.</li>
-                            <li><strong>Crisis Humanitarias:</strong> Conflictos y desastres aumentan la vulnerabilidad.</li>
+                        <div class="global-stat">3x</div>
+                        <p class="global-descripcion">Más probabilidades de embarazo adolescente en zonas rurales y pobres frente a zonas urbanas ricas.</p>
+                        <ul class="global-lista-nueva">
+                            <li><strong>Salud:</strong> Servicios de salud amigables para jóvenes con horarios flexibles y sin juicios.</li>
+                            <li><strong>Educación:</strong> Implementación de educación sexual obligatoria desde la primaria.</li>
+                            <li><strong>Comunidad:</strong> Programas que involucran a padres, líderes comunitarios y hombres.</li>
+                             <li><strong>Economía:</strong> Incentivos para que las niñas permanezcan en la escuela y tengan un plan de vida.</li>
                         </ul>
+                         <div class="fuente-dato">(Análisis de Datos Globales)</div>
                     </div>
 
-                    <div class="causa-card global-card">
-                         <div class="global-card-header">
-                            <div class="icono"><i class="fas fa-check-circle"></i></div>
-                            <h3 class="global-titulo">Estrategias de Prevención Exitosas</h3>
+                    <div class="global-card-nueva glass-card">
+                        <div class="global-header">
+                            <div class="global-icono"><i class="fas fa-check-circle"></i></div>
+                            <h3 class="global-titulo-nuevo">Estrategias Exitosas</h3>
                         </div>
-                        <p class="global-descripcion">Varios países han logrado reducir sus tasas de embarazo adolescente a través de políticas integrales y sostenidas.</p>
-                        <ul class="global-lista">
-                            <li><strong>Chile y Costa Rica:</strong> Implementaron programas de salud amigables para adolescentes con horarios extendidos y personal capacitado.</li>
-                            <li><strong>Países Europeos:</strong> Invierten fuertemente en educación sexual obligatoria desde la primaria y garantizan el acceso gratuito a anticonceptivos.</li>
-                            <li><strong>Etiopía:</strong> Ha utilizado a trabajadoras de la salud comunitarias para llevar información y servicios de planificación familiar directamente a las aldeas.</li>
+                        <div class="global-stat">-30%</div>
+                        <p class="global-descripcion">De los programas exitosos promueven la igualdad de género y el empoderamiento de las niñas como eje central.</p>
+                        <ul class="global-lista-nueva">
+                            <li><strong>Acceso Universal:</strong> Garantizar que todos los adolescentes puedan acceder a información y anticonceptivos.</li>
+                            <li><strong>Empoderamiento:</strong> Fomentar la autonomía, la toma de decisiones y las habilidades para la vida de las niñas.</li>
+                            <li><strong>Inclusión Masculina:</strong> Involucrar a los hombres y niños como parte de la solución, promoviendo masculinidades positivas.</li>
                         </ul>
+                         <div class="fuente-dato">(Fuente: OMS/UNICEF)</div>
                     </div>
 
-                    <div class="causa-card global-card">
-                        <div class="global-card-header">
-                            <div class="icono"><i class="fas fa-bullhorn"></i></div>
-                            <h3 class="global-titulo">Recomendaciones Internacionales</h3>
+                    <div class="global-card-nueva glass-card">
+                        <div class="global-header">
+                            <div class="global-icono"><i class="fas fa-bullhorn"></i></div>
+                            <h3 class="global-titulo-nuevo">Recomendaciones</h3>
                         </div>
-                        <p class="global-descripcion">Organismos como la <strong>OMS, UNFPA y UNICEF</strong> proponen un enfoque multifacético para abordar el problema:</p>
-                        <ul class="global-lista">
-                            <li>Garantizar el acceso universal a la educación sexual integral.</li>
-                            <li>Asegurar que los servicios de salud sean accesibles, asequibles y amigables para los jóvenes.</li>
-                            <li>Promover la igualdad de género y el empoderamiento de las niñas.</li>
-                            <li>Involucrar a los hombres y niños en la prevención.</li>
-                            <li>Crear leyes y políticas que protejan los derechos de los adolescentes.</li>
+                        <div class="global-stat">100%</div>
+                        <p class="global-descripcion">De los programas exitosos promueven la igualdad de género y el empoderamiento de las niñas como eje central.</p>
+                        <ul class="global-lista-nueva">
+                            <li><strong>Acceso Universal:</strong> Garantizar que todos los adolescentes puedan acceder a información y anticonceptivos.</li>
+                            <li><strong>Empoderamiento:</strong> Fomentar la autonomía, la toma de decisiones y las habilidades para la vida de las niñas.</li>
+                            <li><strong>Inclusión Masculina:</strong> Involucrar a los hombres y niños como parte de la solución, promoviendo masculinidades positivas.</li>
                         </ul>
+                         <div class="fuente-dato">(Fuente: OMS/UNICEF)</div>
                     </div>
                     
-                    <div class="causa-card global-card">
-                        <div class="global-card-header">
-                            <div class="icono"><i class="fas fa-gavel"></i></div>
-                            <h3 class="global-titulo">Marcos Legales y Políticas</h3>
+                    <div class="global-card-nueva glass-card">
+                        <div class="global-header">
+                            <div class="global-icono"><i class="fas fa-gavel"></i></div>
+                            <h3 class="global-titulo-nuevo">Marcos Legales</h3>
                         </div>
-                        <p class="global-descripcion">La prevención del embarazo adolescente está respaldada por importantes acuerdos internacionales de derechos humanos.</p>
-                        <ul class="global-lista">
-                           <li>La <strong>Convención sobre los Derechos del Niño</strong> establece el derecho de los menores a la salud, la educación y la protección contra la explotación.</li>
-                           <li>La <strong>Agenda 2030 para el Desarrollo Sostenible</strong> incluye metas específicas sobre salud sexual y reproductiva y la igualdad de género (ODS 3 y 5).</li>
-                           <li>Estos marcos obligan a los Estados a tomar medidas para proteger y empoderar a los adolescentes.</li>
+                        <div class="global-stat">ODS 5</div>
+                        <p class="global-descripcion">El Objetivo de Desarrollo Sostenible #5 (Igualdad de Género) es clave para la prevención.</p>
+                        <ul class="global-lista-nueva">
+                           <li><strong>Derechos del Niño:</strong> La Convención establece el derecho a la salud, educación y protección.</li>
+                           <li><strong>Agenda 2030:</strong> Incluye metas específicas sobre salud sexual y reproductiva (ODS 3 y 5).</li>
+                           <li><strong>Leyes Nacionales:</strong> Los Estados deben crear leyes que prohíban el matrimonio infantil y protejan a los menores.</li>
                         </ul>
+                         <div class="fuente-dato">(Fuente: Naciones Unidas)</div>
                     </div>
                 </div>
             </div>
@@ -1020,8 +1089,29 @@
         document.addEventListener('DOMContentLoaded', () => {
             if(document.getElementById('particles-js')){
                 particlesJS("particles-js", {
-                    "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#3B82F6" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#93C5FD", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" } },
-                    "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 180, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 5 } } },
+                    "particles": {
+                        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                        "color": { "value": "#3B82F6" },
+                        "shape": { "type": "circle" },
+                        "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                        "size": { "value": 3, "random": true },
+                        "line_linked": { "enable": true, "distance": 150, "color": "#93C5FD", "opacity": 0.4, "width": 1 },
+                        "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": { "enable": true, "mode": "bubble" },
+                            "onclick": { "enable": true, "mode": "push" },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": { "distance": 200, "line_linked": { "opacity": 1 } },
+                            "bubble": { "distance": 250, "size": 5, "duration": 2, "opacity": 0.8 },
+                            "repulse": { "distance": 200 },
+                            "push": { "particles_nb": 4 }
+                        }
+                    },
                     "retina_detect": true
                 });
             }
