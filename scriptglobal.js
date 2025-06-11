@@ -1,5 +1,5 @@
+// Configuración de partículas
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar partículas si el elemento existe
     if(document.getElementById('particles-js')){
         particlesJS("particles-js", {
             "particles": { 
@@ -73,10 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Funcionalidad de tarjetas expandibles
+    // Funcionalidad para expandir tarjetas
     document.querySelectorAll('.causa-card.expandible').forEach(card => {
         card.addEventListener('click', (event) => {
-            // Evitar que se active si se hace clic en un enlace
             if (event.target.tagName === 'A' || event.target.closest('A')) return;
 
             const info = card.querySelector('.causa-info');
@@ -84,39 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const isExpanded = info.style.maxHeight && info.style.maxHeight !== '0px';
 
-            // Cerrar todas las demás tarjetas primero
-            document.querySelectorAll('.causa-card.expandible').forEach(otherCard => {
-                if (otherCard !== card) {
-                    const otherInfo = otherCard.querySelector('.causa-info');
-                    if (otherInfo) {
-                        otherInfo.style.maxHeight = null;
-                        otherInfo.style.opacity = '0';
-                        otherInfo.style.marginTop = null;
-                        otherInfo.style.paddingTop = null;
-                        otherInfo.style.borderTopColor = 'transparent';
-                    }
-                }
-            });
-
-            // Alternar el estado de la tarjeta actual
             if (isExpanded) {
-                // Cerrar
                 info.style.maxHeight = null;
                 info.style.opacity = '0';
                 info.style.marginTop = null;
                 info.style.paddingTop = null;
                 info.style.borderTopColor = 'transparent';
             } else {
-                // Abrir
                 info.style.maxHeight = info.scrollHeight + 40 + "px";
                 info.style.opacity = '1';
                 info.style.marginTop = '20px';
                 info.style.paddingTop = '20px';
-                
-                // Determinar el color del borde según el tipo de tarjeta
-                const isConsequence = card.querySelector('.consecuencias-badge');
-                const borderColor = isConsequence ? 'var(--rojo-oms)' : 'var(--azul-principal)';
-                info.style.borderTop = `2px solid ${borderColor}`;
+                info.style.borderTop = '2px solid' + (card.querySelector('.consecuencias-badge') ? 'var(--rojo-oms)' : 'var(--azul-principal)';
             }
         });
     });
@@ -126,32 +104,16 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            
-            if (targetId === '#') return;
-            
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                // Calcular offset para header fijo si existe
-                const headerOffset = document.querySelector('header')?.offsetHeight || 0;
-                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset - 20;
-
                 window.scrollTo({ 
-                    top: offsetPosition, 
+                    top: targetElement.offsetTop, 
                     behavior: 'smooth' 
-                });
-
-                // Cerrar todas las tarjetas expandidas al navegar
-                document.querySelectorAll('.causa-info').forEach(info => {
-                    info.style.maxHeight = null;
-                    info.style.opacity = '0';
-                    info.style.marginTop = null;
-                    info.style.paddingTop = null;
-                    info.style.borderTopColor = 'transparent';
                 });
             }
         });
     });
+});
 
     // Lazy loading para imágenes (si se implementa en el futuro)
     const lazyLoadImages = () => {
