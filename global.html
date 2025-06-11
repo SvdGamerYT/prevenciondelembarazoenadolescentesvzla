@@ -3,421 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Análisis global sobre la prevención del embarazo adolescente: causas, consecuencias, estadísticas y estrategias internacionales.">
+    <meta name="description" content="Información completa sobre la prevención del embarazo adolescente: causas, consecuencias, estadísticas y recursos de ayuda. Un proyecto de investigación.">
     <title>Ámbito Global - Prevención del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        /* CSS Integrado */
-        :root {
-            --azul-principal: #3B82F6;
-            --azul-secundario: #60A5FA;
-            --blanco: #FFFFFF;
-            --texto-claro-principal: #EFF6FF;
-            --texto-claro-secundario: #DBeafe;
-            --rojo-oms: #F87171;
-            --verde-oms: #4ADE80;
-            --sombra-media: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --transicion: all 0.3s ease;
-            --border-radius-md: 15px;
-            --africa: #F87171;
-            --america: #FBBF24;
-            --asia: #4ADE80;
-            --europa: #60A5FA;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.7;
-            color: var(--texto-claro-secundario);
-            background-color: #111827;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* --- FONDO DE BURBUJAS --- */
-        .bubbles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: floatBubble 20s infinite linear;
-            bottom: -150px;
-        }
-
-        @keyframes floatBubble {
-            0% { transform: translateY(0) scale(1); opacity: 0.5; }
-            100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
-        }
-
-        /* --- ENCABEZADO Y NAVEGACIÓN --- */
-        .portada-global {
-            color: var(--texto-claro-principal);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .portada-contenido {
-            max-width: 1200px;
-        }
-
-        .portada-global h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2.2rem, 6vw, 3.8rem);
-            color: var(--blanco);
-            text-transform: uppercase;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-        }
-
-        .decoracion-global {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--azul-principal), var(--azul-secundario));
-            margin: 1.5rem auto;
-            border-radius: 2px;
-        }
-
-        .portada-global p {
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-            max-width: 700px;
-            margin: 1.2rem auto 2.5rem auto;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .botones-accion {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .boton-global {
-            background: var(--azul-principal);
-            color: var(--blanco);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            transition: var(--transicion);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .boton-global:hover {
-            transform: translateY(-4px);
-            background: var(--azul-secundario);
-            box-shadow: 0 8px 25px rgba(60, 130, 246, 0.4);
-        }
-
-        /* --- ESTRUCTURA Y ESTILO DE SECCIONES --- */
-        .seccion {
-            padding: 5rem 1.5rem;
-            position: relative;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .titulo-seccion {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--blanco);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .subtitulo-seccion {
-            text-align: center;
-            font-size: clamp(1rem, 2.5vw, 1.15rem);
-            max-width: 800px;
-            margin: 0 auto 3rem auto;
-        }
-        
-        /* --- TARJETA DE VIDRIO (GLASSMORPHISM) --- */
-        .glass-card {
-            background: rgba(30, 64, 175, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--sombra-media);
-            transition: var(--transicion);
-        }
-        .glass-card:hover {
-             transform: translateY(-5px);
-             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-             background: rgba(30, 64, 175, 0.25);
-        }
-
-        /* --- SECCIÓN INICIAL --- */
-        .info-cards-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .definicion-oms, .destacado-estadistica {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .definicion-oms h3, .destacado-estadistica h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--blanco);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .destacado-estadistica {
-            text-align: center;
-            background: rgba(30, 64, 175, 0.4);
-            border-left: 5px solid var(--azul-claro);
-        }
-        .numero-destacado {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 800;
-            color: var(--blanco);
-        }
-        .llamado-accion { text-align: center; }
-        .boton-accion {
-            background: var(--verde-oms);
-            color: #111827;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        /* --- CAUSAS Y CONSECUENCIAS --- */
-        .grid-causas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .causa-card {
-            padding-bottom: 1rem; /* Ajustado para el nuevo diseño */
-        }
-        .causa-card.expandible { cursor: pointer; }
-        
-        .icono-causa {
-            font-size: 1.5rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            background: var(--azul-principal);
-            color: var(--blanco);
-        }
-        .icono-consecuencia { background: var(--rojo-oms); }
-
-        .causa-badge {
-            background: var(--azul-principal);
-            color: var(--blanco);
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        .consecuencias-badge { background: var(--rojo-oms); }
-
-        .causa-titulo {
-            color: var(--texto-claro-principal);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-        .consecuencias-titulo { color: var(--rojo-oms); }
-        .causa-descripcion { margin-bottom: 1rem; }
-
-        .causa-info {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
-        }
-        .causa-card.open .causa-info {
-            max-height: 500px; /* Un valor alto para permitir la expansión */
-            opacity: 1;
-            margin-top: 1rem;
-        }
-
-        .causa-dato {
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            color: var(--texto-claro-principal);
-            background: rgba(37, 99, 235, 0.2);
-            border-left: 4px solid var(--azul-principal);
-        }
-        .consecuencias-dato {
-            background: rgba(248, 113, 113, 0.2);
-            border-left-color: var(--rojo-oms);
-            color: var(--rojo-oms);
-        }
-
-        .causa-lista {
-            list-style: none;
-            padding-left: 0;
-        }
-        .causa-lista li {
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-        .causa-lista li::before {
-            content: "›";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            color: var(--azul-principal);
-        }
-        .consecuencias-lista li::before { color: var(--rojo-oms); }
-
-        /* --- SECCIÓN DE ESTADÍSTICAS GLOBALES --- */
-        .mapa-container { text-align: center; margin-bottom: 2rem; }
-        .mapa-img { max-width: 100%; border-radius: var(--border-radius-md); opacity: 0.85; }
-        .mapa-leyenda { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; }
-        .leyenda-item { display: flex; align-items: center; gap: 0.5rem; }
-        .leyenda-color { width: 18px; height: 18px; border-radius: 4px; }
-        
-        .contenedor-regiones {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .region, .comparativa-global { border-top: 4px solid; }
-
-        .region h3, .comparativa-global h4 { font-family: 'Montserrat', sans-serif; color: var(--texto-claro-principal); }
-        .tasa { font-weight: 800; font-size: 2.5rem; }
-        .tendencia { font-size: 0.8rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; }
-        .factores { background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; margin-top: 1rem; border-left: 3px solid; }
-        .factores p { font-size: 0.9rem; }
-        
-        #region-africa { border-top-color: var(--africa); }
-        #region-africa .tasa { color: var(--africa); }
-        #region-africa .tendencia { background: rgba(248, 113, 113, 0.1); color: var(--africa); }
-        #region-africa .factores { border-left-color: var(--africa); }
-        
-        #region-america { border-top-color: var(--america); }
-        #region-america .tasa { color: var(--america); }
-        #region-america .tendencia { background: rgba(251, 191, 36, 0.1); color: var(--america); }
-        #region-america .factores { border-left-color: var(--america); }
-
-        #region-asia { border-top-color: var(--asia); }
-        #region-asia .tasa { color: var(--asia); }
-        #region-asia .tendencia { background: rgba(74, 222, 128, 0.1); color: var(--asia); }
-        #region-asia .factores { border-left-color: var(--asia); }
-
-        #region-europa { border-top-color: var(--europa); }
-        #region-europa .tasa { color: var(--europa); }
-        #region-europa .tendencia { background: rgba(96, 165, 250, 0.1); color: var(--europa); }
-        #region-europa .factores { border-left-color: var(--europa); }
-
-        .comparativa-global { border-top: none; background: linear-gradient(135deg, rgba(147, 197, 253, 0.1), rgba(30, 64, 175, 0.1)); }
-        
-        /* --- FOOTER --- */
-        .footer {
-            background-color: #0c111d;
-            color: rgba(255,255,255,0.7);
-            padding: 4rem 1.5rem 2rem;
-            text-align: center;
-        }
-        .footer-logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: var(--blanco);
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .footer-link {
-            color: var(--texto-claro-secundario);
-            text-decoration: none;
-        }
-        .footer-link:hover { color: var(--blanco); }
-        
-    </style>
+    
+    <link rel="stylesheet" href="styleglobal.css">
 </head>
 <body>
-    <div class="bubbles-container"></div>
+    <div id="particles-js"></div>
 
     <header class="portada-global" id="inicio">
         <div class="portada-contenido">
-            <h1>Ámbito Global</h1>
+            <h1>Prevención del Embarazo Adolescente</h1>
             <div class="decoracion-global"></div>
-            <p>Un análisis mundial sobre las causas, consecuencias y estrategias para la prevención del embarazo adolescente.</p>
+            <p>Información verificada y recursos esenciales para una toma de decisiones informada sobre tu salud sexual y reproductiva.</p>
+            
             <nav class="botones-accion">
                 <a href="#causas" class="boton-global"><i class="fas fa-info-circle"></i> Causas</a>
                 <a href="#consecuencias" class="boton-global"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
                 <a href="#estadisticas" class="boton-global"><i class="fas fa-chart-line"></i> Estadísticas</a>
+                <a href="#ambito-global" class="boton-global"><i class="fas fa-globe"></i> Estrategias Globales</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="seccion">
+        <section class="seccion seccion-contenido">
             <div class="container">
-                <div class="info-cards-wrapper">
-                    <div class="definicion-oms glass-card">
+                 <div class="info-cards-wrapper">
+                    <div class="definicion-oms">
                         <h3>Según la OMS:</h3>
-                        <p>El embarazo adolescente es aquel que ocurre entre los 10 y 19 años, considerado de alto riesgo por su impacto en la salud, educación y oportunidades futuras de las jóvenes.</p>
+                        <p>El embarazo adolescente es aquel que ocurre entre los 10 y 19 años, considerado de alto riesgo por sus implicaciones en la salud, educación y oportunidades futuras de las jóvenes.</p>
                     </div>
-                    <div class="destacado-estadistica glass-card">
-                        <div class="numero-destacado">21M</div>
+    
+                    <div class="destacado-estadistica">
+                        <div class="numero-destacado">21 Millones</div>
                         <p>de embarazos anuales en adolescentes (15-19 años) ocurren en países en desarrollo.</p>
+                        <span class="fuente-estadistica">Fuente: UNFPA / OMS</span>
                     </div>
+                </div>
+
+                <div class="llamado-accion">
+                    <a href="#causas" class="boton-accion">
+                        <i class="fas fa-chevron-down"></i> Explorar el Tema en Profundidad
+                    </a>
                 </div>
             </div>
         </section>
@@ -425,42 +58,42 @@
         <section class="seccion" id="causas">
             <div class="container">
                 <h2 class="titulo-seccion">Principales Causas</h2>
-                <p class="subtitulo-seccion">Factores que contribuyen al problema a nivel mundial. Haz clic para expandir.</p>
+                <p class="subtitulo-seccion">Factores que contribuyen al embarazo adolescente a nivel global. Haz clic en cada tarjeta para expandir la información.</p>
+                
                 <div class="grid-causas">
-                    <div class="causa-card expandible glass-card">
+                    <div class="causa-card expandible">
                         <div class="icono-causa"><i class="fa-solid fa-graduation-cap"></i></div>
                         <h3 class="causa-titulo">Falta de Educación Integral</h3>
-                        <p class="causa-descripcion">Programas educativos incompletos o inexistentes.</p>
+                        <p class="causa-descripcion">Programas educativos incompletos sobre salud sexual y reproductiva.</p>
                         <div class="causa-info">
-                           <ul class="causa-lista">
-                                <li>Escasa información sobre anticonceptivos.</li>
-                                <li>Falta de capacitación docente.</li>
-                                <li>Desinformación en línea.</li>
-                           </ul>
+                            <div class="causa-dato"><strong>Según UNESCO:</strong> Un alto porcentaje de adolescentes no recibe educación sexual formal y basada en evidencia.</div>
                         </div>
                     </div>
-                    <div class="causa-card expandible glass-card">
+                    <div class="causa-card expandible">
                         <div class="icono-causa"><i class="fa-solid fa-pills"></i></div>
                         <h3 class="causa-titulo">Acceso Limitado a Anticonceptivos</h3>
                         <p class="causa-descripcion">Barreras económicas, geográficas y culturales.</p>
                          <div class="causa-info">
-                           <ul class="causa-lista">
-                                <li>Costos prohibitivos.</li>
-                                <li>Estigma social.</li>
-                                <li>Distancia a centros de salud.</li>
-                           </ul>
+                            <div class="causa-dato"><strong>Guttmacher Institute:</strong> Millones de adolescentes tienen necesidades insatisfechas de anticoncepción.</div>
                         </div>
                     </div>
-                    <div class="causa-card expandible glass-card">
+                     <div class="causa-card expandible">
                         <div class="icono-causa"><i class="fa-solid fa-people-group"></i></div>
                         <h3 class="causa-titulo">Presión Social y Cultural</h3>
-                        <p class="causa-descripcion">Normas, tradiciones y desigualdad de género.</p>
+                        <p class="causa-descripcion">Influencia de normas, tradiciones y desigualdad de género.</p>
                          <div class="causa-info">
-                           <ul class="causa-lista">
-                                <li>Matrimonio infantil.</li>
-                                <li>Estereotipos de género.</li>
-                                <li>Normalización de la maternidad temprana.</li>
-                           </ul>
+                            <ul class="causa-lista">
+                                <li>Práctica del matrimonio infantil y uniones forzadas.</li>
+                                <li>Estereotipos de género que limitan la autonomía.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="causa-card expandible">
+                        <div class="icono-causa"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        <h3 class="causa-titulo">Pobreza y Desigualdad</h3>
+                        <p class="causa-descripcion">La situación socioeconómica precaria aumenta la vulnerabilidad.</p>
+                        <div class="causa-info">
+                            <div class="causa-dato"><strong>OMS:</strong> La mayoría de los embarazos adolescentes ocurren en países de bajos y medianos ingresos.</div>
                         </div>
                     </div>
                 </div>
@@ -470,42 +103,30 @@
         <section class="seccion" id="consecuencias">
             <div class="container">
                 <h2 class="titulo-seccion">Principales Consecuencias</h2>
-                <p class="subtitulo-seccion">Impactos negativos en salud, educación y desarrollo. Haz clic para expandir.</p>
+                <p class="subtitulo-seccion">Impactos negativos en la salud, educación y desarrollo. Haz clic en cada tarjeta para expandir la información.</p>
                 <div class="grid-causas">
-                    <div class="causa-card expandible glass-card">
+                    <div class="causa-card expandible">
                         <div class="icono-causa icono-consecuencia"><i class="fa-solid fa-heart-pulse"></i></div>
                         <h3 class="causa-titulo consecuencias-titulo">Riesgos Médicos Graves</h3>
-                        <p class="causa-descripcion">Complicaciones en el embarazo y parto.</p>
+                        <p class="causa-descripcion">Mayor riesgo de complicaciones como preeclampsia, anemia y parto prematuro.</p>
                         <div class="causa-info">
-                            <ul class="causa-lista consecuencias-lista">
-                               <li>Mayor probabilidad de anemia y desnutrición.</li>
-                               <li>Incremento de parto prematuro.</li>
-                               <li>Impacto en la salud mental a largo plazo.</li>
-                           </ul>
+                            <div class="causa-dato consecuencias-dato">Las complicaciones del embarazo y parto son una de las principales causas de muerte en adolescentes.</div>
                         </div>
                     </div>
-                     <div class="causa-card expandible glass-card">
+                     <div class="causa-card expandible">
                         <div class="icono-causa icono-consecuencia"><i class="fa-solid fa-book-open-reader"></i></div>
                         <h3 class="causa-titulo consecuencias-titulo">Abandono Escolar</h3>
-                        <p class="causa-descripcion">Interrupción de la trayectoria educativa.</p>
+                        <p class="causa-descripcion">Interrupción de la educación, limitando oportunidades futuras.</p>
                         <div class="causa-info">
-                           <ul class="causa-lista consecuencias-lista">
-                               <li>Reducción de oportunidades laborales.</li>
-                               <li>Mayor dependencia económica.</li>
-                               <li>Impacto en la autoestima.</li>
-                           </ul>
+                            <div class="causa-dato consecuencias-dato">El embarazo es una de las principales razones por las que las adolescentes abandonan la escuela.</div>
                         </div>
                     </div>
-                     <div class="causa-card expandible glass-card">
+                     <div class="causa-card expandible">
                         <div class="icono-causa icono-consecuencia"><i class="fa-solid fa-sack-dollar"></i></div>
                         <h3 class="causa-titulo consecuencias-titulo">Impacto Económico</h3>
-                        <p class="causa-descripcion">Perpetuación del ciclo de la pobreza.</p>
+                        <p class="causa-descripcion">Reducción del potencial económico, perpetuando el ciclo de la pobreza.</p>
                         <div class="causa-info">
-                           <ul class="causa-lista consecuencias-lista">
-                               <li>Menores ingresos a lo largo de la vida.</li>
-                               <li>Incremento de gastos en salud.</li>
-                               <li>Limitación de inversión en los hijos.</li>
-                           </ul>
+                            <div class="causa-dato consecuencias-dato">El embarazo adolescente tiene un alto costo para individuos, familias y países.</div>
                         </div>
                     </div>
                 </div>
@@ -515,93 +136,80 @@
         <section class="seccion seccion-estadisticas" id="estadisticas">
             <div class="container">
                 <h2 class="titulo-seccion">Panorama Mundial</h2>
-                <p class="subtitulo-seccion">Tasas por cada 1,000 mujeres de 15 a 19 años.</p>
+                <p class="subtitulo-seccion">Tasas por cada 1,000 mujeres de 15 a 19 años (Fuente: OMS, UNFPA).</p>
                 <div class="mapa-container">
                     <img src="https://i.ibb.co/ycT9WmkP/world-2.png" alt="Mapa mundial de tasas de embarazo adolescente." class="mapa-img">
                 </div>
                 <div class="contenedor-regiones">
-                    <div class="region glass-card" id="region-africa">
-                        <h3 class="nombre-region"><i class="fa-solid fa-earth-africa"></i> África Subsahariana <span class="tendencia">Alta</span></h3>
+                    <div class="region" id="region-africa">
+                        <h3><i class="fa-solid fa-earth-africa"></i> África Subsahariana</h3>
                         <div class="tasa">~115</div>
-                        <div class="factores"><p>• Matrimonio infantil.<br>• Acceso limitado a anticonceptivos.</p></div>
+                        <p>Factores: Matrimonio infantil, acceso limitado a anticonceptivos.</p>
                     </div>
-                     <div class="region glass-card" id="region-america">
-                        <h3 class="nombre-region"><i class="fa-solid fa-earth-americas"></i> América Latina <span class="tendencia">Estancada</span></h3>
+                    <div class="region" id="region-america">
+                        <h3><i class="fa-solid fa-earth-americas"></i> América Latina</h3>
                         <div class="tasa">~62</div>
-                        <div class="factores"><p>• Desigualdad persistente.<br>• Violencia sexual.</p></div>
+                        <p>Factores: Desigualdad persistente, alta violencia sexual.</p>
                     </div>
-                     <div class="region glass-card" id="region-asia">
-                        <h3 class="nombre-region"><i class="fa-solid fa-earth-asia"></i> Asia Meridional <span class="tendencia">En Descenso</span></h3>
+                    <div class="region" id="region-asia">
+                        <h3><i class="fa-solid fa-earth-asia"></i> Asia Meridional</h3>
                         <div class="tasa">~45</div>
-                        <div class="factores"><p>• Mejoras en educación femenina.<br>• Expansión de planificación familiar.</p></div>
+                        <p>Factores: Mejoras en educación femenina, expansión de planificación familiar.</p>
                     </div>
-                     <div class="region glass-card" id="region-europa">
-                        <h3 class="nombre-region"><i class="fa-solid fa-earth-europe"></i> Europa Occidental <span class="tendencia">Baja</span></h3>
+                    <div class="region" id="region-europa">
+                        <h3><i class="fa-solid fa-earth-europe"></i> Europa Occidental</h3>
                         <div class="tasa">~8</div>
-                        <div class="factores"><p>• Educación sexual integral.<br>• Acceso universal a salud.</p></div>
+                        <p>Factores: Educación sexual integral, acceso universal a salud.</p>
                     </div>
                 </div>
             </div>
         </section>
-        
+
+        <section class="seccion" id="ambito-global">
+            <div class="container">
+                <h2 class="titulo-seccion">Estrategias y Marcos Legales Globales</h2>
+                <p class="subtitulo-seccion">El problema requiere soluciones globales. Aquí exploramos las estrategias y marcos que lo definen a nivel internacional.</p>
+                <div class="grid-global">
+                    <div class="global-card">
+                        <h3><i class="fas fa-check-circle"></i> Estrategias Exitosas</h3>
+                        <ul class="global-lista">
+                            <li><strong>Chile y Costa Rica:</strong> Programas de salud amigables para adolescentes.</li>
+                            <li><strong>Europa:</strong> Inversión en educación sexual obligatoria y acceso gratuito a anticonceptivos.</li>
+                            <li><strong>Etiopía:</strong> Uso de trabajadoras de salud comunitarias para llevar información a aldeas.</li>
+                        </ul>
+                    </div>
+                    <div class="global-card">
+                        <h3><i class="fas fa-bullhorn"></i> Recomendaciones Internacionales</h3>
+                        <p>Organismos como la <strong>OMS, UNFPA y UNICEF</strong> proponen:</p>
+                        <ul class="global-lista">
+                            <li>Garantizar el acceso universal a la educación sexual.</li>
+                            <li>Asegurar servicios de salud accesibles y amigables.</li>
+                            <li>Promover la igualdad de género y el empoderamiento de las niñas.</li>
+                        </ul>
+                    </div>
+                    <div class="global-card">
+                        <h3><i class="fas fa-gavel"></i> Marcos Legales</h3>
+                        <p>Respaldado por acuerdos internacionales de derechos humanos:</p>
+                        <ul class="global-lista">
+                           <li>La <strong>Convención sobre los Derechos del Niño</strong>.</li>
+                           <li>La <strong>Agenda 2030 para el Desarrollo Sostenible (ODS 3 y 5)</strong>.</li>
+                           <li>Estos marcos obligan a los Estados a tomar medidas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer" id="contacto">
-        <div class="container">
-            <h3 class="footer-logo">Educación Sexual Integral Venezuela</h3>
-            <p>Proyecto de investigación de JHANBERN AMAYA y SOLISMAR DIAZ.</p>
-             <nav class="footer-links">
-                <a href="#inicio" class="footer-link">Inicio</a>
-                <a href="#causas" class="footer-link">Causas</a>
-                <a href="#consecuencias" class="footer-link">Consecuencias</a>
-                <a href="#estadisticas" class="footer-link">Estadísticas</a>
-            </nav>
-            <p class="footer-copyright">© 2024. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-logo">Educación Sexual Integral Venezuela</div>
+            <p>Proyecto de investigación realizado por: <strong>JHANBERN AMAYA</strong> y <strong>SOLISMAR DIAZ</strong></p>
+            <p>© 2024. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script>
-        // JavaScript Integrado
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Script para expandir tarjetas ---
-            const expandibleCards = document.querySelectorAll('.expandible');
-            expandibleCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    card.classList.toggle('open');
-                });
-            });
-
-            // --- Script para las burbujas ---
-            const bubblesContainer = document.querySelector('.bubbles-container');
-            if (bubblesContainer) {
-                const createBubble = () => {
-                    const bubble = document.createElement('div');
-                    bubble.className = 'bubble';
-                    const size = Math.random() * 80 + 20;
-                    bubble.style.width = `${size}px`;
-                    bubble.style.height = `${size}px`;
-                    bubble.style.left = `${Math.random() * 100}%`;
-                    bubble.style.animationDuration = `${Math.random() * 15 + 15}s`;
-                    bubble.style.animationDelay = `${Math.random() * 2}s`;
-                    
-                    const colors = [
-                        'rgba(59, 130, 246, 0.3)',  // Azul
-                        'rgba(248, 113, 113, 0.3)', // Rojo
-                        'rgba(74, 222, 128, 0.3)',  // Verde
-                        'rgba(251, 191, 36, 0.3)'   // Amarillo
-                    ];
-                    bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    bubblesContainer.appendChild(bubble);
-
-                    setTimeout(() => {
-                        bubble.remove();
-                    }, 30000);
-                };
-                // Crear burbujas a intervalos regulares
-                setInterval(createBubble, 400);
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="scriptglobal.js"></script>
 </body>
 </html>
