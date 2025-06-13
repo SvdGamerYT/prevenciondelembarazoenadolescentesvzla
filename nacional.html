@@ -79,15 +79,15 @@
         }
 
         .main-nav a:hover {
-            color: #2563EB; /* Azul principal */
+            color: #00247D; /* Azul principal */
             border-bottom-color: #E63946;
         }
 
         /* Estilo para la pestaña activa */
         .main-nav a.active {
-            color: #2563EB;
+            color: #00247D;
             font-weight: 700;
-            border-bottom-color: #2563EB;
+            border-bottom-color: #00247D;
         }
 
         /* Ajuste para que el contenido no quede debajo de la barra */
@@ -101,7 +101,7 @@
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: #2563EB; /* Color azul para el icono en la barra blanca */
+            color: #00247D; /* Color azul para el icono en la barra blanca */
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001; /* Asegura que esté por encima del contenido */
@@ -553,6 +553,22 @@
     </style>
 </head>
 <body>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="site-logo">
+                <img src="https://i.ibb.co/gZrjqT2W/azul-oscuro.png" alt="azul-oscuro" border="0"></a>
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html">General</a></li>
+		            <li><a href="global.html">Global</a></li>
+                    <li><a href="nacional.html" class="active" aria-current="page">Nacional</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <div class="bubbles-container" id="bubblesContainer"></div>
 
     <div class="interactive-portada">
