@@ -21,6 +21,140 @@
             --transicion: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.7); /* Fondo blanco translúcido */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem; /* Espaciado lateral */
+        }
+
+        .site-header .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Cambios para el logo de imagen */
+        .site-logo {
+            text-decoration: none;
+            display: flex; /* Para centrar la imagen si es necesario */
+            align-items: center; /* Para centrar la imagen verticalmente */
+            height: 100%; /* Asegúrate de que ocupe la altura disponible */
+        }
+
+        .site-logo img {
+            height: 70px; /* Ajusta este valor para el tamaño deseado de tu logo */
+            width: auto; /* Mantiene la proporción de la imagen */
+            max-width: 100%; /* Asegura que no se desborde en pantallas pequeñas */
+        }
+
+        .main-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #4B5563; /* Gris oscuro */
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #2563EB; /* Azul principal */
+            border-bottom-color: #E63946;
+        }
+
+        /* Estilo para la pestaña activa */
+        .main-nav a.active {
+            color: #2563EB;
+            font-weight: 700;
+            border-bottom-color: #2563EB;
+        }
+
+        /* Ajuste para que el contenido no quede debajo de la barra */
+        body {
+            padding-top: 75px; 
+        }
+
+        /* --- Mobile Menu Toggle --- */
+        .menu-toggle {
+            display: none; /* Oculto por defecto en pantallas grandes */
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #2563EB; /* Color azul para el icono en la barra blanca */
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001; /* Asegura que esté por encima del contenido */
+        }
+
+        /* --- Ajustes Responsivos para la Navegación Principal --- */
+        @media (max-width: 768px) { /* Ajustar el punto de quiebre según sea necesario */
+            .site-header {
+                padding: 0 1rem; /* Ajusta el padding para pantallas más pequeñas */
+            }
+
+            .main-nav {
+                display: none; /* Oculta la navegación por defecto en pantallas pequeñas */
+                flex-direction: column;
+                position: absolute;
+                top: 75px; /* Debajo del encabezado */
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente para el desplegable */
+                box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+                padding: 1rem 0;
+                border-top: 1px solid rgba(0,0,0,0.1);
+            }
+
+            .main-nav.active { /* Clase añadida por JavaScript cuando el menú está abierto */
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .main-nav a {
+                padding: 1rem 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block; /* Muestra el icono de hamburguesa en pantallas pequeñas */
+            }
+
+            .nav-container {
+                justify-content: space-between; /* Espacia el logo y el botón de alternar */
+            }
+        }
+        /* Asegurarse de que el scroll sea suave en todo el documento */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Estilos base */
         body {
             font-family: 'Open Sans', sans-serif;
