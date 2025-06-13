@@ -223,6 +223,75 @@
                             <div class="metodo-stats"><span class="eficacia">75-89% Eficacia</span><span><i class="fas fa-clock"></i> Solo emergencias</span></div>
                         </div>
                     </div>
+                    <div class="metodo-card">
+                        <div class="metodo-header"><i class="fas fa-band-aid"></i><h3>Parche Anticonceptivo</h3></div>
+                        <div class="metodo-body">
+                            <p>Parche que se adhiere a la piel y libera hormonas. Se cambia semanalmente durante 3 semanas.</p>
+                            <div class="metodo-stats"><span class="eficacia">91-99% Eficacia</span><span><i class="fas fa-calendar-week"></i> Semanal</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nota-importante">
+                    <p><i class="fas fa-info-circle"></i>Consulta siempre con un profesional de la salud para elegir el método más adecuado para ti.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion" id="test">
+            <div class="container">
+                <h2 class="titulo-seccion">Test de Conocimientos</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Evalúa lo que sabes de forma rápida y anónima. ¡Aquí aprendemos todos!</p>
+                <div class="test-container">
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion" id="calculadora">
+            <div class="container">
+                <h2 class="titulo-seccion">Calculadora de Ciclo Menstrual</h2>
+                 <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Estima tus días fértiles y tu próximo periodo. <strong>Recuerda: esta es una estimación y NO un método anticonceptivo.</strong></p>
+                <div class="calculadora-container">
+                    <form id="calculadora-form">
+                        <div class="input-group">
+                            <label for="fecha-ultimo-periodo">Fecha de inicio de tu último periodo:</label>
+                            <input type="date" id="fecha-ultimo-periodo" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="duracion-ciclo">Duración promedio de tu ciclo (días):</label>
+                            <input type="number" id="duracion-ciclo" min="20" max="45" value="28" required>
+                        </div>
+                        <button type="submit" class="boton-calcular">Calcular Periodo</button>
+                    </form>
+                    <div class="resultado-calculadora" style="display: none;">
+                        <h4>Resultados Estimados:</h4>
+                        <p id="proximo-periodo-resultado"></p>
+                        <p id="dias-fertiles-resultado"></p>
+                        <div class="nota-importante" style="margin-top: 1rem;">
+                            <p><i class="fas fa-exclamation-triangle"></i>Esta calculadora es solo una estimación. No uses esta información como método anticonceptivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion" id="mitos">
+            <div class="container">
+                <h2 class="titulo-seccion">Mitos y Realidades</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Desmintiendo información falsa que puede poner en riesgo tu salud.</p>
+                <div class="mitos-grid">
+                    <div class="mito-card">
+                        <div class="mito-header mito">
+                            <i class="fas fa-times-circle"></i>
+                            <h3>MITO</h3>
+                        </div>
+                        <div class="mito-body">
+                            <p><strong>"No puedes quedar embarazada en tu primera vez"</strong></p>
+                            <p>FALSO. Puedes quedar embarazada en cualquier relación sexual sin protección, incluyendo la primera vez.</p>
+                        </div>
+                    </div>
                     <div class="mito-card">
                         <div class="mito-header realidad">
                             <i class="fas fa-check-circle"></i>
