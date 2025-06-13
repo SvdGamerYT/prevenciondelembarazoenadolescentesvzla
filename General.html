@@ -9,8 +9,91 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* --- BARRA DE NAVEGACIÓN PRINCIPAL --- */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.7); /* Fondo blanco translúcido */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem; /* Espaciado lateral */
+        }
+
+        .site-header .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .site-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1E40AF; /* Azul oscuro para que resalte */
+            text-decoration: none;
+        }
+
+        .main-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #4B5563; /* Gris oscuro */
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #2563EB; /* Azul principal */
+            border-bottom-color: #2563EB;
+        }
+
+        /* Estilo para la pestaña activa */
+        .main-nav a.active {
+            color: #2563EB;
+            font-weight: 700;
+            border-bottom-color: #2563EB;
+        }
+
+        /* Ajuste para que el contenido no quede debajo de la barra */
+        body {
+            padding-top: 75px; 
+        }
+    </style>
 </head>
 <body>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="General.html" class="site-logo">Prevención E.A.</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="General.html" class="active">General</a></li>
+                    <li><a href="nacional.html">Ámbito Nacional</a></li>
+                    <li><a href="global.html">Ámbito Global</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <header class="portada-global" id="inicio">
