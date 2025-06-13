@@ -70,7 +70,7 @@
 
         .main-nav a {
             text-decoration: none;
-            color: #4B5563; /* Gris oscuro */
+            color: #E0E0E0; /* Gris oscuro */
             font-weight: 600;
             font-size: 1rem;
             padding: 0.5rem 0;
@@ -79,15 +79,15 @@
         }
 
         .main-nav a:hover {
-            color: #00247D; /* Azul principal */
-            border-bottom-color: #00247D;
+            color: var(--blanco); /* Azul principal */
+            border-bottom-color: var(--amarillo);
         }
 
         /* Estilo para la pestaña activa */
         .main-nav a.active {
-            color: #00247D;
+            color: var(--blanco);
             font-weight: 700;
-            border-bottom-color: #00247D;
+            border-bottom-color: var(--amarillo);
         }
 
         /* Ajuste para que el contenido no quede debajo de la barra */
@@ -101,7 +101,7 @@
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: #00247D; /* Color azul para el icono en la barra blanca */
+            color: var(--blanco); /* Color azul para el icono en la barra blanca */
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001; /* Asegura que esté por encima del contenido */
@@ -120,7 +120,7 @@
                 top: 75px; /* Debajo del encabezado */
                 left: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente para el desplegable */
+                background: rgba(0, 31, 63, 0.65); /* Fondo blanco semi-transparente para el desplegable */
                 box-shadow: 0 8px 16px rgba(0,0,0,0.15);
                 padding: 1rem 0;
                 border-top: 1px solid rgba(0,0,0,0.1);
