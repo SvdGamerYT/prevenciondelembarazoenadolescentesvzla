@@ -94,9 +94,12 @@
         .card-prevencion p { font-size: 0.95rem; line-height: 1.7; }
         
         /* --- Sección: Estadísticas Animadas --- */
-        #estadisticas { background: url('https://www.transparenttextures.com/patterns/clean-gray-paper.png'), linear-gradient(rgba(255, 245, 247, 0.9), rgba(255, 245, 247, 0.9)); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .stat-item { text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+		.stat-card { background: var(--blanco); border-radius: var(--border-radius-md); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--sombra-suave); transition: var(--transicion); border-top: 5px solid transparent; }
+        .stat-card:hover { transform: translateY(-8px); box-shadow: var(--sombra-media); border-top-color: var(--rojo-principal); }
+		.stat-card h3 { font-family: var(--font-titulo); color: var(--rojo-oscuro); font-size: 1.3rem; margin-bottom: 1rem; }
+        .stat-card p { font-size: 0.95rem; line-height: 1.7; }
+		.stat-item { text-align: center; }
         .stat-numero { font-family: var(--font-titulo); font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 800; color: var(--rojo-principal); }
         .stat-texto { font-weight: 600; color: var(--texto-oscuro); }
 
