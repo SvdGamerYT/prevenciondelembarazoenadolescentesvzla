@@ -184,15 +184,51 @@
             width: 100%; 
         }
 		
-		.footer { 
-            background-color: var(--texto-oscuro); 
-            color: rgba(255,255,255,0.7); 
-            padding: 2.5rem 1rem 1.5rem 1rem; 
-            text-align: center; 
-            font-size: 0.9rem;
+		/* FOOTER */
+        .footer {
+            background-color: var(--rojo-principal);
+            color: rgba(255,255,255,0.7);
+            padding: 3.5rem 1.5rem 2rem;
+            text-align: center;
         }
-        .creditos { margin-top: 1.5rem; font-size: 0.85rem; }
-        .creditos strong { color: var(--blanco); }
+        
+        .footer-content { max-width: 900px; margin: 0 auto; }
+        .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; display: inline-block; color: var(--blanco); }
+        .footer-text { color: #FFFFFF; margin-bottom: 2rem; line-height: 1.8; font-size: 1rem; max-width: 600px; margin: 0 auto 2rem; }
+        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-bottom: 2rem; }
+        .footer-link { color: #FFFFFF; text-decoration: none; transition: var(--transicion); display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; font-weight: 600; }
+        .footer-link:hover { color: var(--azul-claro); text-decoration: underline; }
+        .footer-social { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 2rem; }
+        .social-icon { width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.08); color: #DCE2EC; display: flex; align-items: center; justify-content: center; transition: var(--transicion); font-size: 1.1rem; }
+        .social-icon:hover { background-color: var(--azul-principal); color: var(--blanco); transform: translateY(-3px); }
+        .creditos { color: FFFFFF; margin-bottom: 2rem; padding: 1.5rem; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; }
+        .creditos p { margin: 0.3rem 0; font-size: 1rem; opacity: 0.8; }
+        .creditos p strong { color: var(--blanco); font-weight: 600; }
+        .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .grid-causas, .contenedor-regiones, .region-especial {
+                grid-template-columns: 1fr;
+            }
+            .botones-accion {
+                flex-direction: column;
+                align-items: center;
+            }
+            .boton-global {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            .bloque-global {
+                padding: 1.5rem;
+            }
+            .bloque-global-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
 
         /* --- NOTA IMPORTANTE --- */
         .nota-importante {
@@ -484,15 +520,33 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <h2 class="titulo-seccion" style="color: var(--rojo-secundario);">ESI Venezuela</h2>
-            <p class="subtitulo-seccion" style="color: rgba(255,255,255,0.8);">Un proyecto educativo para la prevención y la toma de decisiones informadas.</p>
-            <div class="creditos">
-                 <p>Realizado por: <strong>JHANBERN AMAYA</strong> & <strong>SOLISMAR DIAZ</strong></p>
-                 <p>Liceo Nacional Hugo Chávez Frías | Los Taques, Falcón</p>
-                 <p>© 2025. La información aquí presentada no sustituye la consulta médica profesional.</p>
+        <footer class="footer" id="contacto">
+        <div class="footer-content">
+            <div class="footer-logo">Educación Sexual Integral Venezuela</div>
+            <p class="footer-text">Plataforma informativa como parte de un proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela. Recopilamos y presentamos recursos para jóvenes, familias y educadores.</p>
+            <nav class="footer-links">
+                <a href="#inicio" class="footer-link"><i class="fas fa-home"></i> Inicio</a>
+                <a href="#causas" class="footer-link"><i class="fas fa-info-circle"></i> Previene</a>
+                <a href="#consecuencias" class="footer-link"><i class="fas fa-exclamation-triangle"></i> Estadisticas</a>
+                <a href="#estadisticas" class="footer-link"><i class="fas fa-chart-bar"></i> Consecuencias</a>
+                <a href="#ambito-global" class="footer-link"><i class="fas fa-globe"></i> DIU</a>
+				<a href="#ambito-global" class="footer-link"><i class="fas fa-globe"></i> MvsR</a>
+				<a href="#ambito-global" class="footer-link"><i class="fas fa-globe"></i> Ayuda</a>
+				<a href="#ambito-global" class="footer-link"><i class="fas fa-globe"></i> Ciclo Menstrual</a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
+            <div class="creditos">
+                <p>Proyecto de investigación realizado por:</p>
+                <p><strong>JHANBERN AMAYA</strong>
+                <p>Estudiantes del Liceo Nacional Hugo Chávez Frías</p>
+                <p>Municipio Los Taques, Estado Falcón - Venezuela</p>
+            </div>
+            <p class="footer-copyright">© 2025 Proyecto TESI Venezuela. Todos los derechos reservados. La información aquí presentada tiene fines educativos e informativos y no sustituye el consejo médico o profesional especializado.</p>
         </div>
     </footer>
 
