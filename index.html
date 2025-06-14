@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plataforma interactiva sobre prevención del embarazo adolescente con información confiable, métodos anticonceptivos, test de conocimientos, mitos y realidades, y recursos educativos.">
     <title>Plataforma de Prevención del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
     
@@ -27,575 +27,129 @@
             --font-texto: 'Open Sans', sans-serif;
         }
 
+        /* --- Estilos de Navegación y Generales --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body {
+            font-family: var(--font-texto);
+            line-height: 1.6;
+            color: var(--texto-medio);
+            background-color: var(--fondo-claro);
+            padding-top: 75px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
         .site-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.7); /* Fondo blanco translúcido */
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             height: 75px;
             display: flex;
             align-items: center;
-            padding: 0 2rem; /* Espaciado lateral */
+            padding: 0 1rem;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
+        .site-logo img { height: 60px; width: auto; }
+        .main-nav { display: block; }
+        .main-nav ul { list-style: none; display: flex; gap: 2rem; }
+        .main-nav a { text-decoration: none; color: var(--texto-medio); font-weight: 600; padding-bottom: 5px; border-bottom: 3px solid transparent; transition: var(--transicion); }
+        .main-nav a:hover { color: var(--rojo-principal); border-bottom-color: var(--rojo-secundario); }
+        .main-nav a.active { color: var(--rojo-principal); font-weight: 700; border-bottom-color: var(--rojo-principal); }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--rojo-principal); cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .main-nav { display: none; position: absolute; top: 75px; left: 0; width: 100%; background: var(--blanco); flex-direction: column; padding: 1rem 0; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+            .main-nav.active { display: flex; }
+            .main-nav ul { flex-direction: column; align-items: center; gap: 1.5rem; }
+            .menu-toggle { display: block; }
         }
 
-        .site-header .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        /* --- Portada --- */
+        .portada-global { color: var(--texto-oscuro); min-height: calc(100vh - 75px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; position: relative; overflow: hidden; }
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
+        .portada-contenido { position: relative; z-index: 1; }
+        .portada-global h1 { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2.5rem, 6vw, 4rem); color: var(--rojo-principal); text-transform: uppercase; }
+        .portada-global p { font-size: clamp(1rem, 2.5vw, 1.25rem); max-width: 700px; margin: 1.5rem auto 2.5rem auto; }
+        .boton-principal { background: var(--rojo-principal); color: var(--blanco); padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-family: var(--font-titulo); transition: var(--transicion); box-shadow: var(--sombra-media); }
+        .boton-principal:hover { background: var(--rojo-oscuro); transform: translateY(-3px); }
 
-        /* Cambios para el logo de imagen */
-        .site-logo {
-            text-decoration: none;
-            display: flex; /* Para centrar la imagen si es necesario */
-            align-items: center; /* Para centrar la imagen verticalmente */
-            height: 100%; /* Asegúrate de que ocupe la altura disponible */
-        }
+        /* --- Estilos Generales de Sección --- */
+        .seccion { padding: 5rem 1rem; }
+        .seccion.bg-white { background-color: var(--blanco); }
+        .titulo-seccion { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--rojo-principal); text-align: center; margin-bottom: 1rem; }
+        .subtitulo-seccion { text-align: center; font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 800px; margin: 0 auto 3rem auto; }
+        .decoracion-linea { width: 100px; height: 4px; background: linear-gradient(90deg, var(--rojo-principal), var(--rojo-secundario)); margin: 0 auto 3rem; border-radius: 2px; }
 
-        .site-logo img {
-            height: 70px; /* Ajusta este valor para el tamaño deseado de tu logo */
-            width: auto; /* Mantiene la proporción de la imagen */
-            max-width: 100%; /* Asegura que no se desborde en pantallas pequeñas */
-        }
-
-        .main-nav ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .main-nav a {
-            text-decoration: none;
-            color: #4B5563; /* Gris oscuro */
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 0.5rem 0;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .main-nav a:hover {
-            color: #E63946; /* Azul principal */
-            border-bottom-color: #E63946;
-        }
-
-        /* Estilo para la pestaña activa */
-        .main-nav a.active {
-            color: #E63946;
-            font-weight: 700;
-            border-bottom-color: #E63946;
-        }
-
-        /* Ajuste para que el contenido no quede debajo de la barra */
-        body {
-            padding-top: 75px; 
-        }
-
-        /* --- Mobile Menu Toggle --- */
-        .menu-toggle {
-            display: none; /* Oculto por defecto en pantallas grandes */
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: #E63946; /* Color azul para el icono en la barra blanca */
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001; /* Asegura que esté por encima del contenido */
-        }
-
-        /* --- Ajustes Responsivos para la Navegación Principal --- */
-        @media (max-width: 768px) { /* Ajustar el punto de quiebre según sea necesario */
-            .site-header {
-                padding: 0 1rem; /* Ajusta el padding para pantallas más pequeñas */
-            }
-
-            .main-nav {
-                display: none; /* Oculta la navegación por defecto en pantallas pequeñas */
-                flex-direction: column;
-                position: absolute;
-                top: 75px; /* Debajo del encabezado */
-                left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente para el desplegable */
-                box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-                padding: 1rem 0;
-                border-top: 1px solid rgba(0,0,0,0.1);
-            }
-
-            .main-nav.active { /* Clase añadida por JavaScript cuando el menú está abierto */
-                display: flex;
-            }
-
-            .main-nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem;
-            }
-
-            .main-nav a {
-                padding: 1rem 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            .menu-toggle {
-                display: block; /* Muestra el icono de hamburguesa en pantallas pequeñas */
-            }
-
-            .nav-container {
-                justify-content: space-between; /* Espacia el logo y el botón de alternar */
-            }
-        }
-        /* Asegurarse de que el scroll sea suave en todo el documento */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: var(--font-texto);
-            line-height: 1.6;
-            color: var(--texto-medio);
-            background-color: var(--fondo-claro);
-            overflow-x: hidden;
-            -webkit-text-size-adjust: 100%;
-        }
+        /* --- Sección: ¿Por Qué Prevenir? --- */
+        .grid-prevencion { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card-prevencion { background: var(--blanco); border-radius: var(--border-radius-md); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--sombra-suave); transition: var(--transicion); border-top: 5px solid transparent; }
+        .card-prevencion:hover { transform: translateY(-8px); box-shadow: var(--sombra-media); border-top-color: var(--rojo-principal); }
+        .card-prevencion .icono-fa { font-size: 3.5rem; margin-bottom: 1.5rem; color: var(--rojo-principal); }
+        .card-prevencion h3 { font-family: var(--font-titulo); color: var(--rojo-oscuro); font-size: 1.3rem; margin-bottom: 1rem; }
+        .card-prevencion p { font-size: 0.95rem; line-height: 1.7; }
         
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0 1rem;
-            width: 100%;
-        }
+        /* --- Sección: Estadísticas Animadas --- */
+        #estadisticas { background: url('https://www.transparenttextures.com/patterns/clean-gray-paper.png'), linear-gradient(rgba(255, 245, 247, 0.9), rgba(255, 245, 247, 0.9)); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .stat-item { text-align: center; }
+        .stat-numero { font-family: var(--font-titulo); font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 800; color: var(--rojo-principal); }
+        .stat-texto { font-weight: 600; color: var(--texto-oscuro); }
 
-        /* --- PORTADA MEJORADA --- */
-        .portada-global {
-            background-color: var(--fondo-claro);
-            color: var(--texto-oscuro);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem 1rem;
-            position: relative;
-            overflow: hidden;
-        }
+        /* --- NUEVA SECCIÓN: Consecuencias --- */
+        .consecuencias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card-consecuencia { background: var(--blanco); border-radius: var(--border-radius-md); padding: 2rem; box-shadow: var(--sombra-suave); border-left: 5px solid var(--rojo-principal); }
+        .card-consecuencia h3 { font-family: var(--font-titulo); font-size: 1.5rem; color: var(--rojo-principal); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .card-consecuencia p { margin-bottom: 1rem; }
+        .card-consecuencia ul { list-style: none; padding-left: 0; }
+        .card-consecuencia li { position: relative; padding-left: 25px; margin-bottom: 0.5rem; }
+        .card-consecuencia li::before { content: '›'; position: absolute; left: 0; font-weight: 800; color: var(--rojo-secundario); font-size: 1.5rem; line-height: 1; }
 
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-        
-        .portada-contenido {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            padding: 0 1rem;
-        }
+        /* --- Acordeón de Métodos Anticonceptivos --- */
+        .acordeon-container { max-width: 800px; margin: auto; }
+        .acordeon-item { background: var(--blanco); margin-bottom: 1rem; border-radius: var(--border-radius-md); box-shadow: var(--sombra-suave); overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
+        .acordeon-header { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transicion); }
+        .acordeon-header:hover { background-color: #fffcfd; }
+        .acordeon-item.active .acordeon-header { background-color: var(--rojo-principal); color: var(--blanco); }
+        .acordeon-title { font-family: var(--font-titulo); font-weight: 700; display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; }
+        .acordeon-item.active .acordeon-title { color: var(--blanco); }
+        .acordeon-icon { transition: transform 0.3s ease; }
+        .acordeon-item.active .acordeon-icon { transform: rotate(180deg); }
+        .acordeon-contenido { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.5s ease-out; }
+        .acordeon-contenido-inner { padding: 0 1.5rem 1.5rem 1.5rem; border-top: 1px solid #eee; }
+        .acordeon-contenido-inner p { margin-bottom: 1rem; }
+        .acordeon-stats { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; font-size: 0.9rem; }
+        .stat-box { background: var(--fondo-claro); padding: 0.8rem; border-radius: 8px; flex: 1; min-width: 120px; text-align: center; border: 1px solid #fee2e2; }
+        .stat-box strong { display: block; font-family: var(--font-titulo); color: var(--rojo-principal); font-size: 1.1rem; }
 
-        .portada-global h1 {
-            font-family: var(--font-titulo);
-            font-weight: 800;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            color: var(--rojo-principal);
-            line-height: 1.2;
-            max-width: 900px;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            margin: 0 auto;
-        }
-        .portada-global p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            max-width: 700px;
-            margin: 1.2rem auto 2rem auto;
-        }
-        .botones-accion {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .boton-global {
-            background: var(--rojo-principal);
-            color: var(--blanco) !important;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-family: var(--font-titulo);
-            transition: var(--transicion);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: var(--sombra-media);
-            font-size: 0.95rem;
-        }
-        .boton-global:hover {
-            transform: translateY(-3px);
-            background: var(--rojo-oscuro);
-        }
-        .decoracion-global {
-            width: 80px;
-            height: 3px;
-            background: var(--rojo-principal);
-            margin: 1.5rem auto;
-            border-radius: 2px;
-            animation: flotar 3s ease-in-out infinite;
-        }
-        @keyframes flotar {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
+        /* --- Sección: Mitos vs Realidades (Carrusel) --- */
+        .carrusel-container { position: relative; max-width: 900px; margin: auto; overflow: hidden; border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); }
+        .carrusel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; background: var(--blanco); }
+        .col-mito, .col-realidad { text-align: center; }
+        .col-mito h3, .col-realidad h3 { font-family: var(--font-titulo); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .col-mito h3 { color: var(--rojo-oscuro); }
+        .col-realidad h3 { color: var(--verde-exito); }
+        .carrusel-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.8); border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; color: var(--rojo-principal); box-shadow: var(--sombra-suave); z-index: 10; }
+        .carrusel-btn.prev { left: 15px; }
+        .carrusel-btn.next { right: 15px; }
 
-        /* --- ESTILOS DE SECCIONES --- */
-        .seccion {
-            padding: 3rem 0;
-        }
-        .seccion:nth-child(odd) {
-            background-color: var(--blanco);
-        }
-        .titulo-seccion {
-            font-family: var(--font-titulo);
-            font-weight: 800;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            color: var(--rojo-principal);
-            text-align: center;
-            margin-bottom: 0.8rem;
-            padding: 0 1rem;
-        }
-        .subtitulo-seccion {
-            text-align: center;
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-            max-width: 750px;
-            margin: 0 auto 2rem auto;
-            padding: 0 1rem;
-        }
-        .decoracion-linea {
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--rojo-principal), var(--rojo-secundario));
-            margin: 0.5rem auto 2rem;
-            border-radius: 8px;
-        }
-        
-        /* --- MÉTODOS ANTICONCEPTIVOS --- */
-        .metodos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.2rem;
-            padding: 0 1rem;
-        }
-        .metodo-card {
-            background: var(--blanco);
-            border-radius: var(--border-radius-md);
-            overflow: hidden;
-            box-shadow: var(--sombra-suave);
-            transition: var(--transicion);
-            border: 1px solid rgba(230, 57, 70, 0.1);
-            text-align: left;
-        }
-        .metodo-card:hover { transform: translateY(-3px); box-shadow: var(--sombra-media); }
-        .metodo-header { 
-            background: var(--rojo-principal); 
-            color: var(--blanco); 
-            padding: 0.8rem 1.2rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 0.6rem; 
-            font-size: 0.95rem;
-        }
-        .metodo-header i { font-size: 1rem; }
-        .metodo-body { padding: 1.2rem; font-size: 0.9rem; }
-        .metodo-stats { 
-            display: flex; 
-            justify-content: space-between; 
-            font-size: 0.8rem; 
-            color: var(--rojo-oscuro); 
-            margin-top: 1rem; 
-            padding-top: 0.8rem; 
-            border-top: 1px dashed var(--rojo-secundario); 
-        }
-        .eficacia { font-weight: 700; color: var(--rojo-principal); }
+        /* --- NUEVA SECCIÓN: Buscando Ayuda --- */
+        #ayuda { background-color: var(--rojo-oscuro); }
+        #ayuda .titulo-seccion, #ayuda .subtitulo-seccion { color: var(--blanco); }
+        #ayuda .decoracion-linea { background: linear-gradient(90deg, var(--blanco), var(--rojo-secundario)); }
+        .grid-ayuda { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card-ayuda { background: rgba(255,255,255, 0.1); border-radius: var(--border-radius-md); padding: 2rem; text-align: center; color: var(--blanco); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); }
+        .card-ayuda .icono-fa { font-size: 3rem; margin-bottom: 1.5rem; color: var(--rojo-secundario); }
+        .card-ayuda h3 { font-family: var(--font-titulo); font-size: 1.3rem; margin-bottom: 1rem; }
+        .card-ayuda p { opacity: 0.9; font-size: 0.95rem; }
 
-        /* --- TEST INTERACTIVO --- */
-        .test-container {
-            background: var(--blanco);
-            border-radius: var(--border-radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--sombra-media);
-            border: 1px solid var(--rojo-secundario);
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            width: calc(100% - 2rem);
-        }
-        .pregunta { display: none; }
-        .pregunta.activa { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .pregunta h3 { margin-bottom: 1.2rem; font-size: 1.1rem; }
-        .opciones { display: grid; gap: 0.8rem; }
-        .opcion { 
-            background: var(--fondo-claro); 
-            padding: 1rem; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            transition: var(--transicion); 
-            border: 2px solid transparent; 
-            font-size: 0.9rem;
-        }
-        .opcion:hover { border-color: var(--rojo-secundario); }
-        .opcion.seleccionada { background-color: rgba(230, 57, 70, 0.1); border-color: var(--rojo-principal); font-weight: 600; }
-        .botones-test { display: flex; justify-content: space-between; margin-top: 1.5rem; }
-        .boton-test { 
-            padding: 0.7rem 1.5rem; 
-            border-radius: 50px; 
-            border: none; 
-            font-weight: 600; 
-            cursor: pointer; 
-            font-size: 0.9rem;
-        }
-        .boton-test:disabled { opacity: 0.5; cursor: not-allowed; }
-        .boton-siguiente { background: var(--rojo-principal); color: white; }
-        .boton-anterior { background: transparent; color: var(--rojo-principal); border: 2px solid var(--rojo-principal); }
-        .resultado-test { text-align: center; margin-top: 1.5rem; display: none; font-size: 0.95rem; }
-        .puntuacion { font-size: 2rem; font-weight: 800; color: var(--rojo-principal); margin: 0.8rem 0; }
-        .recomendaciones { text-align: left; background: var(--fondo-claro); padding: 1.2rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem;}
-
-        /* --- CALCULADORA --- */
-        .calculadora-container { 
-            background: var(--blanco); 
-            padding: 1.5rem; 
-            border-radius: var(--border-radius-md); 
-            box-shadow: var(--sombra-media); 
-            max-width: 500px; 
-            margin: 0 auto; 
-            width: calc(100% - 2rem);
-        }
-        .input-group { display: flex; flex-direction: column; margin-bottom: 1.2rem; }
-        .input-group label { font-weight: 600; margin-bottom: 0.5rem; color: var(--rojo-oscuro); font-size: 0.95rem; }
-        .input-group input { padding: 0.8rem; border: 1px solid var(--rojo-secundario); border-radius: 8px; font-size: 0.95rem; }
-        .resultado-calculadora { 
-            margin-top: 1.5rem; 
-            padding: 1.2rem; 
-            background: var(--fondo-claro); 
-            border-left: 4px solid var(--rojo-principal); 
-            font-size: 0.95rem;
-        }
-        .boton-calcular { 
-            background: var(--rojo-principal); 
-            color: white; 
-            border: none; 
-            padding: 0.9rem; 
-            border-radius: 50px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: var(--transicion); 
-            font-size: 0.95rem; 
-            margin-top: 0.8rem; 
-            width: 100%; 
-        }
-
-        /* --- CHATBOT --- */
-        .boton-chatbot { 
-            position: fixed; 
-            bottom: 15px; 
-            right: 15px; 
-            width: 50px; 
-            height: 50px; 
-            background: var(--rojo-principal); 
-            color: white; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 1.5rem; 
-            cursor: pointer; 
-            box-shadow: var(--sombra-media); 
-            z-index: 1001; 
-            transition: var(--transicion); 
-        }
-        .boton-chatbot:hover { transform: scale(1.1); }
-        .chatbot-container { 
-            position: fixed; 
-            bottom: 75px; 
-            right: 15px; 
-            width: calc(100% - 30px); 
-            max-width: 350px; 
-            height: 400px; 
-            background-color: var(--blanco); 
-            border-radius: var(--border-radius-md); 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
-            display: flex; 
-            flex-direction: column; 
-            overflow: hidden; 
-            z-index: 1000; 
-            transform: scale(0.95) translateY(10px); 
-            opacity: 0; 
-            visibility: hidden; 
-            transition: all 0.2s ease-out; 
-        }
-        .chatbot-container.abierto { transform: scale(1) translateY(0); opacity: 1; visibility: visible; }
-        .chatbot-header { 
-            background: var(--rojo-principal); 
-            color: white; 
-            padding: 0.8rem; 
-            font-weight: bold; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            font-size: 0.95rem;
-        }
-        .cerrar-chatbot { background: none; border: none; color: white; font-size: 1.3rem; cursor: pointer; }
-        .chatbot-mensajes { 
-            flex-grow: 1; 
-            padding: 0.8rem; 
-            overflow-y: auto; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 0.6rem; 
-            background-color: var(--fondo-claro); 
-        }
-        .mensaje { 
-            padding: 0.6rem 0.9rem; 
-            border-radius: 15px; 
-            max-width: 85%; 
-            line-height: 1.4; 
-            font-size: 0.9rem;
-        }
-        .mensaje-bot { background: #e9ecef; color: var(--texto-oscuro); align-self: flex-start; }
-        .mensaje-usuario { background: var(--rojo-principal); color: white; align-self: flex-end; }
-        .chatbot-input { 
-            display: flex; 
-            padding: 0.6rem; 
-            border-top: 1px solid #eee; 
-            background: var(--blanco);
-        }
-        .chatbot-input input { 
-            flex-grow: 1; 
-            border: 1px solid #ccc; 
-            border-radius: 20px; 
-            padding: 0.5rem 0.8rem; 
-            font-size: 0.9rem;
-        }
-        .chatbot-input button { 
-            background: var(--rojo-principal); 
-            color: white; 
-            border: none; 
-            border-radius: 50%; 
-            width: 36px; 
-            height: 36px; 
-            margin-left: 6px; 
-            cursor: pointer; 
-            font-size: 0.9rem;
-        }
-
-        /* --- FOOTER --- */
-        .footer { 
-            background-color: var(--texto-oscuro); 
-            color: rgba(255,255,255,0.7); 
-            padding: 2.5rem 1rem 1.5rem 1rem; 
-            text-align: center; 
-            font-size: 0.9rem;
-        }
-        .creditos { margin-top: 1.5rem; font-size: 0.85rem; }
-        .creditos strong { color: var(--blanco); }
-
-        /* --- NOTA IMPORTANTE --- */
-        .nota-importante {
-            background: var(--fondo-claro); 
-            padding: 1rem; 
-            border-radius: 8px; 
-            border-left: 4px solid var(--rojo-principal); 
-            margin: 1.5rem 1rem 0 1rem;
-            font-size: 0.9rem;
-        }
-        .nota-importante p {
-            text-align: center; 
-            font-weight: 600; 
-            color: var(--texto-oscuro);
-        }
-        .nota-importante i {
-            margin-right: 8px; 
-            color: var(--rojo-principal);
-        }
-
-        /* Media Queries para Responsividad */
-        @media (min-width: 768px) {
-            .container {
-                max-width: 1100px;
-                padding: 0 1.5rem;
-            }
-            .portada-global {
-                padding: 4rem 1.5rem;
-            }
-            .portada-global h1 {
-                font-size: clamp(2.5rem, 6vw, 4rem);
-            }
-            .portada-global p {
-                font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            }
-            .boton-global {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-            .seccion {
-                padding: 4rem 0;
-            }
-            .metodos-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1.5rem;
-                padding: 0;
-            }
-            .test-container {
-                padding: 2rem;
-            }
-            .calculadora-container {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .metodos-grid {
-                grid-template-columns: 1fr;
-            }
-            .botones-accion {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-            .boton-global {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-            .opcion {
-                padding: 0.8rem;
-            }
+        @media (max-width: 600px) {
+            .slide { grid-template-columns: 1fr; gap: 2.5rem; }
         }
     </style>
 </head>
@@ -604,324 +158,270 @@
     <header class="site-header">
         <div class="nav-container">
             <a href="index.html" class="site-logo">
-                <img src="https://i.ibb.co/SXn0xb96/rojo-embarazo.png" alt="rojo-embarazo" border="0"></a>
-            <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <img src="https://i.ibb.co/6rT1nN5/logo-embarazo-nuevo.png" alt="Logo Prevención Embarazo Adolescente">
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
             </button>
-            <nav class="main-nav" aria-label="Navegación principal">
+            <nav class="main-nav" id="main-nav">
                 <ul>
-                    <li><a href="index.html" class="active" aria-current="page">General</a></li>
+                    <li><a href="index.html" class="active">General</a></li>
                     <li><a href="global.html">Global</a></li>
                     <li><a href="nacional.html">Nacional</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
+    <div id="particles-js"></div>
     <header class="portada-global" id="inicio">
-        <div id="particles-js"></div>
         <div class="portada-contenido">
-            <h1>Prevención del Embarazo en Adolescentes</h1>
-            <div class="decoracion-global"></div>
-            <p>Información verificada y recursos esenciales para una toma de decisiones informada sobre tu salud sexual y reproductiva.</p>
-            <div class="botones-accion">
-                <a href="#metodos" class="boton-global"><i class="fas fa-shield-alt"></i> Métodos Preventivos</a>
-                <a href="#test" class="boton-global"><i class="fas fa-question-circle"></i> Test de Conocimientos</a>
-            </div>
+            <h1>Decide tu Futuro: Prevención del Embarazo Adolescente</h1>
+            <p>Una plataforma con información clara, moderna y sin prejuicios para que tomes el control de tu vida y tus decisiones.</p>
+            <a href="#por-que-prevenir" class="boton-principal">Comienza a Explorar</a>
         </div>
     </header>
 
     <main>
-        <section class="seccion" id="metodos">
+        <section class="seccion" id="por-que-prevenir">
             <div class="container">
-                <h2 class="titulo-seccion">Métodos Anticonceptivos</h2>
+                <h2 class="titulo-seccion">¿Por Qué es Crucial Prevenir?</h2>
                 <div class="decoracion-linea"></div>
-                <p class="subtitulo-seccion">Conoce las opciones disponibles para una planificación responsable. Consulta siempre a un profesional de la salud.</p>
-                <div class="metodos-grid">
-                     <div class="metodo-card">
-                        <div class="metodo-header"><i class="fas fa-user-shield"></i><h3>Preservativo (Condón)</h3></div>
-                        <div class="metodo-body">
-                            <p>Es una barrera que impide el paso de espermatozoides. Es el único método que también protege de la mayoría de las Infecciones de Transmisión Sexual (ITS).</p>
-                            <div class="metodo-stats"><span class="eficacia">82-98% Eficacia</span><span><i class="fas fa-redo"></i> En cada relación</span></div>
-                        </div>
+                <p class="subtitulo-seccion">La prevención va más allá de evitar un embarazo. Se trata de proteger tus sueños, tu salud y tus oportunidades para un futuro brillante.</p>
+                <div class="grid-prevencion">
+                    <div class="card-prevencion">
+                        <i class="fas fa-book-open icono-fa"></i>
+                        <h3>Protege tu Educación</h3>
+                        <p>Un embarazo a temprana edad es una de las principales causas de deserción escolar. Continuar tus estudios te abre las puertas a mejores empleos, independencia económica y la capacidad de cumplir tus metas profesionales.</p>
                     </div>
-                     <div class="metodo-card">
-                        <div class="metodo-header"><i class="fas fa-pills"></i><h3>Pastillas Anticonceptivas</h3></div>
-                        <div class="metodo-body">
-                            <p>Contienen hormonas para prevenir la ovulación. Para ser efectivas, deben tomarse diariamente y a la misma hora.</p>
-                            <div class="metodo-stats"><span class="eficacia">91-99% Eficacia</span><span><i class="fas fa-clock"></i> Diario</span></div>
-                        </div>
+                    <div class="card-prevencion">
+                        <i class="fas fa-heart-pulse icono-fa"></i>
+                        <h3>Cuida tu Salud Integral</h3>
+                        <p>Tu cuerpo aún se está desarrollando y un embarazo adolescente conlleva mayores riesgos médicos, tanto físicos como emocionales. Cuidarte ahora te asegura un bienestar a largo plazo para disfrutar tu vida al máximo.</p>
                     </div>
-                     <div class="metodo-card">
-                        <div class="metodo-header"><i class="fas fa-syringe"></i><h3>Inyectables</h3></div>
-                        <div class="metodo-body">
-                            <p>Inyección hormonal aplicada por un profesional de la salud cada 1-3 meses, según el tipo.</p>
-                            <div class="metodo-stats"><span class="eficacia">94-99% Eficacia</span><span><i class="fas fa-calendar-alt"></i> Mensual/Trimestral</span></div>
-                        </div>
+                    <div class="card-prevencion">
+                        <i class="fas fa-rocket icono-fa"></i>
+                        <h3>Alcanza tus Metas</h3>
+                        <p>Tienes toda una vida para explorar tus pasiones, viajar, aprender y crecer. La prevención te da el tiempo y la libertad para descubrir quién eres y construir la vida que realmente deseas, sin apuros ni presiones.</p>
                     </div>
-                    <div class="metodo-card">
-                        <div class="metodo-header"><i class="fas fa-shield-alt"></i><h3>DIU y SIU</h3></div>
-                        <div class="metodo-body">
-                            <p>Dispositivos intrauterinos de larga duración (3 a 10 años). Son colocados por un médico.</p>
-                            <div class="metodo-stats"><span class="eficacia">+99% Eficacia</span><span><i class="fas fa-calendar-check"></i> Larga duración</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="nota-importante">
-                    <p><i class="fas fa-info-circle"></i>Consulta siempre con un profesional de la salud para elegir el método más adecuado para ti.</p>
                 </div>
             </div>
         </section>
 
-        <section class="seccion" id="test">
+        <section class="seccion bg-white" id="por-que-prevenir">
             <div class="container">
-                <h2 class="titulo-seccion">Test de Conocimientos</h2>
+                <h2 class="titulo-seccion">La Prevención en Números</h2>
                 <div class="decoracion-linea"></div>
-                <p class="subtitulo-seccion">Evalúa lo que sabes de forma rápida y anónima. ¡Aquí aprendemos todos!</p>
-                <div class="test-container">
-                </div>
-            </div>
-        </section>
-
-        <section class="seccion" id="calculadora">
-            <div class="container">
-                <h2 class="titulo-seccion">Calculadora de Ciclo Menstrual</h2>
-                 <div class="decoracion-linea"></div>
-                <p class="subtitulo-seccion">Estima tus días fértiles y tu próximo periodo. <strong>Recuerda: esta es una estimación y NO un método anticonceptivo.</strong></p>
-                <div class="calculadora-container">
-                    <form id="calculadora-form">
-                        <div class="input-group">
-                            <label for="fecha-ultimo-periodo">Fecha de inicio de tu último periodo:</label>
-                            <input type="date" id="fecha-ultimo-periodo" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="duracion-ciclo">Duración promedio de tu ciclo (días):</label>
-                            <input type="number" id="duracion-ciclo" min="20" max="45" value="28" required>
-                        </div>
-                        <button type="submit" class="boton-calcular">Calcular Periodo</button>
-                    </form>
-                    <div class="resultado-calculadora" style="display: none;">
-                        <h4>Resultados Estimados:</h4>
-                        <p id="proximo-periodo-resultado"></p>
-                        <p id="dias-fertiles-resultado"></p>
+                <p class="subtitulo-seccion">Las estadísticas muestran por qué la información y el acceso a métodos preventivos son tan importantes a nivel global.</p>
+                <div class="grid-prevencion">
+                    <div class="card-prevencion">
+                        <div class="stat-numero" data-target="98%">0</div>
+                        <div class="stat-texto"> de eficacia del condón si se usa correctamente</div>
+                    </div>
+                    <div class="card-prevencion">
+                        <div class="stat-numero" data-target="85%">0</div>
+                        <div class="stat-texto"> de embarazos no planificados se previenen con educación sexual</div>
+                    </div>
+                    <div class="card-prevencion">
+                        <div class="stat-numero" data-target="50%">0</div>
+                        <div class="stat-texto"> de reducción de ITS con el uso correcto del preservativo</div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <section class="seccion" id="consecuencias">
+            <div class="container">
+                <h2 class="titulo-seccion">Consecuencias: Un Impacto que Transforma Vidas</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Un embarazo no planificado en la adolescencia tiene efectos profundos y duraderos en múltiples áreas de la vida.</p>
+                <div class="consecuencias-grid">
+                    <div class="card-consecuencia">
+                        <h3><i class="fas fa-stethoscope"></i> En la Salud</h3>
+                        <p>El cuerpo adolescente no está completamente preparado para el embarazo, lo que aumenta los riesgos.</p>
+                        <ul>
+                            <li>Mayor probabilidad de complicaciones como preeclampsia y anemia.</li>
+                            <li>Riesgo elevado de parto prematuro y bajo peso al nacer del bebé.</li>
+                            <li>Tasas más altas de depresión postparto y estrés emocional.</li>
+                        </ul>
+                    </div>
+                    <div class="card-consecuencia">
+                        <h3><i class="fas fa-graduation-cap"></i> En la Educación</h3>
+                        <p>Es una de las principales barreras para completar la formación académica.</p>
+                        <ul>
+                            <li>Alta tasa de deserción escolar para continuar con el embarazo.</li>
+                            <li>Dificultad para retomar los estudios en el futuro.</li>
+                            <li>Limitación de acceso a la educación superior y técnica.</li>
+                        </ul>
+                    </div>
+                    <div class="card-consecuencia">
+                        <h3><i class="fas fa-chart-line"></i> En el Futuro</h3>
+                        <p>Las decisiones tomadas hoy impactan directamente en las oportunidades de mañana.</p>
+                        <ul>
+                            <li>Reducción del potencial de ingresos a lo largo de la vida.</li>
+                            <li>Mayor probabilidad de empleos informales o precarios.</li>
+                            <li>Perpetuación de ciclos de pobreza intergeneracional.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="seccion bg-white" id="metodos-anticonceptivos">
+            <div class="container">
+                <h2 class="titulo-seccion">Métodos Anticonceptivos Modernos</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Conoce tus opciones. Haz clic en cada método para ver los detalles y recuerda consultar siempre a un profesional de la salud.</p>
+                <div class="acordeon-container">
+                    <div class="acordeon-item">
+                        <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-user-shield"></i>Preservativo (Condón)</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Funda de látex o poliuretano que se coloca en el pene erecto. Es una barrera física que impide el paso de espermatozoides y fluidos.</p><div class="acordeon-stats"><div class="stat-box"><strong>82-98%</strong> Eficacia</div><div class="stat-box"><strong>Sí</strong> Protege de ITS</div></div></div></div>
+                    </div>
+                    <div class="acordeon-item">
+                        <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-pills"></i>Pastillas Anticonceptivas</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Píldoras hormonales que se toman diariamente para impedir la ovulación. Requieren constancia y disciplina para ser efectivas.</p><div class="acordeon-stats"><div class="stat-box"><strong>91-99%</strong> Eficacia</div><div class="stat-box"><strong>No</strong> Protege de ITS</div></div></div></div>
+                    </div>
+                    <div class="acordeon-item">
+                        <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-syringe"></i>Implante Subdérmico</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeña varilla flexible que un profesional de la salud inserta bajo la piel del brazo. Libera hormonas de forma continua y dura hasta 3 años.</p><div class="acordeon-stats"><div class="stat-box"><strong>+99%</strong> Eficacia</div><div class="stat-box"><strong>No</strong> Protege de ITS</div></div></div></div>
+                    </div>
+                    <div class="acordeon-item">
+                        <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-crosshairs"></i>DIU (Dispositivo Intrauterino)</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeño dispositivo en forma de T que un médico coloca dentro del útero. Los hay hormonales (SIU) y de cobre. Duran de 5 a 10 años.</p><div class="acordeon-stats"><div class="stat-box"><strong>+99%</strong> Eficacia</div><div class="stat-box"><strong>No</strong> Protege de ITS</div></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion" id="mitos">
+            <div class="container">
+                <h2 class="titulo-seccion">Mitos vs. Realidades</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Desliza para desmentir la información falsa. El conocimiento es tu mejor herramienta de prevención.</p>
+                <div class="carrusel-container">
+                    <div class="carrusel-track">
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"No puedes quedar embarazada la primera vez."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Si hay ovulación, hay riesgo de embarazo en cualquier relación sexual sin protección, incluyendo la primera.</p></div></div>
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Usar dos condones es más seguro que uno."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La fricción entre los dos condones aumenta la probabilidad de que se rompan. Siempre usa solo uno y de forma correcta.</p></div></div>
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"La 'marcha atrás' (coito interrumpido) es segura."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Es muy poco fiable. El líquido preseminal puede contener espermatozoides y no protege de ninguna ITS.</p></div></div>
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"No hay riesgo de embarazo durante la menstruación."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Aunque el riesgo es bajo, es posible. Los espermatozoides pueden sobrevivir varios días y los ciclos pueden ser irregulares.</p></div></div>
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Los hormonales no protegen de ITS, así que no importan."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Para la protección más completa, se recomienda el "doble método": usar un método hormonal para prevenir el embarazo y un condón para prevenir ITS.</p></div></div>
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Hablar de sexo incita a los jóvenes a tenerlo."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La evidencia muestra que una educación sexual integral y abierta retrasa el inicio de la actividad sexual y promueve decisiones más seguras.</p></div></div>
+                    </div>
+                    <button class="carrusel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carrusel-btn next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion" id="ayuda">
+            <div class="container">
+                <h2 class="titulo-seccion">Buscando Ayuda: No Estás Sola(o)</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Dar el primer paso puede ser difícil, pero existen muchos lugares y personas dispuestas a ayudarte de forma confidencial y sin juicios.</p>
+                <div class="grid-ayuda">
+                    <div class="card-ayuda">
+                        <i class="fas fa-phone-volume icono-fa"></i>
+                        <h3>Líneas de Orientación</h3>
+                        <p>Organizaciones como PLAFAM en Venezuela ofrecen líneas telefónicas donde puedes hacer preguntas anónimas a profesionales.</p>
+                    </div>
+                    <div class="card-ayuda">
+                        <i class="fas fa-hospital-user icono-fa"></i>
+                        <h3>Centros de Salud</h3>
+                        <p>Acércate al hospital o ambulatorio más cercano. Tienen personal capacitado para ofrecerte métodos anticonceptivos y orientación médica.</p>
+                    </div>
+                    <div class="card-ayuda">
+                        <i class="fas fa-user-friends icono-fa"></i>
+                        <h3>Apoyo Emocional</h3>
+                        <p>Hablar con un adulto de confianza, como un familiar, un profesor o un psicólogo escolar, puede ayudarte a aclarar tus dudas y sentirte apoyada(o).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <h2 class="titulo-seccion" style="color: var(--rojo-secundario);">ESI Venezuela</h2>
-            <p class="subtitulo-seccion" style="color: rgba(255,255,255,0.8);">Un proyecto educativo para la prevención y la toma de decisiones informadas.</p>
-            <div class="creditos">
-                 <p>Realizado por: <strong>JHANBERN AMAYA</strong> & <strong>SOLISMAR DIAZ</strong></p>
-                 <p>Liceo Nacional Hugo Chávez Frías | Los Taques, Falcón</p>
-                 <p>© 2025. La información aquí presentada no sustituye la consulta médica profesional.</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="boton-chatbot" id="chatbot-toggle" title="Asistente Virtual">
-        <i class="fas fa-comment-dots"></i>
-    </div>
-    <div class="chatbot-container" id="chatbot-container">
-        <div class="chatbot-header">
-            <span>Asistente Virtual</span>
-            <button class="cerrar-chatbot" aria-label="Cerrar">&times;</button>
-        </div>
-        <div class="chatbot-mensajes"></div>
-        <div class="chatbot-input">
-            <input type="text" placeholder="Escribe tu pregunta...">
-            <button aria-label="Enviar"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // --- Animación de Partículas ---
         if(document.getElementById('particles-js')){
             particlesJS("particles-js", {
-                "particles": {
-                    "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": "#e63946" },
-                    "shape": { "type": "circle" },
-                    "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                    "size": { "value": 3, "random": true, "anim": { "enable": false } },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#f7808b", "opacity": 0.4, "width": 1 },
-                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
-                },
-                "retina_detect": true
-            });
-        }
-
-        // --- Lógica del Test Interactivo ---
-        const testContainer = document.querySelector('.test-container');
-        if (testContainer) {
-            const preguntasData = [
-                {
-                    pregunta: "1. ¿Cuál es el único método anticonceptivo que también protege contra la mayoría de las Infecciones de Transmisión Sexual (ITS)?",
-                    opciones: ["Pastillas anticonceptivas", "Preservativo (condón)", "DIU (Dispositivo Intrauterino)"],
-                    correcta: 1
-                },
-                {
-                    pregunta: "2. La píldora anticonceptiva de emergencia (del día después)...",
-                    opciones: ["Debe usarse como método regular.", "Es abortiva.", "Es solo para emergencias y no debe usarse de forma regular."],
-                    correcta: 2
-                },
-                {
-                    pregunta: "3. Para asegurar la máxima eficacia de las pastillas anticonceptivas, se deben tomar...",
-                    opciones: ["Solo los días que tienes relaciones sexuales.", "Todos los días, preferiblemente a la misma hora.", "Una vez a la semana."],
-                    correcta: 1
-                }
-            ];
-            let preguntaActual = 0;
-            const respuestas = new Array(preguntasData.length);
-
-            function renderizarTest() {
-                const p = preguntasData[preguntaActual];
-                testContainer.innerHTML = `
-                    <div class="pregunta activa">
-                        <h3>${p.pregunta}</h3>
-                        <div class="opciones">
-                            ${p.opciones.map((opcion, index) => `
-                                <div class="opcion" data-index="${index}">${opcion}</div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    <div class="botones-test">
-                        <button class="boton-test boton-anterior" ${preguntaActual === 0 ? 'disabled' : ''}>Anterior</button>
-                        <button class="boton-test boton-siguiente" ${respuestas[preguntaActual] === undefined ? 'disabled' : ''}>
-                            ${preguntaActual === preguntasData.length - 1 ? 'Finalizar' : 'Siguiente'}
-                        </button>
-                    </div>
-                `;
-                addTestListeners();
-            }
-
-            function addTestListeners() {
-                testContainer.querySelectorAll('.opcion').forEach(opcion => {
-                    opcion.addEventListener('click', () => {
-                        const selectedIndex = parseInt(opcion.dataset.index);
-                        respuestas[preguntaActual] = selectedIndex === preguntasData[preguntaActual].correcta;
-                        testContainer.querySelectorAll('.opcion').forEach(o => o.classList.remove('seleccionada'));
-                        opcion.classList.add('seleccionada');
-                        testContainer.querySelector('.boton-siguiente').disabled = false;
-                    });
-                });
-                testContainer.querySelector('.boton-siguiente').addEventListener('click', () => {
-                    if (preguntaActual < preguntasData.length - 1) {
-                        preguntaActual++;
-                        renderizarTest();
-                    } else {
-                        mostrarResultados();
-                    }
-                });
-                testContainer.querySelector('.boton-anterior').addEventListener('click', () => {
-                    if (preguntaActual > 0) {
-                        preguntaActual--;
-                        renderizarTest();
-                    }
-                });
-            }
-
-            function mostrarResultados() {
-                const correctas = respuestas.filter(r => r).length;
-                const puntaje = (correctas / preguntasData.length) * 100;
-                let recomendacion = '';
-                 if (puntaje < 60) {
-                    recomendacion = '¡Hay mucho por aprender! Te recomendamos explorar con calma la información de nuestra página.';
-                } else if (puntaje < 100) {
-                    recomendacion = '¡Buen trabajo! Tienes conocimientos sólidos, pero siempre es bueno repasar.';
-                } else {
-                    recomendacion = '¡Excelente! Tienes un gran conocimiento sobre el tema. ¡Comparte esta información con tus amistades!';
-                }
-                testContainer.innerHTML = `
-                    <div class="resultado-test" style="display: block;">
-                        <h3>¡Resultados del Test!</h3>
-                        <p>Tu puntuación es:</p>
-                        <div class="puntuacion">${puntaje.toFixed(0)}%</div>
-                        <div class="recomendaciones">${recomendacion}</div>
-                        <button class="boton-test boton-principal" id="reiniciar-test" style="margin-top: 1rem;">Intentar de Nuevo</button>
-                    </div>
-                `;
-                document.getElementById('reiniciar-test').addEventListener('click', () => {
-                    preguntaActual = 0;
-                    respuestas.fill(undefined);
-                    renderizarTest();
-                });
-            }
-            renderizarTest();
-        }
-
-        // Lógica de la Calculadora
-        const formCalculadora = document.getElementById('calculadora-form');
-        if(formCalculadora) {
-            formCalculadora.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const fechaInicioStr = document.getElementById('fecha-ultimo-periodo').value;
-                const duracionCiclo = parseInt(document.getElementById('duracion-ciclo').value);
-                if(!fechaInicioStr){ alert("Por favor, selecciona la fecha de tu último periodo."); return; }
-                const fechaInicio = new Date(fechaInicioStr + 'T00:00:00');
-                const proximoPeriodo = new Date(fechaInicio);
-                proximoPeriodo.setDate(proximoPeriodo.getDate() + duracionCiclo);
-                const ovulacion = new Date(proximoPeriodo);
-                ovulacion.setDate(ovulacion.getDate() - 14);
-                const inicioFertil = new Date(ovulacion);
-                inicioFertil.setDate(ovulacion.getDate() - 5);
-                const finFertil = new Date(ovulacion);
-                finFertil.setDate(ovulacion.getDate() + 1);
-                const formatoFecha = { day: 'numeric', month: 'long', year: 'numeric' };
-                document.getElementById('proximo-periodo-resultado').textContent = `Próximo periodo estimado: ${proximoPeriodo.toLocaleDateString('es-VE', formatoFecha)}`;
-                document.getElementById('dias-fertiles-resultado').textContent = `Tus días más fértiles son aproximadamente del ${inicioFertil.toLocaleDateString('es-VE', formatoFecha)} al ${finFertil.toLocaleDateString('es-VE', formatoFecha)}.`;
-                document.querySelector('.resultado-calculadora').style.display = 'block';
+                particles: { number: { value: 40, density: { enable: true, value_area: 800 } }, color: { value: "#e63946" }, shape: { type: "circle" }, opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: "none", out_mode: "out" } },
+                interactivity: { events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } }, modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } } },
+                retina_detect: true
             });
         }
         
-        // Lógica del Chatbot
-        const chatbotToggle = document.getElementById('chatbot-toggle');
-        const chatbotContainer = document.getElementById('chatbot-container');
-        const cerrarChatbot = chatbotContainer.querySelector('.cerrar-chatbot');
-        const chatInput = chatbotContainer.querySelector('input');
-        const chatSendBtn = chatbotContainer.querySelector('button');
-        const chatMessages = chatbotContainer.querySelector('.chatbot-mensajes');
-        chatbotToggle.addEventListener('click', () => chatbotContainer.classList.toggle('abierto'));
-        cerrarChatbot.addEventListener('click', () => chatbotContainer.classList.remove('abierto'));
-        const respuestasBot = {
-            "hola": "¡Hola! ¿En qué puedo ayudarte? Pregúntame sobre 'causas', 'métodos' o 'ayuda'.",
-            "causas": "Las principales causas incluyen falta de educación sexual, presión social y acceso limitado a anticonceptivos.",
-            "metodos": "Existen muchos métodos: preservativos, pastillas, DIU, inyecciones... El condón es el único que protege de ITS. Consulta a un médico para saber cuál es mejor para ti.",
-            "ayuda": "Puedes acudir a un centro de salud, hospital o a organizaciones como PLAFAM y AVESA en Venezuela para recibir orientación confidencial.",
-            "gracias": "¡De nada! Estoy aquí para ayudar."
-        };
-        function addMessage(text, sender) {
-            const message = document.createElement('div');
-            message.classList.add('mensaje', `mensaje-${sender}`);
-            message.textContent = text;
-            chatMessages.appendChild(message);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => { mainNav.classList.toggle('active'); });
         }
-        function handleChat() {
-            const userText = chatInput.value.trim().toLowerCase();
-            if(!userText) return;
-            addMessage(userText, 'usuario');
-            chatInput.value = '';
-            setTimeout(() => {
-                let botResponse = "No entendí muy bien. Intenta usar palabras clave como 'causas', 'métodos' o 'ayuda'.";
-                for (const key in respuestasBot) {
-                    if (userText.includes(key)) { botResponse = respuestasBot[key]; break; }
+        
+        const statsSection = document.getElementById('estadisticas');
+        if (statsSection) {
+            const counters = document.querySelectorAll('.stat-numero');
+            const speed = 200;
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counters.forEach(counter => {
+                            const updateCount = () => {
+                                const target = +counter.getAttribute('data-target');
+                                let count = +counter.innerText;
+                                const inc = target / speed;
+                                if (count < target) {
+                                    counter.innerText = Math.ceil(count + inc);
+                                    setTimeout(updateCount, 15);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            updateCount();
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(statsSection);
+        }
+
+        const acordeonItems = document.querySelectorAll('.acordeon-item');
+        acordeonItems.forEach(item => {
+            const header = item.querySelector('.acordeon-header');
+            header.addEventListener('click', () => {
+                const openItem = document.querySelector('.acordeon-item.active');
+                if(openItem && openItem !== item) {
+                    openItem.classList.remove('active');
+                    openItem.querySelector('.acordeon-contenido').style.maxHeight = 0;
                 }
-                addMessage(botResponse, 'bot');
-            }, 800);
+                item.classList.toggle('active');
+                const contenido = item.querySelector('.acordeon-contenido');
+                if (item.classList.contains('active')) {
+                    contenido.style.maxHeight = contenido.scrollHeight + "px";
+                } else {
+                    contenido.style.maxHeight = 0;card-prevencion
+                }
+            });
+        });
+
+        const track = document.querySelector('.carrusel-track');
+        if (track) {
+            const slides = Array.from(track.children);
+            const nextButton = document.querySelector('.carrusel-btn.next');
+            const prevButton = document.querySelector('.carrusel-btn.prev');
+            let currentIndex = 0;
+            const moveToSlide = (targetIndex) => {
+                if (track.parentElement.offsetWidth > 0) { // Fix for invisible element
+                    track.style.transform = 'translateX(-' + targetIndex * 100 + '%)';
+                    currentIndex = targetIndex;
+                }
+            }
+            nextButton.addEventListener('click', () => { moveToSlide((currentIndex + 1) % slides.length); });
+            prevButton.addEventListener('click', () => { moveToSlide((currentIndex - 1 + slides.length) % slides.length); });
+            setInterval(() => { moveToSlide((currentIndex + 1) % slides.length); }, 7000);
         }
-        chatSendBtn.addEventListener('click', handleChat);
-        chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleChat(); });
+
     });
     </script>
 </body>
