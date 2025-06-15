@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plataforma interactiva sobre prevención del embarazo adolescente con información confiable, métodos anticonceptivos, test de conocimientos, mitos y realidades, y recursos educativos.">
     <title>Plataforma de Prevención del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --rojo-principal: #E63946;
@@ -55,13 +55,64 @@
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
         .site-logo img { height: 60px; width: auto; }
-        .main-nav ul { list-style: none; display: flex; gap: 2rem; }
-        .main-nav a { text-decoration: none; color: var(--texto-medio); font-weight: 600; padding-bottom: 5px; border-bottom: 3px solid transparent; transition: var(--transicion); }
-        .main-nav a:hover, .main-nav a.active {
+        .main-nav { position: relative; }
+        .main-nav ul { list-style: none; display: flex; gap: 1.5rem; }
+        .main-nav > ul > li > a {
+            text-decoration: none;
+            color: var(--texto-medio);
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 3px solid transparent;
+            transition: var(--transicion);
+            display: block; /* Para que el padding funcione correctamente */
+            padding: 0.5rem 1rem; /* Ajuste del padding */
+            border-radius: 5px; /* Añadido un poco de radio para el hover */
+        }
+        .main-nav > ul > li > a:hover, .main-nav > ul > li > a.active {
             color: var(--rojo-principal);
+            background-color: rgba(230, 57, 70, 0.05); /* Ligero fondo al pasar el mouse */
             border-bottom-color: var(--rojo-secundario);
         }
-        .main-nav a.active { font-weight: 700; border-bottom-color: var(--rojo-principal); }
+        .main-nav > ul > li > a.active { font-weight: 700; border-bottom-color: var(--rojo-principal); }
+
+        /* Estilos para el dropdown */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--blanco);
+            box-shadow: var(--sombra-media);
+            z-index: 100;
+            min-width: 200px; /* Ancho mínimo del dropdown */
+            padding: 0.5rem 0;
+            border-radius: var(--border-radius-md);
+        }
+        .main-nav > ul > li:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--texto-medio);
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            transition: var(--transicion);
+            font-weight: 600;
+            border-bottom: 1px solid #f4f4f4;
+        }
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--fondo-claro);
+            color: var(--rojo-principal);
+        }
+        .dropdown-content .fa-solid, .dropdown-content .fa-regular {
+            color: var(--rojo-secundario); /* Color de los iconos del dropdown */
+        }
+
         .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--rojo-principal); cursor: pointer; z-index: 1001; }
 
         @media (max-width: 768px) {
@@ -84,12 +135,29 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-            .main-nav ul { flex-direction: column; align-items: center; gap: 1.5rem; }
+            .main-nav ul { flex-direction: column; align-items: stretch; gap: 0; }
+            .main-nav > ul > li > a {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid #eee;
+            }
+            .main-nav > ul > li > a:hover, .main-nav > ul > li > a.active {
+                background-color: var(--fondo-claro);
+            }
+            .dropdown-content {
+                position: static;
+                display: none; /* Oculto por defecto en móvil */
+                box-shadow: none;
+                border-radius: 0;
+                padding-left: 1rem;
+            }
+            .main-nav > ul > li.dropdown.active .dropdown-content {
+                display: block;
+            }
             .menu-toggle { display: block; }
         }
 
         /* --- Portada --- */
-        .portada-global { color: var(--texto-oscuro); min-height: calc(100vh - 75px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; position: relative; overflow: hidden; }
+        .portada-global { color: var(--texto-oscuro); min-height: calc(100vh - 75px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; position: relative; overflow: hidden; background-color: var(--fondo-claro); }
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
         .portada-contenido { position: relative; z-index: 1; }
         .portada-global h1 { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2.5rem, 6vw, 4rem); color: var(--rojo-principal); text-transform: uppercase; }
@@ -98,8 +166,8 @@
         .boton-principal:hover { background: var(--rojo-oscuro); transform: translateY(-3px); }
 
         /* --- Estilos Generales de Sección --- */
-        .seccion { padding: 5rem 1rem; }
-        .seccion.bg-white { background-color: var(--blanco); }
+        .seccion { padding: 5rem 1rem; background-color: var(--fondo-claro); }
+        .seccion.bg-white { background-color: var(--blanco); } /* Conservamos esta clase si la necesitas en algún caso específico */
         .titulo-seccion { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--rojo-principal); text-align: center; margin-bottom: 1rem; }
         .subtitulo-seccion { text-align: center; font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 800px; margin: 0 auto 3rem auto; }
         .decoracion-linea { width: 100px; height: 4px; background: linear-gradient(90deg, var(--rojo-principal), var(--rojo-secundario)); margin: 0 auto 3rem; border-radius: 2px; }
@@ -179,11 +247,26 @@
         .creditos p { margin: 0.3rem 0; font-size: 1rem; opacity: 0.9; }
         .creditos p strong { color: var(--blanco); font-weight: 600; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
-        
+
         @media (max-width: 600px) {
             .slide { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
             .col-mito h3, .col-realidad h3 { justify-content: center; }
             .footer-links { flex-direction: column; gap: 1rem; }
+            .main-nav > ul { flex-direction: column; }
+            .main-nav > ul > li { position: static; }
+            .dropdown-content {
+                display: none;
+                position: static;
+                background-color: #f9f9f9;
+                box-shadow: none;
+                padding-left: 1rem;
+            }
+            .main-nav > ul > li:hover .dropdown-content {
+                display: none; /* No mostrar dropdown en hover en móvil, se manejará con JS si se desea */
+            }
+            .main-nav > ul > li.dropdown.active .dropdown-content {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -200,10 +283,16 @@
             <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#por-que-prevenir">Prevenir</a></li>
-                    <li><a href="#consecuencias">Consecuencias</a></li>
-                    <li><a href="#metodos-anticonceptivos">Métodos</a></li>
-                    <li><a href="#mitos">Mitos</a></li>
+                    <li class="dropdown">
+                        <a href="#">General <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#por-que-prevenir"><i class="fas fa-info-circle"></i> Prevenir</a>
+                            <a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
+                            <a href="#metodos-anticonceptivos"><i class="fas fa-shield-alt"></i> Métodos</a>
+                            <a href="#mitos"><i class="fas fa-comment-slash"></i> Mitos</a>
+                            <a href="#calculadora"><i class="fas fa-calculator"></i> Calculadora</a>
+                        </div>
+                    </li>
                     <li><a href="#ayuda">Ayuda</a></li>
                 </ul>
             </nav>
@@ -245,7 +334,7 @@
             </div>
         </section>
 
-        <section class="seccion bg-white" id="estadisticas">
+        <section class="seccion" id="estadisticas">
             <div class="container">
                 <h2 class="titulo-seccion">La Prevención en Números</h2>
                 <div class="decoracion-linea"></div>
@@ -266,7 +355,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="seccion" id="consecuencias">
             <div class="container">
                 <h2 class="titulo-seccion">Consecuencias: Un Impacto que Transforma Vidas</h2>
@@ -303,8 +392,8 @@
                 </div>
             </div>
         </section>
-        
-        <section class="seccion bg-white" id="metodos-anticonceptivos">
+
+        <section class="seccion" id="metodos-anticonceptivos">
             <div class="container">
                 <h2 class="titulo-seccion">Métodos Anticonceptivos Modernos</h2>
                 <div class="decoracion-linea"></div>
@@ -324,278 +413,4 @@
                     </div>
                     <div class="acordeon-item">
                         <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-crosshairs"></i>DIU (Dispositivo Intrauterino)</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
-                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeño dispositivo en forma de T que un médico coloca dentro del útero. Los hay hormonales (SIU) y de cobre. Duran de 5 a 10 años.</p><div class="acordeon-stats"><div class="stat-box"><strong>+99%</strong> Eficacia</div><div class="stat-box"><strong>No</strong> Protege de ITS</div></div></div></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="seccion" id="mitos">
-            <div class="container">
-                <h2 class="titulo-seccion">Mitos vs. Realidades</h2>
-                <div class="decoracion-linea"></div>
-                <p class="subtitulo-seccion">Desliza para desmentir la información falsa. El conocimiento es tu mejor herramienta de prevención.</p>
-                <div class="carrusel-container">
-                    <div class="carrusel-track">
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"No puedes quedar embarazada la primera vez."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Si hay ovulación, hay riesgo de embarazo en cualquier relación sexual sin protección, incluyendo la primera.</p></div></div>
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Usar dos condones es más seguro que uno."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La fricción entre los dos condones aumenta la probabilidad de que se rompan. Siempre usa solo uno y de forma correcta.</p></div></div>
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"La 'marcha atrás' (coito interrumpido) es segura."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Es muy poco fiable. El líquido preseminal puede contener espermatozoides y no protege de ninguna ITS.</p></div></div>
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"No hay riesgo de embarazo durante la menstruación."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Aunque el riesgo es bajo, es posible. Los espermatozoides pueden sobrevivir varios días y los ciclos pueden ser irregulares.</p></div></div>
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Solo las mujeres son responsables de la anticoncepción."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La anticoncepción es una responsabilidad compartida. La comunicación y el acuerdo en la pareja son fundamentales.</p></div></div>
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Hablar de sexo incita a los jóvenes a tenerlo."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La evidencia muestra que una educación sexual integral y abierta retrasa el inicio de la actividad sexual y promueve decisiones más seguras.</p></div></div>
-                    </div>
-                    <button class="carrusel-btn prev"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carrusel-btn next"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </section>
-
-        <section class="seccion bg-white" id="ayuda">
-            <div class="container">
-                <h2 class="titulo-seccion">Buscando Ayuda: No Estás Sola(o)</h2>
-                <div class="decoracion-linea"></div>
-                <p class="subtitulo-seccion">Dar el primer paso puede ser difícil, pero existen muchos lugares y personas dispuestas a ayudarte de forma confidencial y sin juicios.</p>
-                <div class="grid-cards">
-                    <div class="card">
-                        <i class="fas fa-phone-volume icono-fa"></i>
-                        <h3>Líneas de Orientación</h3>
-                        <p>Organizaciones como PLAFAM en Venezuela ofrecen líneas telefónicas donde puedes hacer preguntas anónimas a profesionales.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-hospital-user icono-fa"></i>
-                        <h3>Centros de Salud</h3>
-                        <p>Acércate al hospital o ambulatorio más cercano. Tienen personal capacitado para ofrecerte métodos anticonceptivos y orientación médica.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-user-friends icono-fa"></i>
-                        <h3>Apoyo Emocional</h3>
-                        <p>Hablar con un adulto de confianza, como un familiar, un profesor o un psicólogo escolar, puede ayudarte a aclarar tus dudas y sentirte apoyada(o).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-		
-		<section class="seccion" id="calculadora">
-            <div class="container">
-                <h2 class="titulo-seccion">Calculadora de Ciclo Menstrual</h2>
-                 <div class="decoracion-linea"></div>
-                <p class="subtitulo-seccion">Estima tus días fértiles y tu próximo periodo. <strong>Recuerda: esta es una estimación y NO un método anticonceptivo.</strong></p>
-                <div class="calculadora-container">
-                    <form id="calculadora-form">
-                        <div class="input-group">
-                            <label for="fecha-ultimo-periodo">Fecha de inicio de tu último periodo:</label>
-                            <input type="date" id="fecha-ultimo-periodo" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="duracion-ciclo">Duración promedio de tu ciclo (días):</label>
-                            <input type="number" id="duracion-ciclo" min="20" max="45" value="28" required>
-                        </div>
-                        <button type="submit" class="boton-calcular">Calcular</button>
-                    </form>
-                    <div class="resultado-calculadora" id="resultado-calculadora">
-                        <h4>Resultados Estimados:</h4>
-                        <p id="proximo-periodo-resultado"></p>
-                        <p id="dias-fertiles-resultado"></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer" id="contacto">
-        <div class="footer-content">
-            <div class="footer-logo">Educación Sexual Integral Venezuela</div>
-            <p class="footer-text">Plataforma informativa como parte de un proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela. Recopilamos y presentamos recursos para jóvenes, familias y educadores.</p>
-            <ul class="footer-links">
-                 <li class="footer-link"><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
-                <li class="footer-link"><a href="#por-que-prevenir"><i class="fas fa-info-circle"></i> Prevenir</a></li>
-                <li class="footer-link"><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
-                <li class="footer-link"><a href="#metodos-anticonceptivos"><i class="fas fa-shield-alt"></i> Métodos</a></li>
-                <li class="footer-link"><a href="#mitos"><i class="fas fa-comment-slash"></i> Mitos</a></li>
-                <li class="footer-link"><a href="#ayuda"><i class="fas fa-hands-helping"></i> Ayuda</a></li>
-                <li class="footer-link"><a href="#calculadora"><i class="fas fa-calculator"></i> Calculadora</a></li>
-            </ul>
-            <div class="footer-social">
-                <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-            <div class="creditos">
-                <p>Proyecto de investigación realizado por:</p>
-                <p><strong>JHANBERN AMAYA & SOLISMAR DIAZ</strong></p>
-                <p>Estudiantes del Liceo Nacional Hugo Chávez Frías</p>
-                <p>Municipio Los Taques, Estado Falcón - Venezuela</p>
-            </div>
-            <p class="footer-copyright">© 2025 Proyecto TESI Venezuela. Todos los derechos reservados. La información aquí presentada tiene fines educativos e informativos y no sustituye el consejo médico o profesional especializado.</p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        // --- Particles.js (Sin cambios) ---
-        if(document.getElementById('particles-js')){
-            particlesJS("particles-js", {
-                particles: { number: { value: 40, density: { enable: true, value_area: 800 } }, color: { value: "#e63946" }, shape: { type: "circle" }, opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: "none", out_mode: "out" } },
-                interactivity: { events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } }, modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } } },
-                retina_detect: true
-            });
-        }
-        
-        // --- Menú Móvil (Hamburguesa) ---
-        const menuToggle = document.getElementById('menu-toggle');
-        const mainNav = document.getElementById('main-nav');
-        if (menuToggle && mainNav) {
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-            });
-        }
-        
-        // --- Contador Animado de Estadísticas ---
-        const statsSection = document.getElementById('estadisticas');
-        if (statsSection) {
-            const counters = document.querySelectorAll('.stat-numero');
-            const speed = 200;
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        counters.forEach(counter => {
-                            // MEJORA: Evita que la animación se repita con cada scroll
-                            if (counter.dataset.animated) {
-                                return;
-                            }
-                            
-                            const animate = () => {
-                                const target = +counter.getAttribute('data-target');
-                                let count = +counter.innerText;
-                                const increment = target / speed;
-
-                                if (count < target) {
-                                    counter.innerText = Math.ceil(count + increment);
-                                    setTimeout(animate, 15);
-                                } else {
-                                    counter.innerText = target;
-                                }
-                            };
-                            
-                            animate();
-                            counter.dataset.animated = "true"; // Marca como animado
-                        });
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            observer.observe(statsSection);
-        }
-
-        // --- Acordeón ---
-        const acordeonItems = document.querySelectorAll('.acordeon-item');
-        acordeonItems.forEach(item => {
-            const header = item.querySelector('.acordeon-header');
-            header.addEventListener('click', () => {
-                const openItem = document.querySelector('.acordeon-item.active');
-                
-                // MEJORA: Cierra el ítem abierto si no es el que se está clickeando
-                if(openItem && openItem !== item) {
-                    openItem.classList.remove('active');
-                    openItem.querySelector('.acordeon-contenido').style.maxHeight = '0px';
-                }
-
-                // Abre o cierra el ítem clickeado
-                item.classList.toggle('active');
-                const contenido = item.querySelector('.acordeon-contenido');
-                if (item.classList.contains('active')) {
-                    contenido.style.maxHeight = contenido.scrollHeight + "px";
-                } else {
-                    contenido.style.maxHeight = '0px';
-                }
-            });
-        });
-
-        // --- Carrusel de Mitos y Realidades ---
-        const track = document.querySelector('.carrusel-track');
-        if (track) {
-            const slides = Array.from(track.children);
-            const nextButton = document.querySelector('.carrusel-btn.next');
-            const prevButton = document.querySelector('.carrusel-btn.prev');
-            let currentIndex = 0;
-            let slideInterval;
-
-            const moveToSlide = (targetIndex) => {
-                track.style.transform = 'translateX(-' + targetIndex * 100 + '%)';
-                currentIndex = targetIndex;
-            };
-
-            // MEJORA: El carrusel automático se detiene al interactuar y se reanuda
-            const startSlideShow = () => {
-                slideInterval = setInterval(() => {
-                    let nextIndex = (currentIndex + 1) % slides.length;
-                    moveToSlide(nextIndex);
-                }, 7000);
-            };
-            
-            const stopSlideShow = () => {
-                clearInterval(slideInterval);
-            };
-
-            nextButton.addEventListener('click', () => {
-                stopSlideShow();
-                moveToSlide((currentIndex + 1) % slides.length);
-                startSlideShow();
-            });
-
-            prevButton.addEventListener('click', () => {
-                stopSlideShow();
-                moveToSlide((currentIndex - 1 + slides.length) % slides.length);
-                startSlideShow();
-            });
-
-            startSlideShow();
-        }
-
-        // --- Calculadora de Ciclo Menstrual ---
-        const formCalculadora = document.getElementById('calculadora-form');
-        if(formCalculadora) {
-            formCalculadora.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const fechaInicioStr = document.getElementById('fecha-ultimo-periodo').value;
-                const duracionCiclo = parseInt(document.getElementById('duracion-ciclo').value, 10);
-                const resultadoDiv = document.getElementById('resultado-calculadora');
-
-                if(!fechaInicioStr){
-                    alert("Por favor, selecciona la fecha de inicio de tu último periodo.");
-                    return;
-                }
-
-                // CORRECCIÓN CRÍTICA: Añadir 'T00:00:00' para evitar problemas de zona horaria
-                const fechaInicio = new Date(fechaInicioStr + 'T00:00:00');
-                
-                const proximoPeriodo = new Date(fechaInicio);
-                proximoPeriodo.setDate(proximoPeriodo.getDate() + duracionCiclo);
-                
-                const ovulacion = new Date(proximoPeriodo);
-                ovulacion.setDate(ovulacion.getDate() - 14);
-                
-                const inicioFertil = new Date(ovulacion);
-                inicioFertil.setDate(ovulacion.getDate() - 5);
-                
-                const finFertil = new Date(ovulacion);
-                finFertil.setDate(ovulacion.getDate() + 1);
-                
-                const formatoFecha = { day: 'numeric', month: 'long', year: 'numeric' };
-                
-                document.getElementById('proximo-periodo-resultado').textContent = `Próximo periodo estimado: ${proximoPeriodo.toLocaleDateString('es-VE', formatoFecha)}`;
-                document.getElementById('dias-fertiles-resultado').textContent = `Tus días más fértiles son aproximadamente del ${inicioFertil.toLocaleDateString('es-VE', formatoFecha)} al ${finFertil.toLocaleDateString('es-VE', formatoFecha)}.`;
-                
-                resultadoDiv.style.display = 'block';
-            });
-        }
-
-    });
-    </script>
-</body>
-</html>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido
