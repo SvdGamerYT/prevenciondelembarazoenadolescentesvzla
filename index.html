@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plataforma interactiva sobre prevención del embarazo adolescente con información confiable, métodos anticonceptivos, test de conocimientos, mitos y realidades, y recursos educativos.">
     <title>Plataforma de Prevención del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --rojo-principal: #E63946;
@@ -44,7 +44,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85); /* Ligeramente más opaco para mejor legibilidad */
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
@@ -55,15 +55,71 @@
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
         .site-logo img { height: 60px; width: auto; }
-        .main-nav ul { list-style: none; display: flex; gap: 2rem; }
-        .main-nav a { text-decoration: none; color: var(--texto-medio); font-weight: 600; padding-bottom: 5px; border-bottom: 3px solid transparent; transition: var(--transicion); }
-        .main-nav a:hover, .main-nav a.active {
-            color: var(--rojo-principal);
-            border-bottom-color: var(--rojo-secundario);
+        
+        /* --- Estilos de Navegación Principal y Dropdown --- */
+        .main-nav { position: relative; }
+        .main-nav ul { list-style: none; display: flex; align-items: center; gap: 0.5rem; }
+        .main-nav > ul > li { position: relative; }
+        .main-nav > ul > li > a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--texto-medio);
+            font-weight: 600;
+            transition: var(--transicion);
         }
-        .main-nav a.active { font-weight: 700; border-bottom-color: var(--rojo-principal); }
-        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--rojo-principal); cursor: pointer; z-index: 1001; }
+        .main-nav > ul > li > a:hover, .main-nav > ul > li > a.active {
+            color: var(--rojo-principal);
+            background-color: var(--fondo-claro);
+        }
+        .main-nav > ul > li > a .fa-caret-down { transition: transform 0.3s ease; }
+        .main-nav > ul > li.dropdown:hover > a .fa-caret-down { transform: rotate(180deg); }
 
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--blanco);
+            box-shadow: var(--sombra-media);
+            z-index: 100;
+            min-width: 220px;
+            padding: 0.5rem 0;
+            border-radius: var(--border-radius-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .main-nav > ul > li.dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--texto-medio);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            transition: var(--transicion);
+            font-weight: 500;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--fondo-claro);
+            color: var(--rojo-principal);
+        }
+        .dropdown-content i {
+            width: 16px;
+            text-align: center;
+            color: var(--rojo-secundario);
+        }
+
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--rojo-principal); cursor: pointer; z-index: 1001; }
+        
         @media (max-width: 768px) {
             .main-nav {
                 display: none;
@@ -72,19 +128,30 @@
                 left: 0;
                 width: 100%;
                 background: var(--blanco);
-                flex-direction: column;
-                padding: 1.5rem 0;
                 box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-                opacity: 0;
-                transform: translateY(-10px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
             }
-            .main-nav.active {
-                display: flex;
+            .main-nav.active { display: block; }
+            .main-nav ul { flex-direction: column; gap: 0; }
+            .main-nav > ul > li > a {
+                border-bottom: 1px solid #f0f0f0;
+                border-radius: 0;
+                padding: 1rem 1.5rem;
+                justify-content: space-between;
+            }
+            .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding-left: 2.5rem;
+                background-color: #fafafa;
                 opacity: 1;
-                transform: translateY(0);
+                visibility: visible;
+                min-width: unset;
+                transition: none;
             }
-            .main-nav ul { flex-direction: column; align-items: center; gap: 1.5rem; }
+            .main-nav > ul > li.dropdown.active .dropdown-content { display: block; }
+            .main-nav > ul > li.dropdown:hover .dropdown-content { display: none; }
             .menu-toggle { display: block; }
         }
 
@@ -99,54 +166,45 @@
 
         /* --- Estilos Generales de Sección --- */
         .seccion { padding: 5rem 1rem; }
-        .seccion.bg-white { background-color: var(--blanco); }
         .titulo-seccion { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--rojo-principal); text-align: center; margin-bottom: 1rem; }
         .subtitulo-seccion { text-align: center; font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 800px; margin: 0 auto 3rem auto; }
         .decoracion-linea { width: 100px; height: 4px; background: linear-gradient(90deg, var(--rojo-principal), var(--rojo-secundario)); margin: 0 auto 3rem; border-radius: 2px; }
 
-        /* --- Secciones de Cards (Prevención, Estadísticas, Ayuda) --- */
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .card { background: var(--blanco); border-radius: var(--border-radius-md); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--sombra-suave); transition: var(--transicion); border-top: 5px solid transparent; }
+        /* --- Contenedores de las tarjetas --- */
+        .grid-cards, .consecuencias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card, .card-consecuencia { background: var(--blanco); border-radius: var(--border-radius-md); transition: var(--transicion); box-shadow: var(--sombra-suave); }
+        .card { padding: 2.5rem 2rem; text-align: center; border-top: 5px solid transparent; }
         .card:hover { transform: translateY(-8px); box-shadow: var(--sombra-media); border-top-color: var(--rojo-principal); }
         .card .icono-fa { font-size: 3.5rem; margin-bottom: 1.5rem; color: var(--rojo-principal); }
         .card h3 { font-family: var(--font-titulo); color: var(--rojo-oscuro); font-size: 1.3rem; margin-bottom: 1rem; }
-        .card p { font-size: 0.95rem; line-height: 1.7; }
-        .stat-item { text-align: center; }
+        
         .stat-numero { font-family: var(--font-titulo); font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 800; color: var(--rojo-principal); }
         .stat-texto { font-weight: 600; color: var(--texto-oscuro); }
-
-        /* --- Sección: Consecuencias --- */
-        .consecuencias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card-consecuencia { background: var(--blanco); border-radius: var(--border-radius-md); padding: 2rem; box-shadow: var(--sombra-suave); border-left: 5px solid var(--rojo-principal); }
+        
+        .card-consecuencia { padding: 2rem; border-left: 5px solid var(--rojo-principal); }
         .card-consecuencia h3 { font-family: var(--font-titulo); font-size: 1.5rem; color: var(--rojo-principal); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
-        .card-consecuencia h3 .icono-fa { font-size: 1.5rem; margin: 0; color: var(--rojo-principal); } /* Ajuste de ícono en consecuencias */
-        .card-consecuencia p { margin-bottom: 1rem; }
+        .card-consecuencia h3 .icono-fa { font-size: 1.5rem; margin: 0; }
         .card-consecuencia ul { list-style: none; padding-left: 0; }
         .card-consecuencia li { position: relative; padding-left: 25px; margin-bottom: 0.5rem; }
         .card-consecuencia li::before { content: '›'; position: absolute; left: 0; font-weight: 800; color: var(--rojo-secundario); font-size: 1.5rem; line-height: 1; }
 
-        /* --- Acordeón de Métodos Anticonceptivos --- */
+        /* --- Acordeón --- */
         .acordeon-container { max-width: 800px; margin: auto; }
-        .acordeon-item { background: var(--blanco); margin-bottom: 1rem; border-radius: var(--border-radius-md); box-shadow: var(--sombra-suave); overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
+        .acordeon-item { background: var(--blanco); margin-bottom: 1rem; border-radius: var(--border-radius-md); box-shadow: var(--sombra-suave); overflow: hidden; }
         .acordeon-header { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transicion); }
-        .acordeon-header:hover { background-color: var(--fondo-claro); }
+        .acordeon-header:hover { background-color: #fff9fa; }
         .acordeon-item.active .acordeon-header { background-color: var(--rojo-principal); color: var(--blanco); }
         .acordeon-title { font-family: var(--font-titulo); font-weight: 700; display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; }
-        .acordeon-item.active .acordeon-title { color: var(--blanco); }
+        .acordeon-item.active .acordeon-title, .acordeon-item.active .acordeon-icon { color: var(--blanco); }
         .acordeon-icon { transition: transform 0.3s ease; }
         .acordeon-item.active .acordeon-icon { transform: rotate(180deg); }
-        .acordeon-contenido { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.5s ease-out; }
+        .acordeon-contenido { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
         .acordeon-contenido-inner { padding: 0 1.5rem 1.5rem 1.5rem; border-top: 1px solid #eee; }
-        .acordeon-contenido-inner p { margin-bottom: 1rem; }
-        .acordeon-stats { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; font-size: 0.9rem; }
-        .stat-box { background: var(--fondo-claro); padding: 0.8rem; border-radius: 8px; flex: 1; min-width: 120px; text-align: center; border: 1px solid #fee2e2; }
-        .stat-box strong { display: block; font-family: var(--font-titulo); color: var(--rojo-principal); font-size: 1.1rem; }
 
-        /* --- Sección: Mitos vs Realidades (Carrusel) --- */
+        /* --- Carrusel --- */
         .carrusel-container { position: relative; max-width: 900px; margin: auto; overflow: hidden; border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); }
         .carrusel-track { display: flex; transition: transform 0.5s ease-in-out; }
         .slide { min-width: 100%; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; background: var(--blanco); }
-        .col-mito, .col-realidad { text-align: center; padding: 1rem; }
         .col-mito h3, .col-realidad h3 { font-family: var(--font-titulo); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .col-mito h3 { color: var(--rojo-oscuro); }
         .col-realidad h3 { color: var(--verde-exito); }
@@ -154,37 +212,22 @@
         .carrusel-btn:hover { background-color: var(--rojo-principal); color: var(--blanco); }
         .carrusel-btn.prev { left: 15px; }
         .carrusel-btn.next { right: 15px; }
+        @media (max-width: 600px) { .slide { grid-template-columns: 1fr; } }
 
         /* --- Calculadora --- */
         .calculadora-container { background: var(--blanco); padding: 2rem; border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); max-width: 500px; margin: 0 auto; }
-        .input-group { display: flex; flex-direction: column; margin-bottom: 1.2rem; }
-        .input-group label { font-weight: 600; margin-bottom: 0.5rem; color: var(--rojo-oscuro); font-size: 0.95rem; }
-        .input-group input { padding: 0.8rem; border: 1px solid var(--rojo-secundario); border-radius: 8px; font-size: 0.95rem; }
-        .resultado-calculadora { margin-top: 1.5rem; padding: 1.2rem; background: var(--fondo-claro); border-left: 4px solid var(--rojo-principal); font-size: 0.95rem; display: none; /* Oculto por defecto */ }
-        .boton-calcular { background: var(--rojo-principal); color: white; border: none; padding: 0.9rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transicion); font-size: 0.95rem; margin-top: 0.8rem; width: 100%; }
+        .input-group label { font-weight: 600; margin-bottom: 0.5rem; color: var(--rojo-oscuro); }
+        .input-group input { padding: 0.8rem; border: 1px solid var(--rojo-secundario); border-radius: 8px; }
+        .resultado-calculadora { margin-top: 1.5rem; padding: 1.2rem; background: var(--fondo-claro); border-left: 4px solid var(--rojo-principal); display: none; }
+        .boton-calcular { background: var(--rojo-principal); color: white; border: none; padding: 0.9rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transicion); width: 100%; }
         .boton-calcular:hover { background-color: var(--rojo-oscuro); }
 
         /* --- FOOTER --- */
         .footer { background-color: var(--rojo-principal); color: rgba(255,255,255,0.8); padding: 3.5rem 1.5rem 2rem; text-align: center; }
-        .footer-content { max-width: 900px; margin: 0 auto; }
-        .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; display: inline-block; color: var(--blanco); }
-        .footer-text { color: var(--blanco); margin-bottom: 2rem; line-height: 1.8; font-size: 1rem; max-width: 600px; margin: 0 auto 2rem; }
-        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-bottom: 2rem; list-style: none; padding: 0; }
-        .footer-link a { color: var(--blanco); text-decoration: none; transition: var(--transicion); display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; font-weight: 600; }
-        .footer-link a:hover { text-decoration: underline; color: var(--fondo-claro); }
-        .footer-social { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 2rem; }
-        .social-icon { width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); color: var(--blanco); display: flex; align-items: center; justify-content: center; transition: var(--transicion); font-size: 1.1rem; text-decoration: none; }
-        .social-icon:hover { background-color: var(--blanco); color: var(--rojo-principal); transform: translateY(-3px); }
-        .creditos { margin-bottom: 2rem; padding: 1.5rem; background-color: rgba(0, 0, 0, 0.15); border-radius: 8px; }
-        .creditos p { margin: 0.3rem 0; font-size: 1rem; opacity: 0.9; }
-        .creditos p strong { color: var(--blanco); font-weight: 600; }
+        .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; color: var(--blanco); }
+        .footer-text { color: var(--blanco); max-width: 600px; margin: 0 auto 2rem; }
+        .creditos { margin: 2rem auto; padding: 1.5rem; background-color: rgba(0, 0, 0, 0.15); border-radius: 8px; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
-        
-        @media (max-width: 600px) {
-            .slide { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
-            .col-mito h3, .col-realidad h3 { justify-content: center; }
-            .footer-links { flex-direction: column; gap: 1rem; }
-        }
     </style>
 </head>
 <body>
@@ -199,27 +242,33 @@
             </button>
             <nav class="main-nav" id="main-nav">
                 <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#por-que-prevenir">Prevenir</a></li>
-                    <li><a href="#consecuencias">Consecuencias</a></li>
-                    <li><a href="#metodos-anticonceptivos">Métodos</a></li>
-                    <li><a href="#mitos">Mitos</a></li>
-                    <li><a href="#ayuda">Ayuda</a></li>
+                    <li class="dropdown">
+                        <a href="#inicio">Inicio <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#por-que-prevenir"><i class="fas fa-shield-alt"></i> Prevenir</a>
+                            <a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
+                            <a href="#metodos-anticonceptivos"><i class="fas fa-pills"></i> Métodos</a>
+                            <a href="#mitos"><i class="fas fa-comment-slash"></i> Mitos</a>
+                            <a href="#calculadora"><i class="fas fa-calculator"></i> Calculadora</a>
+                        </div>
+                    </li>
+                    <li><a href="global.html">Global</a></li>
+                    <li><a href="nacional.html">Nacional</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div id="particles-js"></div>
-    <header class="portada-global" id="inicio">
-        <div class="portada-contenido">
-            <h1>Decide tu Futuro: Prevención del Embarazo Adolescente</h1>
-            <p>Una plataforma con información clara, moderna y sin prejuicios para que tomes el control de tu vida y tus decisiones.</p>
-            <a href="#por-que-prevenir" class="boton-principal">Comienza a Explorar</a>
-        </div>
-    </header>
-
     <main>
+        <div id="particles-js"></div>
+        <header class="portada-global" id="inicio">
+            <div class="portada-contenido">
+                <h1>Decide tu Futuro: Prevención del Embarazo Adolescente</h1>
+                <p>Una plataforma con información clara, moderna y sin prejuicios para que tomes el control de tu vida y tus decisiones.</p>
+                <a href="#por-que-prevenir" class="boton-principal">Comienza a Explorar</a>
+            </div>
+        </header>
+
         <section class="seccion" id="por-que-prevenir">
             <div class="container">
                 <h2 class="titulo-seccion">¿Por Qué es Crucial Prevenir?</h2>
@@ -229,23 +278,23 @@
                     <div class="card">
                         <i class="fas fa-book-open icono-fa"></i>
                         <h3>Protege tu Educación</h3>
-                        <p>Un embarazo a temprana edad es una de las principales causas de deserción escolar. Continuar tus estudios te abre las puertas a mejores empleos, independencia económica y la capacidad de cumplir tus metas profesionales.</p>
+                        <p>Un embarazo a temprana edad es una de las principales causas de deserción escolar. Continuar tus estudios te abre las puertas a mejores empleos y a la capacidad de cumplir tus metas.</p>
                     </div>
                     <div class="card">
                         <i class="fas fa-heart-pulse icono-fa"></i>
                         <h3>Cuida tu Salud Integral</h3>
-                        <p>Tu cuerpo aún se está desarrollando y un embarazo adolescente conlleva mayores riesgos médicos, tanto físicos como emocionales. Cuidarte ahora te asegura un bienestar a largo plazo para disfrutar tu vida al máximo.</p>
+                        <p>Tu cuerpo aún se está desarrollando y un embarazo adolescente conlleva mayores riesgos. Cuidarte ahora te asegura un bienestar a largo plazo para disfrutar tu vida al máximo.</p>
                     </div>
                     <div class="card">
                         <i class="fas fa-rocket icono-fa"></i>
                         <h3>Alcanza tus Metas</h3>
-                        <p>Tienes toda una vida para explorar tus pasiones, viajar, aprender y crecer. La prevención te da el tiempo y la libertad para descubrir quién eres y construir la vida que realmente deseas, sin apuros ni presiones.</p>
+                        <p>Tienes toda una vida para explorar tus pasiones y crecer. La prevención te da el tiempo y la libertad para descubrir quién eres y construir la vida que realmente deseas, sin apuros.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="seccion bg-white" id="estadisticas">
+        <section class="seccion" id="estadisticas">
             <div class="container">
                 <h2 class="titulo-seccion">La Prevención en Números</h2>
                 <div class="decoracion-linea"></div>
@@ -257,7 +306,7 @@
                     </div>
                     <div class="card stat-item">
                         <div class="stat-numero" data-target="85">0</div>
-                        <div class="stat-texto">% de embarazos no planificados que se pueden prevenir con educación sexual integral</div>
+                        <div class="stat-texto">% de embarazos no planificados prevenibles con educación sexual</div>
                     </div>
                     <div class="card stat-item">
                         <div class="stat-numero" data-target="50">0</div>
@@ -275,7 +324,6 @@
                 <div class="consecuencias-grid">
                     <div class="card-consecuencia">
                         <h3><i class="fas fa-stethoscope icono-fa"></i> En la Salud</h3>
-                        <p>El cuerpo adolescente no está completamente preparado para el embarazo, lo que aumenta los riesgos.</p>
                         <ul>
                             <li>Mayor probabilidad de complicaciones como preeclampsia y anemia.</li>
                             <li>Riesgo elevado de parto prematuro y bajo peso al nacer del bebé.</li>
@@ -284,7 +332,6 @@
                     </div>
                     <div class="card-consecuencia">
                         <h3><i class="fas fa-graduation-cap icono-fa"></i> En la Educación</h3>
-                        <p>Es una de las principales barreras para completar la formación académica.</p>
                         <ul>
                             <li>Alta tasa de deserción escolar para continuar con el embarazo.</li>
                             <li>Dificultad para retomar los estudios en el futuro.</li>
@@ -293,7 +340,6 @@
                     </div>
                     <div class="card-consecuencia">
                         <h3><i class="fas fa-chart-line icono-fa"></i> En el Futuro</h3>
-                        <p>Las decisiones tomadas hoy impactan directamente en las oportunidades de mañana.</p>
                         <ul>
                             <li>Reducción del potencial de ingresos a lo largo de la vida.</li>
                             <li>Mayor probabilidad de empleos informales o precarios.</li>
@@ -304,7 +350,7 @@
             </div>
         </section>
         
-        <section class="seccion bg-white" id="metodos-anticonceptivos">
+        <section class="seccion" id="metodos-anticonceptivos">
             <div class="container">
                 <h2 class="titulo-seccion">Métodos Anticonceptivos Modernos</h2>
                 <div class="decoracion-linea"></div>
@@ -312,19 +358,19 @@
                 <div class="acordeon-container">
                     <div class="acordeon-item">
                         <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-user-shield"></i>Preservativo (Condón)</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
-                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Funda de látex o poliuretano que se coloca en el pene erecto. Es una barrera física que impide el paso de espermatozoides y fluidos.</p><div class="acordeon-stats"><div class="stat-box"><strong>82-98%</strong> Eficacia</div><div class="stat-box"><strong>Sí</strong> Protege de ITS</div></div></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Funda de látex o poliuretano que se coloca en el pene erecto. Es una barrera física que impide el paso de espermatozoides y fluidos.</p></div></div>
                     </div>
                     <div class="acordeon-item">
                         <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-pills"></i>Pastillas Anticonceptivas</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
-                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Píldoras hormonales que se toman diariamente para impedir la ovulación. Requieren constancia y disciplina para ser efectivas.</p><div class="acordeon-stats"><div class="stat-box"><strong>91-99%</strong> Eficacia</div><div class="stat-box"><strong>No</strong> Protege de ITS</div></div></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Píldoras hormonales que se toman diariamente para impedir la ovulación. Requieren constancia y disciplina para ser efectivas.</p></div></div>
                     </div>
                     <div class="acordeon-item">
                         <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-syringe"></i>Implante Subdérmico</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
-                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeña varilla flexible que un profesional de la salud inserta bajo la piel del brazo. Libera hormonas de forma continua y dura hasta 3 años.</p><div class="acordeon-stats"><div class="stat-box"><strong>+99%</strong> Eficacia</div><div class="stat-box"><strong>No</strong> Protege de ITS</div></div></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeña varilla flexible que un profesional de la salud inserta bajo la piel del brazo. Libera hormonas de forma continua y dura hasta 3 años.</p></div></div>
                     </div>
                     <div class="acordeon-item">
                         <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-crosshairs"></i>DIU (Dispositivo Intrauterino)</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
-                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeño dispositivo en forma de T que un médico coloca dentro del útero. Los hay hormonales (SIU) y de cobre. Duran de 5 a 10 años.</p><div class="acordeon-stats"><div class="stat-box"><strong>+99%</strong> Eficacia</div><div class="stat-box"><strong>No</strong> Protege de ITS</div></div></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeño dispositivo en forma de T que un médico coloca dentro del útero. Los hay hormonales (SIU) y de cobre. Duran de 5 a 10 años.</p></div></div>
                     </div>
                 </div>
             </div>
@@ -340,9 +386,6 @@
                         <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"No puedes quedar embarazada la primera vez."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Si hay ovulación, hay riesgo de embarazo en cualquier relación sexual sin protección, incluyendo la primera.</p></div></div>
                         <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Usar dos condones es más seguro que uno."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La fricción entre los dos condones aumenta la probabilidad de que se rompan. Siempre usa solo uno y de forma correcta.</p></div></div>
                         <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"La 'marcha atrás' (coito interrumpido) es segura."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Es muy poco fiable. El líquido preseminal puede contener espermatozoides y no protege de ninguna ITS.</p></div></div>
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"No hay riesgo de embarazo durante la menstruación."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Aunque el riesgo es bajo, es posible. Los espermatozoides pueden sobrevivir varios días y los ciclos pueden ser irregulares.</p></div></div>
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Solo las mujeres son responsables de la anticoncepción."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La anticoncepción es una responsabilidad compartida. La comunicación y el acuerdo en la pareja son fundamentales.</p></div></div>
-                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Hablar de sexo incita a los jóvenes a tenerlo."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La evidencia muestra que una educación sexual integral y abierta retrasa el inicio de la actividad sexual y promueve decisiones más seguras.</p></div></div>
                     </div>
                     <button class="carrusel-btn prev"><i class="fas fa-chevron-left"></i></button>
                     <button class="carrusel-btn next"><i class="fas fa-chevron-right"></i></button>
@@ -350,32 +393,7 @@
             </div>
         </section>
 
-        <section class="seccion bg-white" id="ayuda">
-            <div class="container">
-                <h2 class="titulo-seccion">Buscando Ayuda: No Estás Sola(o)</h2>
-                <div class="decoracion-linea"></div>
-                <p class="subtitulo-seccion">Dar el primer paso puede ser difícil, pero existen muchos lugares y personas dispuestas a ayudarte de forma confidencial y sin juicios.</p>
-                <div class="grid-cards">
-                    <div class="card">
-                        <i class="fas fa-phone-volume icono-fa"></i>
-                        <h3>Líneas de Orientación</h3>
-                        <p>Organizaciones como PLAFAM en Venezuela ofrecen líneas telefónicas donde puedes hacer preguntas anónimas a profesionales.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-hospital-user icono-fa"></i>
-                        <h3>Centros de Salud</h3>
-                        <p>Acércate al hospital o ambulatorio más cercano. Tienen personal capacitado para ofrecerte métodos anticonceptivos y orientación médica.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-user-friends icono-fa"></i>
-                        <h3>Apoyo Emocional</h3>
-                        <p>Hablar con un adulto de confianza, como un familiar, un profesor o un psicólogo escolar, puede ayudarte a aclarar tus dudas y sentirte apoyada(o).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-		
-		<section class="seccion" id="calculadora">
+        <section class="seccion" id="calculadora">
             <div class="container">
                 <h2 class="titulo-seccion">Calculadora de Ciclo Menstrual</h2>
                  <div class="decoracion-linea"></div>
@@ -405,29 +423,14 @@
     <footer class="footer" id="contacto">
         <div class="footer-content">
             <div class="footer-logo">Educación Sexual Integral Venezuela</div>
-            <p class="footer-text">Plataforma informativa como parte de un proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela. Recopilamos y presentamos recursos para jóvenes, familias y educadores.</p>
-            <ul class="footer-links">
-                 <li class="footer-link"><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
-                <li class="footer-link"><a href="#por-que-prevenir"><i class="fas fa-info-circle"></i> Prevenir</a></li>
-                <li class="footer-link"><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
-                <li class="footer-link"><a href="#metodos-anticonceptivos"><i class="fas fa-shield-alt"></i> Métodos</a></li>
-                <li class="footer-link"><a href="#mitos"><i class="fas fa-comment-slash"></i> Mitos</a></li>
-                <li class="footer-link"><a href="#ayuda"><i class="fas fa-hands-helping"></i> Ayuda</a></li>
-                <li class="footer-link"><a href="#calculadora"><i class="fas fa-calculator"></i> Calculadora</a></li>
-            </ul>
-            <div class="footer-social">
-                <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
+            <p class="footer-text">Plataforma informativa como parte de un proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela.</p>
             <div class="creditos">
                 <p>Proyecto de investigación realizado por:</p>
                 <p><strong>JHANBERN AMAYA & SOLISMAR DIAZ</strong></p>
                 <p>Estudiantes del Liceo Nacional Hugo Chávez Frías</p>
                 <p>Municipio Los Taques, Estado Falcón - Venezuela</p>
             </div>
-            <p class="footer-copyright">© 2025 Proyecto TESI Venezuela. Todos los derechos reservados. La información aquí presentada tiene fines educativos e informativos y no sustituye el consejo médico o profesional especializado.</p>
+            <p class="footer-copyright">© 2025 Proyecto TESI Venezuela. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -435,7 +438,6 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // --- Particles.js (Sin cambios) ---
         if(document.getElementById('particles-js')){
             particlesJS("particles-js", {
                 particles: { number: { value: 40, density: { enable: true, value_area: 800 } }, color: { value: "#e63946" }, shape: { type: "circle" }, opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: "none", out_mode: "out" } },
@@ -444,7 +446,6 @@
             });
         }
         
-        // --- Menú Móvil (Hamburguesa) ---
         const menuToggle = document.getElementById('menu-toggle');
         const mainNav = document.getElementById('main-nav');
         if (menuToggle && mainNav) {
@@ -452,70 +453,61 @@
                 mainNav.classList.toggle('active');
             });
         }
-        
-        // --- Contador Animado de Estadísticas ---
+
+        const dropdowns = document.querySelectorAll('.main-nav .dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
         const statsSection = document.getElementById('estadisticas');
         if (statsSection) {
             const counters = document.querySelectorAll('.stat-numero');
-            const speed = 200;
-
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        counters.forEach(counter => {
-                            // MEJORA: Evita que la animación se repita con cada scroll
-                            if (counter.dataset.animated) {
-                                return;
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        const counter = entry.target;
+                        const target = +counter.getAttribute('data-target');
+                        const speed = 200;
+                        const increment = target / speed;
+                        let count = 0;
+                        const animate = () => {
+                            if (count < target) {
+                                count += increment;
+                                counter.innerText = Math.ceil(count);
+                                setTimeout(animate, 15);
+                            } else {
+                                counter.innerText = target;
                             }
-                            
-                            const animate = () => {
-                                const target = +counter.getAttribute('data-target');
-                                let count = +counter.innerText;
-                                const increment = target / speed;
-
-                                if (count < target) {
-                                    counter.innerText = Math.ceil(count + increment);
-                                    setTimeout(animate, 15);
-                                } else {
-                                    counter.innerText = target;
-                                }
-                            };
-                            
-                            animate();
-                            counter.dataset.animated = "true"; // Marca como animado
-                        });
+                        };
+                        animate();
+                        counter.dataset.animated = "true";
                     }
                 });
             }, { threshold: 0.5 });
-            
-            observer.observe(statsSection);
+            counters.forEach(c => observer.observe(c));
         }
 
-        // --- Acordeón ---
         const acordeonItems = document.querySelectorAll('.acordeon-item');
         acordeonItems.forEach(item => {
             const header = item.querySelector('.acordeon-header');
             header.addEventListener('click', () => {
                 const openItem = document.querySelector('.acordeon-item.active');
-                
-                // MEJORA: Cierra el ítem abierto si no es el que se está clickeando
                 if(openItem && openItem !== item) {
                     openItem.classList.remove('active');
                     openItem.querySelector('.acordeon-contenido').style.maxHeight = '0px';
                 }
-
-                // Abre o cierra el ítem clickeado
                 item.classList.toggle('active');
                 const contenido = item.querySelector('.acordeon-contenido');
-                if (item.classList.contains('active')) {
-                    contenido.style.maxHeight = contenido.scrollHeight + "px";
-                } else {
-                    contenido.style.maxHeight = '0px';
-                }
+                contenido.style.maxHeight = item.classList.contains('active') ? contenido.scrollHeight + "px" : '0px';
             });
         });
 
-        // --- Carrusel de Mitos y Realidades ---
         const track = document.querySelector('.carrusel-track');
         if (track) {
             const slides = Array.from(track.children);
@@ -523,78 +515,42 @@
             const prevButton = document.querySelector('.carrusel-btn.prev');
             let currentIndex = 0;
             let slideInterval;
-
-            const moveToSlide = (targetIndex) => {
-                track.style.transform = 'translateX(-' + targetIndex * 100 + '%)';
-                currentIndex = targetIndex;
+            const moveToSlide = (index) => {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                currentIndex = index;
             };
-
-            // MEJORA: El carrusel automático se detiene al interactuar y se reanuda
             const startSlideShow = () => {
-                slideInterval = setInterval(() => {
-                    let nextIndex = (currentIndex + 1) % slides.length;
-                    moveToSlide(nextIndex);
-                }, 7000);
+                slideInterval = setInterval(() => moveToSlide((currentIndex + 1) % slides.length), 7000);
             };
-            
-            const stopSlideShow = () => {
-                clearInterval(slideInterval);
-            };
-
-            nextButton.addEventListener('click', () => {
-                stopSlideShow();
-                moveToSlide((currentIndex + 1) % slides.length);
-                startSlideShow();
-            });
-
-            prevButton.addEventListener('click', () => {
-                stopSlideShow();
-                moveToSlide((currentIndex - 1 + slides.length) % slides.length);
-                startSlideShow();
-            });
-
+            const stopSlideShow = () => clearInterval(slideInterval);
+            nextButton.addEventListener('click', () => { stopSlideShow(); moveToSlide((currentIndex + 1) % slides.length); startSlideShow(); });
+            prevButton.addEventListener('click', () => { stopSlideShow(); moveToSlide((currentIndex - 1 + slides.length) % slides.length); startSlideShow(); });
             startSlideShow();
         }
-
-        // --- Calculadora de Ciclo Menstrual ---
+		
         const formCalculadora = document.getElementById('calculadora-form');
         if(formCalculadora) {
             formCalculadora.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
                 const fechaInicioStr = document.getElementById('fecha-ultimo-periodo').value;
                 const duracionCiclo = parseInt(document.getElementById('duracion-ciclo').value, 10);
                 const resultadoDiv = document.getElementById('resultado-calculadora');
-
-                if(!fechaInicioStr){
-                    alert("Por favor, selecciona la fecha de inicio de tu último periodo.");
-                    return;
-                }
-
-                // CORRECCIÓN CRÍTICA: Añadir 'T00:00:00' para evitar problemas de zona horaria
+                if(!fechaInicioStr){ alert("Por favor, selecciona la fecha de inicio de tu último periodo."); return; }
                 const fechaInicio = new Date(fechaInicioStr + 'T00:00:00');
-                
                 const proximoPeriodo = new Date(fechaInicio);
                 proximoPeriodo.setDate(proximoPeriodo.getDate() + duracionCiclo);
-                
                 const ovulacion = new Date(proximoPeriodo);
                 ovulacion.setDate(ovulacion.getDate() - 14);
-                
                 const inicioFertil = new Date(ovulacion);
                 inicioFertil.setDate(ovulacion.getDate() - 5);
-                
                 const finFertil = new Date(ovulacion);
                 finFertil.setDate(ovulacion.getDate() + 1);
-                
                 const formatoFecha = { day: 'numeric', month: 'long', year: 'numeric' };
-                
                 document.getElementById('proximo-periodo-resultado').textContent = `Próximo periodo estimado: ${proximoPeriodo.toLocaleDateString('es-VE', formatoFecha)}`;
-                document.getElementById('dias-fertiles-resultado').textContent = `Tus días más fértiles son aproximadamente del ${inicioFertil.toLocaleDateString('es-VE', formatoFecha)} al ${finFertil.toLocaleDateString('es-VE', formatoFecha)}.`;
-                
+                document.getElementById('dias-fertiles-resultado').textContent = `Tus días más fértiles son aprox. del ${inicioFertil.toLocaleDateString('es-VE', formatoFecha)} al ${finFertil.toLocaleDateString('es-VE', formatoFecha)}.`;
                 resultadoDiv.style.display = 'block';
             });
         }
-
     });
     </script>
 </body>
