@@ -1,3 +1,12 @@
+¡Por supuesto! Tienes toda la razón, podemos darle un aspecto mucho más moderno y amigable a la calculadora.
+
+He rediseñado completamente la sección de la calculadora para que sea más visual, intuitiva y coherente con el estilo de tu página. He añadido iconos, mejorado la disposición y pulido el diseño de los resultados.
+
+Aquí tienes el código completo con la nueva y mejorada calculadora. Simplemente reemplaza todo tu código anterior con este.
+
+### **Código Completo con la Calculadora Mejorada**
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -213,14 +222,120 @@
         .carrusel-btn.prev { left: 15px; }
         .carrusel-btn.next { right: 15px; }
         @media (max-width: 600px) { .slide { grid-template-columns: 1fr; } }
-
-        /* --- Calculadora --- */
-        .calculadora-container { background: var(--blanco); padding: 2rem; border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); max-width: 500px; margin: 0 auto; }
-        .input-group label { font-weight: 600; margin-bottom: 0.5rem; color: var(--rojo-oscuro); }
-        .input-group input { padding: 0.8rem; border: 1px solid var(--rojo-secundario); border-radius: 8px; }
-        .resultado-calculadora { margin-top: 1.5rem; padding: 1.2rem; background: var(--fondo-claro); border-left: 4px solid var(--rojo-principal); display: none; }
-        .boton-calcular { background: var(--rojo-principal); color: white; border: none; padding: 0.9rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transicion); width: 100%; }
-        .boton-calcular:hover { background-color: var(--rojo-oscuro); }
+        
+        /* === NUEVOS ESTILOS PARA LA CALCULADORA === */
+        .calculadora-container {
+            background: var(--blanco);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--sombra-media);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .calculadora-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .calculadora-header h3 {
+            font-family: var(--font-titulo);
+            color: var(--rojo-oscuro);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .calculadora-header p {
+            font-size: 1rem;
+            color: var(--texto-medio);
+        }
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .input-wrapper label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--rojo-oscuro);
+            display: block;
+        }
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 52px; /* Ajuste para centrar verticalmente */
+            color: var(--rojo-secundario);
+        }
+        .input-wrapper input {
+            width: 100%;
+            padding: 0.9rem 0.9rem 0.9rem 45px; /* Espacio para el icono */
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-texto);
+            transition: border-color 0.3s ease;
+        }
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--rojo-principal);
+        }
+        .boton-calcular {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: var(--rojo-principal);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transicion);
+            width: 100%;
+        }
+        .boton-calcular:hover {
+            background-color: var(--rojo-oscuro);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-media);
+        }
+        .resultado-calculadora {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            display: none; /* Oculto por defecto */
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .resultado-calculadora.visible {
+            display: block;
+            opacity: 1;
+        }
+        .resultado-item {
+            background: var(--fondo-claro);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .resultado-item:first-child {
+            margin-bottom: 1rem;
+        }
+        .resultado-item .icono-resultado {
+            font-size: 2rem;
+            color: var(--rojo-principal);
+        }
+        .resultado-item .texto-resultado strong {
+            display: block;
+            font-family: var(--font-titulo);
+            font-size: 1.1rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 0.2rem;
+        }
+        .resultado-item .texto-resultado span {
+            font-size: 1rem;
+            color: var(--texto-medio);
+        }
+        /* === FIN DE NUEVOS ESTILOS === */
 
         /* --- FOOTER --- */
         .footer { background-color: var(--rojo-principal); color: rgba(255,255,255,0.8); padding: 3.5rem 1.5rem 2rem; text-align: center; }
@@ -243,7 +358,7 @@
             <nav class="main-nav" id="main-nav">
                 <ul>
                     <li class="dropdown">
-                        <a href="#inicio">Inicio <i class="fas fa-caret-down"></i></a>
+                        <a href="#inicio" class="active">Inicio <i class="fas fa-caret-down"></i></a>
                         <div class="dropdown-content">
                             <a href="#por-que-prevenir"><i class="fas fa-shield-alt"></i> Prevenir</a>
                             <a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
@@ -398,25 +513,45 @@
                 <h2 class="titulo-seccion">Calculadora de Ciclo Menstrual</h2>
                  <div class="decoracion-linea"></div>
                 <p class="subtitulo-seccion">Estima tus días fértiles y tu próximo periodo. <strong>Recuerda: esta es una estimación y NO un método anticonceptivo.</strong></p>
+                
                 <div class="calculadora-container">
+                    <div class="calculadora-header">
+                        <h3>Estima tu Ciclo</h3>
+                        <p>Ingresa los datos para conocer tus fechas probables.</p>
+                    </div>
                     <form id="calculadora-form">
-                        <div class="input-group">
-                            <label for="fecha-ultimo-periodo">Fecha de inicio de tu último periodo:</label>
+                        <div class="input-wrapper">
+                            <label for="fecha-ultimo-periodo">Fecha de inicio de tu último periodo</label>
+                            <i class="fas fa-calendar-alt"></i>
                             <input type="date" id="fecha-ultimo-periodo" required>
                         </div>
-                        <div class="input-group">
-                            <label for="duracion-ciclo">Duración promedio de tu ciclo (días):</label>
+                        <div class="input-wrapper">
+                            <label for="duracion-ciclo">Duración promedio de tu ciclo (días)</label>
+                            <i class="fas fa-history"></i>
                             <input type="number" id="duracion-ciclo" min="20" max="45" value="28" required>
                         </div>
-                        <button type="submit" class="boton-calcular">Calcular</button>
+                        <button type="submit" class="boton-calcular">
+                            <i class="fas fa-calculator"></i> Calcular Ahora
+                        </button>
                     </form>
                     <div class="resultado-calculadora" id="resultado-calculadora">
-                        <h4>Resultados Estimados:</h4>
-                        <p id="proximo-periodo-resultado"></p>
-                        <p id="dias-fertiles-resultado"></p>
+                        <div class="resultado-item">
+                            <i class="fas fa-calendar-check icono-resultado"></i>
+                            <div class="texto-resultado">
+                                <strong>Próximo periodo estimado</strong>
+                                <span id="proximo-periodo-resultado"></span>
+                            </div>
+                        </div>
+                        <div class="resultado-item">
+                            <i class="fas fa-heartbeat icono-resultado"></i>
+                            <div class="texto-resultado">
+                                <strong>Ventana de días fértiles</strong>
+                                <span id="dias-fertiles-resultado"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                 </div>
         </section>
     </main>
 
@@ -528,6 +663,7 @@
             startSlideShow();
         }
 		
+        // === NUEVO SCRIPT PARA LA CALCULADORA ===
         const formCalculadora = document.getElementById('calculadora-form');
         if(formCalculadora) {
             formCalculadora.addEventListener('submit', (e) => {
@@ -535,23 +671,33 @@
                 const fechaInicioStr = document.getElementById('fecha-ultimo-periodo').value;
                 const duracionCiclo = parseInt(document.getElementById('duracion-ciclo').value, 10);
                 const resultadoDiv = document.getElementById('resultado-calculadora');
+                
                 if(!fechaInicioStr){ alert("Por favor, selecciona la fecha de inicio de tu último periodo."); return; }
+                
                 const fechaInicio = new Date(fechaInicioStr + 'T00:00:00');
+                
                 const proximoPeriodo = new Date(fechaInicio);
                 proximoPeriodo.setDate(proximoPeriodo.getDate() + duracionCiclo);
+                
                 const ovulacion = new Date(proximoPeriodo);
                 ovulacion.setDate(ovulacion.getDate() - 14);
+                
                 const inicioFertil = new Date(ovulacion);
                 inicioFertil.setDate(ovulacion.getDate() - 5);
+                
                 const finFertil = new Date(ovulacion);
                 finFertil.setDate(ovulacion.getDate() + 1);
+                
                 const formatoFecha = { day: 'numeric', month: 'long', year: 'numeric' };
-                document.getElementById('proximo-periodo-resultado').textContent = `Próximo periodo estimado: ${proximoPeriodo.toLocaleDateString('es-VE', formatoFecha)}`;
-                document.getElementById('dias-fertiles-resultado').textContent = `Tus días más fértiles son aprox. del ${inicioFertil.toLocaleDateString('es-VE', formatoFecha)} al ${finFertil.toLocaleDateString('es-VE', formatoFecha)}.`;
-                resultadoDiv.style.display = 'block';
+                
+                document.getElementById('proximo-periodo-resultado').textContent = proximoPeriodo.toLocaleDateString('es-VE', formatoFecha);
+                document.getElementById('dias-fertiles-resultado').textContent = `Del ${inicioFertil.toLocaleDateString('es-VE')} al ${finFertil.toLocaleDateString('es-VE')}`;
+                
+                resultadoDiv.classList.add('visible');
             });
         }
     });
     </script>
 </body>
 </html>
+```
