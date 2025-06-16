@@ -119,7 +119,6 @@
         }
         .portada-content h1 {
             font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(2rem, 6vw, 3.5rem);
-	    line-height: 1.2; text-transform: uppercase; letter-spacing: -0.5px; margin: 0 auto; 
             color: var(--blanco); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -1px;
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
@@ -128,7 +127,8 @@
             width: 80%; margin: 20px auto 30px; border-radius: 3px; border: 1px solid white;
         }
         .portada-content p {
-            font-size: clamp(2rem, 6vw, 3.5rem); max-width: 700px; margin: 1.2rem auto 2rem auto; color: var(--texto-claro);
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem); color: var(--texto-claro);
+            margin-bottom: 3rem; line-height: 1.6; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         .botones { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
         .boton {
@@ -292,7 +292,8 @@
         .creditos p { margin: 0.5rem 0; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
 
-        @media (max-width: 992px) { .section-title { font-size: 1.8rem; } .section-content { padding: 30px; } .card { padding: 25px; } } 
+        @media (max-width: 992px) { .section-title { font-size: 1.8rem; } .section-content { padding: 30px; } .card { padding: 25px; } }
+        @media (max-width: 768px) { .container { padding: 15px; } .portada-content h1 { font-size: 2.2rem; } .portada-content p { font-size: 1.1rem; } .section-title { font-size: 1.5rem; } .section-content { padding: 25px; } .card { padding: 20px; } .stat-card { padding: 30px 20px; } .stat-value { font-size: 2.5rem; } .btn { padding: 12px 25px; font-size: 0.9rem; } }
         @media (max-width: 576px) { .card-grid { grid-template-columns: 1fr; } .tricolor-divider { width: 100%; } }
     </style>
 </head>
