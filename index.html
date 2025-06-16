@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,7 +27,74 @@
             --font-texto: 'Open Sans', sans-serif;
         }
 
-        /* --- Estilos de Navegación y Generales --- */
+        /* === ESTILOS PARA LA PANTALLA DE CARGA === */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--fondo-claro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.75s ease, visibility 0.75s ease;
+        }
+        .loader-wrapper.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader {
+            --path: #ffdadf; /* Color de la ruta, un rosado muy claro */
+            --dot: var(--rojo-principal); /* El punto con el color principal */
+            --duration: 2s;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .loader:before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+            display: block;
+            background: var(--dot);
+            top: 42px;
+            left: 21px;
+            transform: translate(-20px, -20px);
+            animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        }
+        .loader svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .loader svg circle {
+            fill: none;
+            stroke: var(--path);
+            stroke-width: 10px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            stroke-dasharray: 150 50 150 50;
+            stroke-dashoffset: 75;
+            animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        }
+        @keyframes pathCircle {
+            25% { stroke-dashoffset: 125; }
+            50% { stroke-dashoffset: 175; }
+            75% { stroke-dashoffset: 225; }
+            100% { stroke-dashoffset: 275; }
+        }
+        @keyframes dotRect { /* Reutilizamos la animación del punto con otro nombre para claridad */
+            25% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+            75% { transform: translate(0, -40px); }
+            100% { transform: translate(-20px, -20px); }
+        }
+        /* === FIN DE ESTILOS DE CARGA === */
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body {
@@ -57,7 +123,6 @@
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
         .site-logo img { height: 60px; width: auto; }
         
-        /* --- Estilos de Navegación Principal y Dropdown --- */
         .main-nav { position: relative; }
         .main-nav ul { list-style: none; display: flex; align-items: center; gap: 0.5rem; }
         .main-nav > ul > li { position: relative; }
@@ -156,7 +221,6 @@
             .menu-toggle { display: block; }
         }
 
-        /* --- Portada --- */
         .portada-global { color: var(--texto-oscuro); min-height: calc(100vh - 75px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; position: relative; overflow: hidden; }
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
         .portada-contenido { position: relative; z-index: 1; }
@@ -165,13 +229,11 @@
         .boton-principal { background: var(--rojo-principal); color: var(--blanco); padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-family: var(--font-titulo); transition: var(--transicion); box-shadow: var(--sombra-media); }
         .boton-principal:hover { background: var(--rojo-oscuro); transform: translateY(-3px); }
 
-        /* --- Estilos Generales de Sección --- */
         .seccion { padding: 5rem 1rem; }
         .titulo-seccion { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--rojo-principal); text-align: center; margin-bottom: 1rem; }
         .subtitulo-seccion { text-align: center; font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 800px; margin: 0 auto 3rem auto; }
         .decoracion-linea { width: 100px; height: 4px; background: linear-gradient(90deg, var(--rojo-principal), var(--rojo-secundario)); margin: 0 auto 3rem; border-radius: 2px; }
 
-        /* --- Contenedores de las tarjetas --- */
         .grid-cards, .consecuencias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .card, .card-consecuencia { background: var(--blanco); border-radius: var(--border-radius-md); transition: var(--transicion); box-shadow: var(--sombra-suave); }
         .card { padding: 2.5rem 2rem; text-align: center; border-top: 5px solid transparent; }
@@ -189,7 +251,6 @@
         .card-consecuencia li { position: relative; padding-left: 25px; margin-bottom: 0.5rem; }
         .card-consecuencia li::before { content: '›'; position: absolute; left: 0; font-weight: 800; color: var(--rojo-secundario); font-size: 1.5rem; line-height: 1; }
 
-        /* --- Acordeón --- */
         .acordeon-container { max-width: 800px; margin: auto; }
         .acordeon-item { background: var(--blanco); margin-bottom: 1rem; border-radius: var(--border-radius-md); box-shadow: var(--sombra-suave); overflow: hidden; }
         .acordeon-header { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transicion); }
@@ -202,7 +263,6 @@
         .acordeon-contenido { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
         .acordeon-contenido-inner { padding: 0 1.5rem 1.5rem 1.5rem; border-top: 1px solid #eee; }
 
-        /* --- Carrusel --- */
         .carrusel-container { position: relative; max-width: 900px; margin: auto; overflow: hidden; border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); }
         .carrusel-track { display: flex; transition: transform 0.5s ease-in-out; }
         .slide { min-width: 100%; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; background: var(--blanco); }
@@ -215,7 +275,6 @@
         .carrusel-btn.next { right: 15px; }
         @media (max-width: 600px) { .slide { grid-template-columns: 1fr; } }
         
-        /* === NUEVOS ESTILOS PARA LA CALCULADORA === */
         .calculadora-container {
             background: var(--blanco);
             padding: 2.5rem;
@@ -251,12 +310,12 @@
         .input-wrapper i {
             position: absolute;
             left: 15px;
-            top: 52px; /* Ajuste para centrar verticalmente */
+            top: 52px;
             color: var(--rojo-secundario);
         }
         .input-wrapper input {
             width: 100%;
-            padding: 0.9rem 0.9rem 0.9rem 45px; /* Espacio para el icono */
+            padding: 0.9rem 0.9rem 0.9rem 45px;
             border: 2px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
@@ -292,7 +351,6 @@
             margin-top: 2rem;
             padding-top: 2rem;
             border-top: 1px solid #eee;
-            display: none; /* Oculto por defecto */
             display: none;
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -327,9 +385,7 @@
             font-size: 1rem;
             color: var(--texto-medio);
         }
-        /* === FIN DE NUEVOS ESTILOS === */
 
-        /* --- FOOTER --- */
         .footer { background-color: var(--rojo-principal); color: rgba(255,255,255,0.8); padding: 3.5rem 1.5rem 2rem; text-align: center; }
         .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; color: var(--blanco); }
         .footer-text { color: var(--blanco); max-width: 600px; margin: 0 auto 2rem; }
@@ -338,6 +394,14 @@
     </style>
 </head>
 <body>
+
+    <div class="loader-wrapper" id="loader-wrapper">
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <circle r="32" cy="40" cx="40"></circle>
+            </svg>
+        </div>
+    </div>
 
     <header class="site-header">
         <div class="nav-container">
@@ -543,7 +607,8 @@
                         </div>
                     </div>
                 </div>
-                 </div>
+
+            </div>
         </section>
     </main>
 
@@ -564,6 +629,12 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        
+        // --- SCRIPT PARA OCULTAR LA PANTALLA DE CARGA ---
+        const loader = document.getElementById('loader-wrapper');
+        window.addEventListener('load', () => {
+            loader.classList.add('hidden');
+        });
 
         if(document.getElementById('particles-js')){
             particlesJS("particles-js", {
@@ -655,7 +726,6 @@
             startSlideShow();
         }
 		
-        // === NUEVO SCRIPT PARA LA CALCULADORA ===
         const formCalculadora = document.getElementById('calculadora-form');
         if(formCalculadora) {
             formCalculadora.addEventListener('submit', (e) => {
@@ -692,4 +762,3 @@
     </script>
 </body>
 </html>
-```
