@@ -1250,14 +1250,14 @@
                 });
             });
 			
-			document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('DOMContentLoaded', () => {
         
-        const loader = document.getElementById('loader-wrapper');
-        window.addEventListener('load', () => {
-            if(loader) {
-                loader.classList.add('hidden');
-            }
-        });
+                const loader = document.getElementById('loader-wrapper');
+                window.onload = () => {
+                    if(loader) {
+                        loader.classList.add('hidden');
+                    }
+                };
 
         if(document.getElementById('particles-js')){
             particlesJS("particles-js", {
