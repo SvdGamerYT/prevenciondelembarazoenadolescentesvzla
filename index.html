@@ -152,7 +152,7 @@
             background-color: var(--blanco);
             box-shadow: var(--sombra-media);
             z-index: 100;
-            min-width: 220px;
+            min-width: 240px; /* Aumentado para que quepa el texto nuevo */
             padding: 0.5rem 0;
             border-radius: var(--border-radius-md);
             opacity: 0;
@@ -230,6 +230,7 @@
         .boton-principal:hover { background: var(--rojo-oscuro); transform: translateY(-3px); }
 
         .seccion { padding: 5rem 1rem; }
+        .seccion-blanca { background-color: var(--blanco); }
         .titulo-seccion { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--rojo-principal); text-align: center; margin-bottom: 1rem; }
         .subtitulo-seccion { text-align: center; font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 800px; margin: 0 auto 3rem auto; }
         .decoracion-linea { width: 100px; height: 4px; background: linear-gradient(90deg, var(--rojo-principal), var(--rojo-secundario)); margin: 0 auto 3rem; border-radius: 2px; }
@@ -391,6 +392,31 @@
         .footer-text { color: var(--blanco); max-width: 600px; margin: 0 auto 2rem; }
         .creditos { margin: 2rem auto; padding: 1.5rem; background-color: rgba(0, 0, 0, 0.15); border-radius: 8px; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
+
+        /* === NUEVOS ESTILOS AÑADIDOS === */
+        .advertencia-calculadora {
+            max-width: 550px; /* Mismo ancho que la calculadora */
+            margin: 0 auto 2rem auto;
+            padding: 1rem 1.5rem;
+            background-color: #FFF8E1; /* Un amarillo pálido y suave */
+            border-left: 5px solid #FBC02D; /* Un borde de acento amarillo */
+            color: #5D4037;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--sombra-suave);
+        }
+        .advertencia-calculadora .fa-exclamation-triangle {
+            font-size: 1.8rem;
+            color: #FBC02D;
+        }
+        .advertencia-calculadora p {
+            margin: 0;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
     </style>
 </head>
 <body>
@@ -418,6 +444,8 @@
                         <div class="dropdown-content">
                             <a href="#por-que-prevenir"><i class="fas fa-shield-alt"></i> Prevenir</a>
                             <a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
+                            <a href="#its"><i class="fas fa-viruses"></i> Prevención de ITS</a>
+                            <a href="#consentimiento"><i class="fas fa-handshake"></i> El Consentimiento</a>
                             <a href="#metodos-anticonceptivos"><i class="fas fa-pills"></i> Métodos</a>
                             <a href="#mitos"><i class="fas fa-comment-slash"></i> Mitos</a>
                             <a href="#calculadora"><i class="fas fa-calculator"></i> Calculadora</a>
@@ -521,7 +549,55 @@
             </div>
         </section>
         
-        <section class="seccion" id="metodos-anticonceptivos">
+        <section class="seccion seccion-blanca" id="its">
+            <div class="container">
+                <h2 class="titulo-seccion">ITS: Más Allá del Embarazo</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">La salud sexual es integral. Además de prevenir un embarazo, es vital protegerte de las Infecciones de Transmisión Sexual (ITS).</p>
+                <div class="grid-cards">
+                    <div class="card">
+                        <i class="fas fa-viruses icono-fa"></i>
+                        <h3>¿Qué son las ITS?</h3>
+                        <p>Son infecciones que se transmiten durante el contacto sexual. Pueden ser causadas por virus, bacterias o parásitos y muchas veces no presentan síntomas visibles.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-user-shield icono-fa"></i>
+                        <h3>Doble Protección</h3>
+                        <p>El condón (preservativo), usado correcta y consistentemente, es el único método que ofrece doble protección: previene el embarazo y reduce el riesgo de contraer la mayoría de las ITS.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-comments icono-fa"></i>
+                        <h3>Comunicación y Exámenes</h3>
+                        <p>Hablar abiertamente con tu pareja sobre salud sexual es un acto de cuidado mutuo. Si eres sexualmente activo, realizarse pruebas de ITS es una decisión responsable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="seccion" id="consentimiento">
+            <div class="container">
+                <h2 class="titulo-seccion">El Consentimiento es Clave</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Una relación sexual sana, respetuosa y segura se basa en el consentimiento. Es un acuerdo mutuo que debe ser claro, libre y continuo.</p>
+                <div class="grid-cards">
+                    <div class="card">
+                        <i class="fas fa-check-double icono-fa"></i>
+                        <h3>Entusiasta y Claro</h3>
+                        <p>El consentimiento debe ser un "SÍ" entusiasta y evidente. El silencio, la duda, la falta de respuesta o estar bajo la influencia del alcohol o drogas no significa consentir.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-exchange-alt icono-fa"></i>
+                        <h3>Es Reversible</h3>
+                        <p>Cualquier persona puede cambiar de opinión en cualquier momento, sin importar lo que haya sucedido antes. Decir "sí" a una cosa no significa decir "sí" a todo, ni para siempre.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-ban icono-fa"></i>
+                        <h3>Presión NO es Consentimiento</h3>
+                        <p>Insistir, manipular, amenazar o presionar a alguien para que tenga relaciones sexuales no es obtener consentimiento, es coacción. Debe darse de forma libre y voluntaria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="seccion seccion-blanca" id="metodos-anticonceptivos">
             <div class="container">
                 <h2 class="titulo-seccion">Métodos Anticonceptivos Modernos</h2>
                 <div class="decoracion-linea"></div>
@@ -564,11 +640,16 @@
             </div>
         </section>
 
-        <section class="seccion" id="calculadora">
+        <section class="seccion seccion-blanca" id="calculadora">
             <div class="container">
                 <h2 class="titulo-seccion">Calculadora de Ciclo Menstrual</h2>
-                 <div class="decoracion-linea"></div>
-                <p class="subtitulo-seccion">Estima tus días fértiles y tu próximo periodo. <strong>Recuerda: esta es una estimación y NO un método anticonceptivo.</strong></p>
+                <div class="decoracion-linea"></div>
+
+                <p class="subtitulo-seccion">Estima tus días fértiles y tu próximo periodo.</p>
+                <div class="advertencia-calculadora">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p><strong>Atención:</strong> Esta herramienta es solo una <strong>estimación</strong>. No debe ser utilizada bajo ninguna circunstancia como un método anticonceptivo. Consulta siempre a un profesional de la salud.</p>
+                </div>
                 
                 <div class="calculadora-container">
                     <div class="calculadora-header">
