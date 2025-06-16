@@ -48,7 +48,7 @@
         /* --- NAVEGACIÓN DESPLEGABLE --- */
         .main-nav > ul > li.dropdown { position: relative; }
         .dropdown-content {
-            display: none; position: absolute; top: 100%; left: 0;
+            display: none; position: absolute; top: 100%; right: 0; /* CAMBIO: Alineado a la derecha */
             background-color: rgba(0, 31, 63, 0.95);
             backdrop-filter: blur(5px);
             min-width: 250px;
@@ -88,9 +88,8 @@
             .main-nav a { padding: 1rem 1.5rem; width: 100%; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .menu-toggle { display: block; }
             
-            /* Desplegable en móvil */
             .dropdown-content {
-                position: static; display: none; box-shadow: none; border-radius: 0;
+                position: static; display: none; box-shadow: none; border-radius: 0; right: auto; /* Reset para móvil */
                 padding-left: 1.5rem; background-color: rgba(0,0,0,0.2);
                 opacity: 1; visibility: visible; width: 100%; max-height: 0;
                 overflow: hidden; transition: max-height 0.4s ease;
@@ -172,8 +171,6 @@
         }
         .section-content:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); background-color: rgba(0, 36, 125, 0.45); }
         
-        /* RESTO DE ESTILOS... (sin cambios) */
-        
         .section-title { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; color: var(--blanco); text-align: center; text-transform: uppercase; margin-bottom: 10px; position: relative; }
         .section-title i { font-size: 3rem; display: block; margin-bottom: 15px; color: var(--blanco); }
         .section-intro { text-align: center; max-width: 800px; margin: 0 auto 30px; color: var(--texto-claro); }
@@ -217,9 +214,9 @@
         .faq-answer { background-color: transparent; padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.3s, padding 0.3s; border-left: 3px solid transparent; }
         .faq-answer.open { max-height: 500px; padding: 20px 25px; border-left-color: var(--amarillo); }
         
-        /* --- NUEVO FOOTER --- */
+        /* --- FOOTER --- */
         .footer {
-            background: #001a33; /* Azul más oscuro para diferenciar */
+            background: #001a33;
             color: rgba(255,255,255,0.8);
             padding: 3.5rem 1.5rem 2rem;
             text-align: center;
@@ -277,7 +274,7 @@
             <p>Programas y recursos para la salud sexual de los jóvenes venezolanos</p>
             <div class="botones">
                 <a href="#estadisticas" class="boton boton-amarillo"><i class="fas fa-chart-bar"></i> Estadísticas</a>
-                <a href="#recursos" class="boton boton-azul"><i class="fas fa-shield-alt"></i> Prevención</a>
+                <a href="#prevencion" class="boton boton-azul"><i class="fas fa-shield-alt"></i> Prevención</a>
                 <a href="#preguntas" class="boton boton-rojo"><i class="fas fa-question-circle"></i> Preguntas</a>
             </div>
         </div>
@@ -287,9 +284,9 @@
         <div class="container">
             <div class="section-container" id="consecuencias">
                 <div class="section-content">
-                    <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i>Consecuencias del Embarazo Adolescente</h2>
+                    <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i>Consecuencias</h2>
                     <div class="tricolor-divider"></div>
-                    <p class="section-intro">El embarazo en la adolescencia tiene impactos profundos que trascienden a la joven madre, afectando al bebé, la familia y la sociedad en su conjunto.</p>
+                    <p class="section-intro">El embarazo en la adolescencia tiene impactos profundos que trascienden a la joven madre, afectando al bebé, la familia y la sociedad.</p>
                     <div class="card-grid">
                         <div class="card card-red"><i class="fas fa-heartbeat card-icon"></i><h3 class="card-title">Salud Física y Mental</h3><ul class="card-list"><li>Mayor riesgo de anemia, preeclampsia y parto prematuro</li><li>Complicaciones obstétricas 2-3 veces más frecuentes</li><li>Depresión postparto en el 40% de casos</li><li>Mayor probabilidad de abortos inseguros</li></ul></div>
                         <div class="card card-blue"><i class="fas fa-baby card-icon"></i><h3 class="card-title">Desarrollo del Bebé</h3><ul class="card-list"><li>60% mayor riesgo de bajo peso al nacer</li><li>Mayor mortalidad neonatal (2-3 veces más alta)</li><li>Riesgo de desnutrición y retraso en el desarrollo</li><li>Menor acceso a controles pediátricos regulares</li></ul></div>
@@ -311,14 +308,52 @@
                     </div>
                 </div>
             </div>
+             <div class="section-container" id="factores">
+                <div class="section-content">
+                    <h2 class="section-title"><i class="fas fa-search-plus"></i>Factores de Riesgo</h2>
+                    <div class="tricolor-divider"></div>
+                    <p class="section-intro">Comprender las causas subyacentes es fundamental para desarrollar estrategias efectivas de prevención.</p>
+                    <div class="card-grid">
+                        <div class="card card-red"><i class="fas fa-exclamation-triangle card-icon"></i><h3 class="card-title">Factores Sociales</h3><ul class="card-list"><li>Pobreza y exclusión social</li><li>Matrimonio y uniones tempranas</li><li>Violencia de género y abuso sexual</li><li>Migración de padres y cuidadores</li><li>Falta de oportunidades educativas</li></ul></div>
+                        <div class="card card-blue"><i class="fas fa-clinic-medical card-icon"></i><h3 class="card-title">Acceso a Servicios</h3><ul class="card-list"><li>Escasez de métodos anticonceptivos</li><li>Barreras económicas para atención médica</li><li>Estigma en servicios de salud sexual</li><li>Desinformación sobre derechos sexuales</li></ul></div>
+                        <div class="card card-yellow"><i class="fas fa-book card-icon"></i><h3 class="card-title">Educación Sexual</h3><ul class="card-list"><li>Programas educativos inconsistentes</li><li>Tabúes familiares sobre sexualidad</li><li>Mitos sobre métodos anticonceptivos</li><li>Falta de capacitación docente</li></ul></div>
+                        <div class="card card-blue"><i class="fas fa-globe-americas card-icon"></i><h3 class="card-title">Contexto Nacional</h3><ul class="card-list"><li>Crisis humanitaria compleja</li><li>Falta de políticas públicas integrales</li><li>Dificultades en recolección de datos</li><li>Reducción de programas preventivos</li></ul></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-container" id="prevencion">
+                <div class="section-content">
+                    <h2 class="section-title"><i class="fas fa-shield-alt"></i>Estrategias de Prevención</h2>
+                    <div class="tricolor-divider"></div>
+                    <p class="section-intro">Acciones efectivas basadas en evidencia para reducir el embarazo adolescente.</p>
+                    <div class="card-grid">
+                        <div class="card card-blue"><i class="fas fa-school card-icon"></i><h3 class="card-title">Educación Integral</h3><ul class="card-list"><li>Implementar programas de educación sexual científica</li><li>Capacitar a docentes en salud sexual y reproductiva</li><li>Promover la igualdad de género desde la infancia</li><li>Fomentar proyectos de vida alternativos</li></ul></div>
+                        <div class="card card-red"><i class="fas fa-hospital card-icon"></i><h3 class="card-title">Servicios de Salud</h3><ul class="card-list"><li>Garantizar acceso gratuito a anticonceptivos</li><li>Consultas amigables para adolescentes</li><li>Confidencialidad en atención médica</li><li>Detección temprana de violencia sexual</li></ul></div>
+                        <div class="card card-yellow"><i class="fas fa-users card-icon"></i><h3 class="card-title">Participación Comunitaria</h3><ul class="card-list"><li>Involucrar a familias en la prevención</li><li>Empoderar a jóvenes como promotores</li><li>Crear redes de apoyo entre pares</li><li>Sensibilizar a líderes comunitarios</li></ul></div>
+                        <div class="card card-blue"><i class="fas fa-chart-line card-icon"></i><h3 class="card-title">Políticas Públicas</h3><ul class="card-list"><li>Priorizar en agenda nacional</li><li>Incrementar presupuesto para prevención</li><li>Mejorar sistemas de registro estadístico</li><li>Coordinar acciones intersectoriales</li></ul></div>
+                    </div>
+                </div>
+            </div>
             <div class="section-container" id="recursos">
                 <div class="section-content">
-                    <h2 class="section-title"><i class="fas fa-hands-helping"></i>Recursos y Ayuda Disponible</h2>
+                    <h2 class="section-title"><i class="fas fa-hands-helping"></i>Recursos y Ayuda</h2>
                     <div class="tricolor-divider"></div>
                     <p class="section-intro">Organizaciones y servicios que pueden brindar apoyo e información confiable.</p>
                     <div class="card-grid">
-                        <div class="card card-blue"><i class="fas fa-map-marker-alt card-icon"></i><h3 class="card-title">Centros de Atención</h3><ul class="card-list"><li><strong>Hospitales públicos:</strong> Consultas de planificación familiar</li><li><strong>Ambulatorios:</strong> Entrega de métodos anticonceptivos</li><li><strong>Centros diagnósticos:</strong> Pruebas de embarazo y ETS</li></ul><div style="margin-top: 20px;"><a href="https://www.google.com/maps/search/hospitales+publicos+venezuela" class="btn btn-blue btn-sm" target="_blank"><i class="fas fa-search-location"></i> Buscar en Google Maps</a></div></div>
+                        <div class="card card-blue"><i class="fas fa-map-marker-alt card-icon"></i><h3 class="card-title">Centros de Atención</h3><ul class="card-list"><li><strong>Hospitales públicos:</strong> Consultas de planificación familiar</li><li><strong>Ambulatorios:</strong> Entrega de métodos anticonceptivos</li><li><strong>Centros diagnósticos:</strong> Pruebas de embarazo y ETS</li></ul><div style="margin-top: 20px;"><a href="https://www.google.com/maps/search/hospitales+cercanos" class="btn btn-blue btn-sm" target="_blank"><i class="fas fa-search-location"></i> Buscar en Google Maps</a></div></div>
                         <div class="card card-red"><i class="fas fa-hands-helping card-icon"></i><h3 class="card-title">Organizaciones</h3><ul class="card-list"><li><strong>PLAFAM:</strong> Atención en salud sexual</li><li><strong>AVESA:</strong> Asesoría y capacitación</li><li><strong>UNFPA Venezuela:</strong> Programas preventivos</li><li><strong>CECODAP:</strong> Protección de derechos</li></ul><div style="margin-top: 20px;"><a href="https://www.plafam.org.ve/" class="btn btn-red btn-sm" target="_blank"><i class="fas fa-external-link-alt"></i> Visitar PLAFAM</a></div></div>
+                    </div>
+                </div>
+            </div>
+             <div class="section-container" id="testimonios">
+                <div class="section-content">
+                    <h2 class="section-title"><i class="fas fa-comments"></i>Voces y Experiencias</h2>
+                    <div class="tricolor-divider"></div>
+                    <p class="section-intro">Historias reales que nos ayudan a comprender el impacto del embarazo adolescente.</p>
+                    <div class="card-grid testimonials">
+                        <div class="testimonial"><div class="testimonial-content"><p class="testimonial-text">"A los 16 años quedé embarazada y tuve que dejar la escuela. Ahora con 19 años y dos hijos, veo cómo mis amigas siguen estudiando mientras yo lucho por conseguir trabajo sin tener el bachillerato."</p><p class="testimonial-author">María G., Caracas</p><p class="testimonial-role">Madre adolescente</p></div></div>
+                        <div class="testimonial"><div class="testimonial-content"><p class="testimonial-text">"En mi comunidad muchas chicas quedan embarazadas porque no hay información. Cuando llegó PLAFAM con talleres, aprendimos sobre métodos anticonceptivos y derechos sexuales. Ahora soy promotora juvenil."</p><p class="testimonial-author">Carlos M., Maracaibo</p><p class="testimonial-role">Promotor juvenil</p></div></div>
+                        <div class="testimonial"><div class="testimonial-content"><p class="testimonial-text">"Como docente, veo la necesidad urgente de educación sexual. Muchos estudiantes repiten mitos peligrosos. Con capacitación, ahora puedo abordar estos temas con conocimiento científico y sensibilidad."</p><p class="testimonial-author">Prof. Luisa R., Mérida</p><p class="testimonial-role">Educadora</p></div></div>
                     </div>
                 </div>
             </div>
@@ -346,7 +381,11 @@
                 <li class="footer-link"><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
                 <li class="footer-link"><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
                 <li class="footer-link"><a href="#estadisticas"><i class="fas fa-chart-pie"></i> Estadísticas</a></li>
+                <li class="footer-link"><a href="#factores"><i class="fas fa-search-plus"></i> Factores de Riesgo</a></li>
+                <li class="footer-link"><a href="#prevencion"><i class="fas fa-shield-alt"></i> Prevención</a></li>
                 <li class="footer-link"><a href="#recursos"><i class="fas fa-hands-helping"></i> Recursos</a></li>
+                <li class="footer-link"><a href="#testimonios"><i class="fas fa-comments"></i> Testimonios</a></li>
+                <li class="footer-link"><a href="#preguntas"><i class="fas fa-question-circle"></i> Preguntas</a></li>
             </ul>
             <div class="creditos">
                 <p>Proyecto de investigación realizado por:</p>
@@ -360,7 +399,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Menú móvil (hamburguesa)
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
             if (menuToggle && mainNav) {
@@ -369,7 +407,6 @@
                 });
             }
 
-            // Desplegables en móvil
             const dropdowns = document.querySelectorAll('.main-nav .dropdown > a');
             dropdowns.forEach(dropdownLink => {
                 dropdownLink.addEventListener('click', (e) => {
@@ -381,14 +418,13 @@
                 });
             });
             
-            // Preguntas frecuentes
             document.querySelectorAll('.faq-question').forEach(question => {
                 question.addEventListener('click', () => {
                     const answer = question.nextElementSibling;
                     const isActive = question.classList.contains('active');
                     
-                    document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
-                    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+                    document.querySelectorAll('.faq-question.active').forEach(q => q.classList.remove('active'));
+                    document.querySelectorAll('.faq-answer.open').forEach(a => a.classList.remove('open'));
                     
                     if (!isActive) {
                         question.classList.add('active');
@@ -397,7 +433,6 @@
                 });
             });
 
-            // Scroll suave
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
@@ -405,13 +440,12 @@
                     
                     if (targetElement) {
                         e.preventDefault();
-                        const headerOffset = 75; // Altura del header fijo
+                        const headerOffset = 75;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
                         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                         
-                        // Cerrar menú móvil después del clic
                         if (mainNav.classList.contains('active')) {
                             mainNav.classList.remove('active');
                             const activeDropdown = document.querySelector('.main-nav .dropdown.active');
@@ -421,15 +455,22 @@
                 });
             });
 
-            // --- BURBUJAS ---
-            // (El código de las burbujas permanece igual)
             const container = document.getElementById('bubblesContainer');
             if(container){
                 const colors = ['amarillo', 'azul', 'rojo'];
-                const popSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3');
-                
-                function createBubble() { /* ... */ }
-                // El resto de funciones de burbujas...
+                function createBubble() {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'bubble';
+                    const size = Math.random() * 60 + 20;
+                    bubble.style.width = `${size}px`;
+                    bubble.style.height = `${size}px`;
+                    bubble.style.left = `${Math.random() * 100}%`;
+                    bubble.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                    bubble.setAttribute('data-color', colors[Math.floor(Math.random() * colors.length)]);
+                    container.appendChild(bubble);
+                    setTimeout(() => bubble.remove(), 25000);
+                }
+                setInterval(createBubble, 500);
             }
         });
     </script>
