@@ -214,6 +214,40 @@
         .faq-answer { background-color: transparent; padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.3s, padding 0.3s; border-left: 3px solid transparent; }
         .faq-answer.open { max-height: 500px; padding: 20px 25px; border-left-color: var(--amarillo); }
         
+        /* Loader */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--fondo-oscuro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.75s, visibility 0.75s;
+        }
+
+        .loader-wrapper.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            border-top: 8px solid var(--amarillo);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* --- FOOTER --- */
         .footer {
             background: #001a33;
@@ -239,6 +273,10 @@
 </head>
 <body>
 
+    <div class="loader-wrapper" id="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
     <header class="site-header">
         <div class="nav-container">
             <a href="index.html" class="site-logo">
@@ -254,6 +292,7 @@
                     <li class="dropdown">
                         <a href="nacional.html" class="active" aria-current="page">Nacional <i class="fas fa-caret-down"></i></a>
                         <div class="dropdown-content">
+                            <a href="#situacion-actual"><i class="fas fa-info-circle"></i> Situación Actual</a>
                             <a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
                             <a href="#estadisticas"><i class="fas fa-chart-pie"></i> Estadísticas</a>
                             <a href="#recursos"><i class="fas fa-hands-helping"></i> Recursos</a>
@@ -282,6 +321,18 @@
 
     <main class="main-content">
         <div class="container">
+            <div class="section-container" id="situacion-actual">
+                <div class="section-content">
+                    <h2 class="section-title"><i class="fas fa-info-circle"></i>Situación Actual en Venezuela</h2>
+                    <div class="tricolor-divider"></div>
+                    <p class="section-intro">A pesar de los esfuerzos, el embarazo adolescente sigue siendo un desafío significativo en Venezuela, influenciado por la compleja situación socioeconómica del país.</p>
+                    <div class="card-grid">
+                        <div class="card card-blue"><i class="fas fa-chart-line card-icon"></i><h3 class="card-title">Tendencias Recientes</h3><ul class="card-list"><li>Disminución general de nacimientos, pero alta proporción adolescente.</li><li>Persistencia de altas tasas en zonas rurales y poblaciones vulnerables.</li><li>Impacto de la crisis humanitaria en acceso a servicios de salud.</li></ul></div>
+                        <div class="card card-red"><i class="fas fa-hand-holding-heart card-icon"></i><h3 class="card-title">Desafíos Clave</h3><ul class="card-list"><li>Escasez y alto costo de métodos anticonceptivos.</li><li>Barreras culturales y religiosas para la educación sexual.</li><li>Discontinuidad de programas de prevención y atención.</li><li>Aumento de matrimonios y uniones infantiles forzadas.</li></ul></div>
+                        <div class="card card-yellow"><i class="fas fa-lightbulb card-icon"></i><h3 class="card-title">Oportunidades y Avances</h3><ul class="card-list"><li>Mayor visibilidad del problema en la agenda pública.</li><li>Esfuerzos de organizaciones no gubernamentales y agencias de la ONU.</li><li>Incremento de la demanda de información y servicios por parte de jóvenes.</li><li>Potencial para fortalecer redes comunitarias de apoyo.</li></ul></div>
+                    </div>
+                </div>
+            </div>
             <div class="section-container" id="consecuencias">
                 <div class="section-content">
                     <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i>Consecuencias</h2>
@@ -379,6 +430,7 @@
             <p class="footer-text">Proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela. Recursos para jóvenes, familias y educadores.</p>
             <ul class="footer-links">
                 <li class="footer-link"><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="footer-link"><a href="#situacion-actual"><i class="fas fa-info-circle"></i> Situación Actual</a></li>
                 <li class="footer-link"><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
                 <li class="footer-link"><a href="#estadisticas"><i class="fas fa-chart-pie"></i> Estadísticas</a></li>
                 <li class="footer-link"><a href="#factores"><i class="fas fa-search-plus"></i> Factores de Riesgo</a></li>
@@ -398,7 +450,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+            const loaderWrapper = document.getElementById('loader-wrapper');
+            if (loaderWrapper) {
+                setTimeout(() => {
+                    loaderWrapper.classList.add('hidden');
+                }, 1000); // Oculta el loader después de 1 segundo
+            }
+
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
             if (menuToggle && mainNav) {
