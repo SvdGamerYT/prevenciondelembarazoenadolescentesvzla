@@ -97,8 +97,8 @@
             visibility: hidden;
         }
         .loader {
-            --path: #DBEAFE;
-            --dot: var(--azul-principal);
+            --path: #ffdadf; /* Color de la ruta, un rosado muy claro */
+            --dot: var(--rojo-principal); /* El punto con el color principal */
             --duration: 2s;
             width: 50px;
             height: 50px;
@@ -115,9 +115,13 @@
             top: 42px;
             left: 21px;
             transform: translate(-20px, -20px);
-            animation: dotLoader var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+            animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
         }
-        .loader svg { display: block; width: 100%; height: 100%; }
+        .loader svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
         .loader svg circle {
             fill: none;
             stroke: var(--path);
@@ -129,12 +133,27 @@
             animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
         }
         @keyframes pathCircle {
-            25% { stroke-dashoffset: 125; } 50% { stroke-dashoffset: 175; }
-            75% { stroke-dashoffset: 225; } 100% { stroke-dashoffset: 275; }
+            25% { stroke-dashoffset: 125; }
+            50% { stroke-dashoffset: 175; }
+            75% { stroke-dashoffset: 225; }
+            100% { stroke-dashoffset: 275; }
         }
-        @keyframes dotLoader {
-            25% { transform: translate(0, 0); } 50% { transform: translate(20px, -20px); }
-            75% { transform: translate(0, -40px); } 100% { transform: translate(-20px, -20px); }
+        @keyframes dotRect { /* Reutilizamos la animación del punto con otro nombre para claridad */
+            25% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+            75% { transform: translate(0, -40px); }
+            100% { transform: translate(-20px, -20px); }
+        }
+        /* === FIN DE ESTILOS DE CARGA === */
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body {
+            font-family: var(--font-texto);
+            line-height: 1.6;
+            color: var(--texto-medio);
+            background-color: var(--fondo-claro);
+            padding-top: 75px;
         }
 
         #particles-js {
