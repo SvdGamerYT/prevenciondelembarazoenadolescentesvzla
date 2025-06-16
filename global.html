@@ -47,133 +47,90 @@
             --fondo-oscuro-translucido: rgba(30, 64, 175, 0.95);
         }
 
-        .site-header {
+            .site-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.7); /* Fondo blanco translúcido */
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             height: 75px;
             display: flex;
             align-items: center;
-            padding: 0 2rem; /* Espaciado lateral */
+            padding: 0 1rem;
         }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
+        .site-logo img { height: 60px; width: auto; }
 
-        .site-header .nav-container {
+        .main-nav { position: relative; }
+        .main-nav ul { list-style: none; display: flex; align-items: center; gap: 0.5rem; }
+        .main-nav > ul > li { position: relative; }
+        .main-nav > ul > li > a {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Cambios para el logo de imagen */
-        .site-logo {
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
             text-decoration: none;
-            display: flex; /* Para centrar la imagen si es necesario */
-            align-items: center; /* Para centrar la imagen verticalmente */
-            height: 100%; /* Asegúrate de que ocupe la altura disponible */
-        }
-
-        .site-logo img {
-            height: 70px; /* Ajusta este valor para el tamaño deseado de tu logo */
-            width: auto; /* Mantiene la proporción de la imagen */
-            max-width: 100%; /* Asegura que no se desborde en pantallas pequeñas */
-        }
-
-        .main-nav ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .main-nav a {
-            text-decoration: none;
-            color: #4B5563; /* Gris oscuro */
+            color: var(--texto-medio);
             font-weight: 600;
-            font-size: 1rem;
+            transition: var(--transicion);
+        }
+        .main-nav > ul > li > a:hover, .main-nav > ul > li > a.active {
+            color: var(--azul-principal);
+            background-color: var(--fondo-claro);
+        }
+        .main-nav > ul > li.dropdown > a .fa-caret-down { transition: transform 0.3s ease; }
+        .main-nav > ul > li.dropdown:hover > a .fa-caret-down { transform: rotate(180deg); }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--blanco);
+            box-shadow: var(--sombra-media);
+            z-index: 100;
+            min-width: 240px;
             padding: 0.5rem 0;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
+            border-radius: var(--border-radius-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
         }
-
-        .main-nav a:hover {
-            color: #2563EB; /* Azul principal */
-            border-bottom-color: #2563EB;
+        .main-nav > ul > li.dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
         }
-
-        /* Estilo para la pestaña activa */
-        .main-nav a.active {
-            color: #2563EB;
-            font-weight: 700;
-            border-bottom-color: #2563EB;
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--texto-medio);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transicion);
         }
+        .dropdown-content a:hover { background-color: var(--fondo-claro); color: var(--azul-principal); }
+        .dropdown-content i { width: 16px; text-align: center; color: var(--azul-secundario); }
 
-        /* Ajuste para que el contenido no quede debajo de la barra */
-        body {
-            padding-top: 75px; 
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--azul-principal); cursor: pointer; z-index: 1001; }
+        
+        @media (max-width: 768px) {
+            .main-nav { display: none; position: absolute; top: 75px; left: 0; width: 100%; background: var(--blanco); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+            .main-nav.active { display: block; }
+            .main-nav ul { flex-direction: column; gap: 0; }
+            .main-nav > ul > li > a { border-bottom: 1px solid #f0f0f0; border-radius: 0; padding: 1rem 1.5rem; justify-content: space-between; }
+            .dropdown-content { position: static; display: none; box-shadow: none; border-radius: 0; padding-left: 2.5rem; background-color: #fafafa; opacity: 1; visibility: visible; min-width: unset; transition: none; }
+            .main-nav > ul > li.dropdown.active .dropdown-content { display: block; }
+            .main-nav > ul > li.dropdown:hover .dropdown-content { display: none; }
+            .menu-toggle { display: block; }
         }
-
-        /* --- Mobile Menu Toggle --- */
-        .menu-toggle {
-            display: none; /* Oculto por defecto en pantallas grandes */
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: #2563EB; /* Color azul para el icono en la barra blanca */
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001; /* Asegura que esté por encima del contenido */
-        }
-
-        /* --- Ajustes Responsivos para la Navegación Principal --- */
-        @media (max-width: 768px) { /* Ajustar el punto de quiebre según sea necesario */
-            .site-header {
-                padding: 0 1rem; /* Ajusta el padding para pantallas más pequeñas */
-            }
-
-            .main-nav {
-                display: none; /* Oculta la navegación por defecto en pantallas pequeñas */
-                flex-direction: column;
-                position: absolute;
-                top: 75px; /* Debajo del encabezado */
-                left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente para el desplegable */
-                box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-                padding: 1rem 0;
-                border-top: 1px solid rgba(0,0,0,0.1);
-            }
-
-            .main-nav.active { /* Clase añadida por JavaScript cuando el menú está abierto */
-                display: flex;
-            }
-
-            .main-nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem;
-            }
-
-            .main-nav a {
-                padding: 1rem 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            .menu-toggle {
-                display: block; /* Muestra el icono de hamburguesa en pantallas pequeñas */
-            }
-
-            .nav-container {
-                justify-content: space-between; /* Espacia el logo y el botón de alternar */
             }
         }
         /* Asegurarse de que el scroll sea suave en todo el documento */
@@ -204,6 +161,78 @@
             max-width: 100%;
             height: auto;
             display: block;
+        }
+		
+		.loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--fondo-claro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.75s ease, visibility 0.75s ease;
+        }
+        .loader-wrapper.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader {
+            --path: #DBEAFE; /* Azul muy claro para la ruta */
+            --dot: var(--azul-principal);
+            --duration: 2s;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .loader:before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+            display: block;
+            background: var(--dot);
+            top: 42px;
+            left: 21px;
+            transform: translate(-20px, -20px);
+            animation: dotLoader var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        }
+        .loader svg { display: block; width: 100%; height: 100%; }
+        .loader svg circle {
+            fill: none;
+            stroke: var(--path);
+            stroke-width: 10px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            stroke-dasharray: 150 50 150 50;
+            stroke-dashoffset: 75;
+            animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        }
+        @keyframes pathCircle {
+            25% { stroke-dashoffset: 125; }
+            50% { stroke-dashoffset: 175; }
+            75% { stroke-dashoffset: 225; }
+            100% { stroke-dashoffset: 275; }
+        }
+        @keyframes dotLoader {
+            25% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+            75% { transform: translate(0, -40px); }
+            100% { transform: translate(-20px, -20px); }
+        }
+        /* === FIN PANTALLA DE CARGA === */
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body {
+            font-family: var(--font-texto);
+            color: var(--texto-medio);
+            background: linear-gradient(135deg, var(--fondo-claro) 0%, #DBEAFE 100%);
+            padding-top: 75px;
         }
 
         #particles-js {
@@ -790,25 +819,13 @@
         }
         
         /* FOOTER */
-        .footer {
-            background-color: var(--fondo-oscuro-translucido);
-            color: rgba(255,255,255,0.7);
-            padding: 3.5rem 1.5rem 2rem;
-            text-align: center;
-        }
-        
-        .footer-content { max-width: 900px; margin: 0 auto; }
-        .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; display: inline-block; color: var(--blanco); }
-        .footer-text { opacity: 0.85; margin-bottom: 2rem; line-height: 1.8; font-size: 0.95rem; max-width: 600px; margin: 0 auto 2rem; }
-        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-bottom: 2rem; }
-        .footer-link { color: #DCE2EC; text-decoration: none; transition: var(--transicion); display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; font-weight: 600; }
-        .footer-link:hover { color: var(--azul-claro); text-decoration: underline; }
-        .footer-social { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 2rem; }
-        .social-icon { width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.08); color: #DCE2EC; display: flex; align-items: center; justify-content: center; transition: var(--transicion); font-size: 1.1rem; }
-        .social-icon:hover { background-color: var(--azul-principal); color: var(--blanco); transform: translateY(-3px); }
-        .creditos { margin-bottom: 2rem; padding: 1.5rem; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; }
-        .creditos p { margin: 0.3rem 0; font-size: 0.9rem; opacity: 0.8; }
-        .creditos p strong { color: var(--blanco); font-weight: 600; }
+        .footer { background: var(--azul-oscuro); color: rgba(255,255,255,0.8); padding: 3.5rem 1.5rem 2rem; text-align: center; }
+        .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; color: var(--blanco); }
+        .footer-text { max-width: 600px; margin: 0 auto 2rem; }
+        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; gap: 1rem 1.5rem; margin-bottom: 2rem; padding: 0; }
+        .footer-link a { color: var(--blanco); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: var(--transicion); }
+        .footer-link a:hover { color: var(--azul-claro); }
+        .creditos { margin: 2rem auto; padding: 1.5rem; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
 
         /* RESPONSIVE */
@@ -838,17 +855,34 @@
 </head>
 <body>
 
+    <div class="loader-wrapper" id="loader-wrapper">
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <circle r="32" cy="40" cx="40"></circle>
+            </svg>
+        </div>
+    </div>
+
     <header class="site-header">
         <div class="nav-container">
             <a href="index.html" class="site-logo">
                 <img src="https://i.ibb.co/qMJ7jy75/40910245-s-mbolo-de-la-mujer-embarazada-dibujo-vectorial-estilizada-Foto-de-archivo-1.png" alt="40910245-s-mbolo-de-la-mujer-embarazada-dibujo-vectorial-estilizada-Foto-de-archivo-1" border="0"></a>
-            <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
-            <nav class="main-nav" aria-label="Navegación principal">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html">General</a></li>
-		    <li><a href="global.html" class="active" aria-current="page">Global</a></li>
+                    <li class="dropdown">
+                        <a href="#inicio" class="active">Global <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#causas"><i class="fas fa-info-circle"></i> Causas</a>
+                            <a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
+                            <a href="#estadisticas"><i class="fas fa-chart-line"></i> Estadísticas</a>
+                            <a href="#ambito-global"><i class="fas fa-globe"></i> Ámbito Global</a>
+                        </div>
+                    </li>
                     <li><a href="nacional.html">Nacional</a></li>
                 </ul>
             </nav>
@@ -1208,30 +1242,22 @@
 
     </main>
 
-    <footer class="footer" id="contacto">
-        <div class="footer-content">
-            <div class="footer-logo">Educación Sexual Integral Venezuela</div>
-            <p class="footer-text">Plataforma informativa como parte de un proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela. Recopilamos y presentamos recursos para jóvenes, familias y educadores.</p>
-            <nav class="footer-links">
-                <a href="#inicio" class="footer-link"><i class="fas fa-home"></i> Inicio</a>
-                <a href="#causas" class="footer-link"><i class="fas fa-info-circle"></i> Causas</a>
-                <a href="#consecuencias" class="footer-link"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
-                <a href="#estadisticas" class="footer-link"><i class="fas fa-chart-bar"></i> Estadísticas</a>
-                <a href="#ambito-global" class="footer-link"><i class="fas fa-globe"></i> Ámbito Global</a>
-            </nav>
-            <div class="footer-social">
-                <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
+        <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Educación Sexual Integral</div>
+            <p class="footer-text">Proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela y el mundo. Recursos para jóvenes, familias y educadores.</p>
+            <ul class="footer-links">
+                <li class="footer-link"><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="footer-link"><a href="#causas"><i class="fas fa-info-circle"></i> Causas</a></li>
+                <li class="footer-link"><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
+				<li class="footer-link"><a href="#estadisticas"><i class="fas fa-chart-bar"></i> Estadisticas</a></li>
+            </ul>
             <div class="creditos">
                 <p>Proyecto de investigación realizado por:</p>
-                <p><strong>JHANBERN AMAYA</strong> y <strong>SOLISMAR DIAZ</strong></p>
-                <p>Estudiantes del Liceo Nacional Hugo Chávez Frías</p>
-                <p>Municipio Los Taques, Estado Falcón - Venezuela</p>
+                <p><strong>JHANBERN AMAYA & SOLISMAR DIAZ</strong></p>
+                <p>Liceo Nacional Hugo Chávez Frías, Falcón - Venezuela</p>
             </div>
-            <p class="footer-copyright">© 2024 Proyecto ESI Venezuela. Todos los derechos reservados. La información aquí presentada tiene fines educativos e informativos y no sustituye el consejo médico o profesional especializado.</p>
+            <p class="footer-copyright">© 2025 Proyecto TESI Venezuela. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -1301,6 +1327,56 @@
                         window.scrollTo({ top: targetElement.offsetTop, behavior: 'smooth' });
                     }
                 });
+            });
+			
+			document.addEventListener('DOMContentLoaded', () => {
+        
+        const loader = document.getElementById('loader-wrapper');
+        window.addEventListener('load', () => {
+            if(loader) {
+                loader.classList.add('hidden');
+            }
+        });
+
+        if(document.getElementById('particles-js')){
+            particlesJS("particles-js", {
+                "particles": { "number": { "value": 60 }, "color": { "value": "#3B82F6" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#93C5FD", "opacity": 0.4 }, "move": { "enable": true, "speed": 2 } },
+                "interactivity": { "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "push" } }, "modes": { "bubble": { "distance": 250, "size": 5, "duration": 2, "opacity": 0.8 }, "push": { "particles_nb": 4 } } },
+                "retina_detect": true
+            });
+        }
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+
+        const dropdowns = document.querySelectorAll('.main-nav .dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768px) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('.causa-card.expandible').forEach(card => {
+            card.addEventListener('click', () => {
+                const info = card.querySelector('.causa-info');
+                if (info) {
+                    if (info.style.maxHeight && info.style.maxHeight !== '0px') {
+                        info.style.maxHeight = '0px';
+                        info.style.opacity = '0';
+                    } else {
+                        info.style.maxHeight = info.scrollHeight + 'px';
+                        info.style.opacity = '1';
+                    }
+                }
             });
         });
     </script>
