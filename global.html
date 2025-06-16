@@ -146,17 +146,6 @@
             .main-nav.active { display: block; }
             .main-nav ul { flex-direction: column; gap: 0; }
             .main-nav > ul > li > a { border-bottom: 1px solid #f0f0f0; border-radius: 0; padding: 1rem 1.5rem; justify-content: space-between; }
-            .dropdown-content { position: static; display: none; box-shadow: none; border-radius: 0; padding-left: 2.5rem; background-color: #fafafa; opacity: 1; visibility: visible; width: 100%; transition: none; }
-            .main-nav > ul > li.dropdown.active .dropdown-content { display: block; }
-            .main-nav > ul > li.dropdown:hover .dropdown-content { display: none; }
-            .menu-toggle { display: block; }
-        }
-        
-        @media (max-width: 768px) {
-            .main-nav { display: none; position: absolute; top: 75px; left: 0; width: 100%; background: var(--blanco); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-            .main-nav.active { display: block; }
-            .main-nav ul { flex-direction: column; gap: 0; }
-            .main-nav > ul > li > a { border-bottom: 1px solid #f0f0f0; border-radius: 0; padding: 1rem 1.5rem; justify-content: space-between; }
             .dropdown-content { position: static; display: none; box-shadow: none; border-radius: 0; padding-left: 2.5rem; background-color: #fafafa; opacity: 1; visibility: visible; width: 100%; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
             .main-nav > ul > li.dropdown.active .dropdown-content { display: block; max-height: 500px; /* Altura máxima para la transición */ }
             .main-nav > ul > li.dropdown:hover .dropdown-content { display: none; }
@@ -281,7 +270,7 @@
         .leyenda-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
         .leyenda-color { width: 16px; height: 16px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); }
         .contenedor-regiones { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-        .region-especial { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        /* Removed .region-especial as it was causing layout issues */
         .region, .comparativa-global {
             background: var(--fondo-tarjeta-translucido); padding: 1.5rem; border-radius: var(--border-radius-md);
             box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 4px solid; display: flex; flex-direction: column;
@@ -330,6 +319,63 @@
         .global-lista-nueva li:before { content: '✓'; position: absolute; left: 0; top: 50%; transform: translateY(-50%); color: var(--rojo-oms); font-weight: bold; }
         .fuente-dato { font-size: 0.75rem; text-align: center; opacity: 0.7; margin-top: 1rem; }
         
+        /* New section for Resources and Help */
+        .seccion-recursos {
+            background-color: var(--fondo-claro);
+        }
+        .recursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .recurso-card {
+            background: var(--fondo-tarjeta-translucido);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--sombra-media);
+            padding: 2rem;
+            text-align: center;
+            border-top: 5px solid var(--verde-oms);
+            transition: var(--transicion);
+        }
+        .recurso-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(22, 163, 74, 0.2);
+        }
+        .recurso-card .icono {
+            font-size: 3rem;
+            color: var(--verde-oms);
+            margin-bottom: 1rem;
+        }
+        .recurso-card h3 {
+            font-family: var(--font-principal);
+            color: var(--texto-oscuro);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .recurso-card p {
+            font-size: 0.95rem;
+            color: var(--texto-medio);
+            margin-bottom: 1.5rem;
+        }
+        .recurso-card .boton-recurso {
+            background: var(--verde-oms);
+            color: var(--blanco);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--font-principal);
+            transition: var(--transicion);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .recurso-card .boton-recurso:hover {
+            background: #15803d;
+            transform: translateY(-2px);
+        }
+
         /* --- FOOTER --- */
         .footer { background: var(--azul-oscuro); color: rgba(255,255,255,0.8); padding: 3.5rem 1.5rem 2rem; text-align: center; }
         .footer-logo { font-family: var(--font-principal); font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; color: var(--blanco); }
@@ -342,7 +388,7 @@
 
         /* --- RESPONSIVE GENERAL --- */
         @media (max-width: 768px) {
-            .grid-causas, .contenedor-regiones, .region-especial { grid-template-columns: 1fr; }
+            .grid-causas, .contenedor-regiones, .recursos-grid { grid-template-columns: 1fr; }
             .botones-accion { flex-direction: column; align-items: center; }
             .boton-global { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -375,6 +421,7 @@
                             <a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
                             <a href="#estadisticas"><i class="fas fa-chart-line"></i> Estadísticas</a>
                             <a href="#ambito-global"><i class="fas fa-globe"></i> Ámbito Global</a>
+                            <a href="#recursos-ayuda"><i class="fas fa-hands-helping"></i> Recursos y Ayuda</a>
                         </div>
                     </li>
                     <li><a href="nacional.html">Nacional</a></li>
@@ -395,6 +442,7 @@
                 <a href="#consecuencias" class="boton-global"><i class="fas fa-exclamation-triangle"></i> Ver Consecuencias</a>
                 <a href="#estadisticas" class="boton-global"><i class="fas fa-chart-line"></i> Estadísticas</a>
                 <a href="#ambito-global" class="boton-global"><i class="fas fa-globe"></i> Ámbito Global</a>
+                <a href="#recursos-ayuda" class="boton-global"><i class="fas fa-hands-helping"></i> Recursos y Ayuda</a>
             </nav>
         </div>
     </header>
@@ -636,18 +684,16 @@
                         <p class="ejemplo">Bangladesh: ~83</p>
                         <div class="factores"><div class="factores-titulo">Factores clave:</div><p>• Mejoras en educación femenina.<br>• Expansión de planificación familiar.<br>• Normas culturales aún presentes.</p></div>
                     </div>
-                    <div class="region-especial">
-                        <div class="region" id="region-europa">
-                            <h3 class="nombre-region"><i class="fa-solid fa-earth-europe"></i> Europa Occidental <span class="tendencia"><i class="fa-solid fa-arrow-down-long"></i> Baja</span></h3>
-                            <div class="tasa-container"><div class="tasa">~8</div> <div class="unidad">por 1,000</div></div>
-                            <p class="ejemplo">Suiza: ~4</p>
-                            <div class="factores"><div class="factores-titulo">Factores clave:</div><p>• Educación sexual integral.<br>• Acceso universal a salud.<br>• Políticas de igualdad de género.</p></div>
-                        </div>
-                        <div class="comparativa-global">
-                            <h4>Media Global Estimada</h4>
-                            <div class="media-global">~46 <span class="unidad" style="font-size:1.2rem;">por 1,000</span></div>
-                            <p>La tasa mundial ha disminuido, pero las disparidades regionales persisten y son alarmantes en muchas zonas.</p>
-                        </div>
+                    <div class="region" id="region-europa">
+                        <h3 class="nombre-region"><i class="fa-solid fa-earth-europe"></i> Europa Occidental <span class="tendencia"><i class="fa-solid fa-arrow-down-long"></i> Baja</span></h3>
+                        <div class="tasa-container"><div class="tasa">~8</div> <div class="unidad">por 1,000</div></div>
+                        <p class="ejemplo">Suiza: ~4</p>
+                        <div class="factores"><div class="factores-titulo">Factores clave:</div><p>• Educación sexual integral.<br>• Acceso universal a salud.<br>• Políticas de igualdad de género.</p></div>
+                    </div>
+                    <div class="comparativa-global">
+                        <h4>Media Global Estimada</h4>
+                        <div class="media-global">~46 <span class="unidad" style="font-size:1.2rem;">por 1,000</span></div>
+                        <p>La tasa mundial ha disminuido, pero las disparidades regionales persisten y son alarmantes en muchas zonas.</p>
                     </div>
                 </div>
             </div>
@@ -661,15 +707,15 @@
                     <div class="global-card-nueva">
                         <div class="global-header">
                             <div class="global-icono"><i class="fas fa-exclamation-triangle"></i></div>
-                            <h3 class="global-titulo-nuevo">Factores de Riesgo</h3>
+                            <h3 class="global-titulo-nuevo">Factores de Riesgo Clave</h3>
                         </div>
                         <div class="global-stat">3x</div>
                         <p class="global-descripcion">Más probabilidades de embarazo adolescente en zonas rurales y pobres frente a zonas urbanas ricas.</p>
                         <ul class="global-lista-nueva">
-                            <li><strong>Salud:</strong> Servicios de salud amigables para jóvenes con horarios flexibles y sin juicios.</li>
-                            <li><strong>Educación:</strong> Implementación de educación sexual obligatoria desde la primaria.</li>
-                            <li><strong>Comunidad:</strong> Programas que involucran a padres, líderes comunitarios y hombres.</li>
-                             <li><strong>Economía:</strong> Incentivos para que las niñas permanezcan en la escuela y tengan un plan de vida.</li>
+                            <li><strong>Educación limitada:</strong> Falta de educación sexual integral y acceso a la escuela.</li>
+                            <li><strong>Pobreza y desigualdad:</strong> Condiciones socioeconómicas precarias.</li>
+                            <li><strong>Acceso a salud:</strong> Barreras para obtener anticonceptivos y servicios.</li>
+                             <li><strong>Normas sociales:</strong> Presión para el matrimonio infantil o uniones tempranas.</li>
                         </ul>
                          <div class="fuente-dato">(Análisis de Datos Globales)</div>
                     </div>
@@ -689,17 +735,18 @@
                     </div>
                     <div class="global-card-nueva">
                         <div class="global-header">
-                            <div class="global-icono"><i class="fas fa-bullhorn"></i></div>
-                            <h3 class="global-titulo-nuevo">Recomendaciones</h3>
+                            <div class="global-icono"><i class="fas fa-lightbulb"></i></div>
+                            <h3 class="global-titulo-nuevo">Recomendaciones Clave</h3>
                         </div>
-                        <div class="global-stat">100%</div>
-                        <p class="global-descripcion">De los programas exitosos promueven la igualdad de género y el empoderamiento de las niñas como eje central.</p>
+                        <div class="global-stat">Prioridad</div>
+                        <p class="global-descripcion">Impulsar políticas públicas y programas que aborden de forma integral el problema.</p>
                         <ul class="global-lista-nueva">
-                            <li><strong>Acceso Universal:</strong> Garantizar que todos los adolescentes puedan acceder a información y anticonceptivos.</li>
-                            <li><strong>Empoderamiento:</strong> Fomentar la autonomía, la toma de decisiones y las habilidades para la vida de las niñas.</li>
-                            <li><strong>Inclusión Masculina:</strong> Involucrar a los hombres y niños como parte de la solución, promoviendo masculinidades positivas.</li>
+                            <li><strong>Fortalecer la ESI:</strong> Educación Sexual Integral adaptada a la edad y culturalmente relevante.</li>
+                            <li><strong>Servicios Amigables:</strong> Provisión de servicios de salud sexual y reproductiva para adolescentes, confidenciales y accesibles.</li>
+                            <li><strong>Romper barreras:</strong> Eliminar el matrimonio infantil y otras normas discriminatorias.</li>
+                             <li><strong>Inversión social:</strong> Promover el acceso a la educación y oportunidades económicas para jóvenes.</li>
                         </ul>
-                         <div class="fuente-dato">(Fuente: OMS/UNICEF)</div>
+                         <div class="fuente-dato">(Fuente: UNFPA/OMS)</div>
                     </div>
                     <div class="global-card-nueva">
                         <div class="global-header">
@@ -718,6 +765,40 @@
                 </div>
             </div>
         </section>
+
+        <section class="seccion seccion-recursos" id="recursos-ayuda">
+            <div class="container">
+                <h2 class="titulo-seccion">Recursos y Organizaciones de Apoyo Global</h2>
+                <p class="subtitulo-seccion">Organizaciones internacionales que trabajan en la prevención del embarazo adolescente y la promoción de la salud sexual y reproductiva.</p>
+                <div class="recursos-grid">
+                    <div class="recurso-card">
+                        <div class="icono"><i class="fas fa-globe"></i></div>
+                        <h3>UNFPA - Fondo de Población de las Naciones Unidas</h3>
+                        <p>Trabaja para un mundo donde cada embarazo sea deseado, cada nacimiento seguro y el potencial de cada joven se desarrolle.</p>
+                        <a href="https://www.unfpa.org/es" target="_blank" class="boton-recurso"><i class="fas fa-external-link-alt"></i> Visitar Sitio</a>
+                    </div>
+                    <div class="recurso-card">
+                        <div class="icono"><i class="fas fa-hospital"></i></div>
+                        <h3>OMS - Organización Mundial de la Salud</h3>
+                        <p>Lidera esfuerzos globales para mejorar la salud sexual y reproductiva, incluyendo la prevención del embarazo adolescente.</p>
+                        <a href="https://www.who.int/es/news-room/fact-sheets/detail/adolescent-pregnancy" target="_blank" class="boton-recurso"><i class="fas fa-external-link-alt"></i> Visitar Sitio</a>
+                    </div>
+                    <div class="recurso-card">
+                        <div class="icono"><i class="fas fa-child"></i></div>
+                        <h3>UNICEF - Fondo de las Naciones Unidas para la Infancia</h3>
+                        <p>Defiende los derechos de la infancia, incluyendo el derecho a la salud y educación, esenciales para prevenir el embarazo temprano.</p>
+                        <a href="https://www.unicef.org/es/salud/embarazo-adolescente" target="_blank" class="boton-recurso"><i class="fas fa-external-link-alt"></i> Visitar Sitio</a>
+                    </div>
+                    <div class="recurso-card">
+                        <div class="icono"><i class="fas fa-book"></i></div>
+                        <h3>UNESCO - Organización de las Naciones Unidas para la Educación</h3>
+                        <p>Promueve la educación sexual integral como un componente clave para el empoderamiento y la salud de los adolescentes.</p>
+                        <a href="https://www.unesco.org/es/themes/health-education/sexuality-education" target="_blank" class="boton-recurso"><i class="fas fa-external-link-alt"></i> Visitar Sitio</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer">
@@ -729,6 +810,7 @@
                 <li class="footer-link"><a href="#causas"><i class="fas fa-info-circle"></i> Causas</a></li>
                 <li class="footer-link"><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
 				<li class="footer-link"><a href="#estadisticas"><i class="fas fa-chart-bar"></i> Estadisticas</a></li>
+                <li class="footer-link"><a href="#recursos-ayuda"><i class="fas fa-hands-helping"></i> Recursos</a></li>
             </ul>
             <div class="creditos">
                 <p>Proyecto de investigación realizado por:</p>
