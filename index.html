@@ -3,178 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Información completa sobre la prevención del embarazo adolescente: causas, consecuencias, estadísticas y recursos de ayuda. Un proyecto de investigación.">
-    <title>Prevención del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
+    <meta name="description" content="Plataforma interactiva sobre prevención del embarazo adolescente con información confiable, métodos anticonceptivos, test de conocimientos, mitos y realidades, y recursos educativos.">
+    <title>Plataforma de Prevención del Embarazo Adolescente | Jhanbern Amaya </title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --azul-principal: #2563EB;
-            --azul-secundario: #3B82F6;
-            --azul-oscuro: #1E40AF;
-            --azul-claro: #93C5FD;
-            --fondo-claro: #F0F9FF;
+            --rojo-principal: #E63946;
+            --rojo-secundario: #F7808B;
+            --rojo-oscuro: #B52B35;
+            --fondo-claro: #FFF5F7;
             --blanco: #FFFFFF;
-            --texto-oscuro: #1E3A8A;
-            --texto-medio: #4B5563;
-            --rojo-oms: #DC2626;
-            --verde-oms: #16A34A;
-            --sombra-media: 0 8px 25px rgba(37, 99, 235, 0.15);
+            --texto-oscuro: #2D3748;
+            --texto-medio: #4A5568;
+            --verde-exito: #4CAF50;
+            --sombra-suave: 0 5px 15px rgba(181, 43, 53, 0.1);
+            --sombra-media: 0 8px 25px rgba(230, 57, 70, 0.15);
             --transicion: all 0.3s ease;
-            --border-radius-md: 15px;
-            --font-principal: 'Montserrat', sans-serif;
+            --border-radius-md: 12px;
+            --font-titulo: 'Montserrat', sans-serif;
             --font-texto: 'Open Sans', sans-serif;
-            --fondo-tarjeta-translucido: rgba(255, 255, 255, 0.95);
-            --africa: #E53E3E; 
-            --america: #DD6B20;
-            --asia: #38A169; 
-            --europa: #3182CE;
         }
 
-        .loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--fondo-claro); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.75s ease, visibility 0.75s ease; }
-        .loader-wrapper.hidden { opacity: 0; visibility: hidden; }
-        .loader { --path: #DBEAFE; --dot: var(--azul-principal); --duration: 2s; width: 50px; height: 50px; position: relative; }
-        .loader:before { content: ""; width: 8px; height: 8px; border-radius: 50%; position: absolute; display: block; background: var(--dot); top: 42px; left: 21px; transform: translate(-20px, -20px); animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite; }
-        .loader svg { display: block; width: 100%; height: 100%; }
-        .loader svg circle { fill: none; stroke: var(--path); stroke-width: 10px; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 150 50 150 50; stroke-dashoffset: 75; animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite; }
-        @keyframes pathCircle { 25% { stroke-dashoffset: 125; } 50% { stroke-dashoffset: 175; } 75% { stroke-dashoffset: 225; } 100% { stroke-dashoffset: 275; } }
-        @keyframes dotRect { 25% { transform: translate(0, 0); } 50% { transform: translate(20px, -20px); } 75% { transform: translate(0, -40px); } 100% { transform: translate(-20px, -20px); } }
+        /* === ESTILOS PARA LA PANTALLA DE CARGA === */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--fondo-claro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.75s ease, visibility 0.75s ease;
+        }
+        .loader-wrapper.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader {
+            --path: #ffdadf; /* Color de la ruta, un rosado muy claro */
+            --dot: var(--rojo-principal); /* El punto con el color principal */
+            --duration: 2s;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .loader:before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+            display: block;
+            background: var(--dot);
+            top: 42px;
+            left: 21px;
+            transform: translate(-20px, -20px);
+            animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        }
+        .loader svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .loader svg circle {
+            fill: none;
+            stroke: var(--path);
+            stroke-width: 10px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            stroke-dasharray: 150 50 150 50;
+            stroke-dashoffset: 75;
+            animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        }
+        @keyframes pathCircle {
+            25% { stroke-dashoffset: 125; }
+            50% { stroke-dashoffset: 175; }
+            75% { stroke-dashoffset: 225; }
+            100% { stroke-dashoffset: 275; }
+        }
+        @keyframes dotRect { /* Reutilizamos la animación del punto con otro nombre para claridad */
+            25% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+            75% { transform: translate(0, -40px); }
+            100% { transform: translate(-20px, -20px); }
+        }
+        /* === FIN DE ESTILOS DE CARGA === */
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { font-family: var(--font-texto); line-height: 1.6; color: var(--texto-medio); background-color: var(--fondo-claro); padding-top: 75px; }
-
-        .site-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 2px 15px rgba(0,0,0,0.1); height: 75px; display: flex; align-items: center; padding: 0 1.5rem; }
+        body {
+            font-family: var(--font-texto);
+            line-height: 1.6;
+            color: var(--texto-medio);
+            background-color: var(--fondo-claro);
+            padding-top: 75px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+        }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
         .site-logo img { height: 70px; width: auto; }
-        .main-nav ul { list-style: none; display: flex; align-items: center; gap: 0.5rem; padding: 0; margin: 0; }
+        
+        .main-nav { position: relative; }
+        .main-nav ul { list-style: none; display: flex; align-items: center; gap: 0.5rem; }
         .main-nav > ul > li { position: relative; }
-        .main-nav > ul > li > a { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; color: var(--texto-medio); font-weight: 600; transition: var(--transicion); }
-        .main-nav > ul > li > a:hover, .main-nav > ul > li > a.active { color: var(--azul-principal); background-color: var(--fondo-claro); }
+        .main-nav > ul > li > a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--texto-medio);
+            font-weight: 600;
+            transition: var(--transicion);
+        }
+        .main-nav > ul > li > a:hover, .main-nav > ul > li > a.active {
+            color: var(--rojo-principal);
+            background-color: var(--fondo-claro);
+        }
+        .main-nav > ul > li > a .fa-caret-down { transition: transform 0.3s ease; }
         .main-nav > ul > li.dropdown:hover > a .fa-caret-down { transform: rotate(180deg); }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: var(--blanco); box-shadow: var(--sombra-media); z-index: 100; min-width: 240px; padding: 0.5rem 0; border-radius: var(--border-radius-md); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
-        .main-nav > ul > li.dropdown:hover .dropdown-content { display: block; opacity: 1; visibility: visible; }
-        .dropdown-content a { display: flex; align-items: center; gap: 0.8rem; color: var(--texto-medio); padding: 0.8rem 1.5rem; text-decoration: none; font-weight: 500; transition: var(--transicion); }
-        .dropdown-content a:hover { background-color: var(--fondo-claro); color: var(--azul-principal); }
-        .dropdown-content i { width: 16px; text-align: center; color: var(--azul-secundario); }
-        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--azul-principal); cursor: pointer; z-index: 1001; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--blanco);
+            box-shadow: var(--sombra-media);
+            z-index: 100;
+            min-width: 240px; /* Aumentado para que quepa el texto nuevo */
+            padding: 0.5rem 0;
+            border-radius: var(--border-radius-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .main-nav > ul > li.dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--texto-medio);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            transition: var(--transicion);
+            font-weight: 500;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--fondo-claro);
+            color: var(--rojo-principal);
+        }
+        .dropdown-content i {
+            width: 16px;
+            text-align: center;
+            color: var(--rojo-secundario);
+        }
+
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--rojo-principal); cursor: pointer; z-index: 1001; }
         
         @media (max-width: 768px) {
-            .main-nav { display: none; position: absolute; top: 75px; left: 0; width: 100%; background: var(--blanco); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: var(--blanco);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            }
             .main-nav.active { display: block; }
             .main-nav ul { flex-direction: column; gap: 0; }
-            .main-nav > ul > li { width: 100%; }
-            .main-nav > ul > li > a { border-bottom: 1px solid #f0f0f0; border-radius: 0; padding: 1rem 1.5rem; justify-content: space-between; }
-            .dropdown-content { position: static; display: none; box-shadow: none; border-radius: 0; padding-left: 2.5rem; background-color: #fafafa; opacity: 1; visibility: visible; width: 100%; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-            .main-nav > ul > li.dropdown.active .dropdown-content { display: block; max-height: 500px; }
+            .main-nav > ul > li > a {
+                border-bottom: 1px solid #f0f0f0;
+                border-radius: 0;
+                padding: 1rem 1.5rem;
+                justify-content: space-between;
+            }
+            .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding-left: 2.5rem;
+                background-color: #fafafa;
+                opacity: 1;
+                visibility: visible;
+                min-width: unset;
+                transition: none;
+            }
+            .main-nav > ul > li.dropdown.active .dropdown-content { display: block; }
             .main-nav > ul > li.dropdown:hover .dropdown-content { display: none; }
             .menu-toggle { display: block; }
         }
 
-        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
-        .portada-global { background: transparent; color: var(--texto-oscuro); min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; position: relative; overflow: hidden; }
-        .portada-contenido { position: relative; z-index: 1; width: 100%; max-width: 1200px; padding: 0 1rem; }
-        .portada-global h1 { font-family: var(--font-principal); font-weight: 800; font-size: clamp(2rem, 6vw, 3.5rem); color: var(--azul-principal); line-height: 1.2; text-transform: uppercase; letter-spacing: -0.5px; margin: 0 auto; }
-        .portada-global p { font-size: clamp(1rem, 2.5vw, 1.2rem); max-width: 700px; margin: 1.2rem auto 2rem auto; color: var(--texto-oscuro); }
-        .botones-accion { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; width: 100%; }
-        .boton-global { background: var(--azul-principal); color: var(--blanco) !important; padding: 0.8rem 1.8rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-family: var(--font-principal); transition: var(--transicion); display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--sombra-media); font-size: 0.95rem; border: 2px solid var(--azul-claro); }
-        .boton-global:hover { transform: translateY(-3px); background: var(--azul-oscuro); box-shadow: 0 12px 20px rgba(37, 99, 235, 0.25); }
-        .decoracion-global { width: 80px; height: 3px; background: linear-gradient(90deg, var(--azul-principal), var(--azul-secundario)); margin: 1.5rem auto; border-radius: 2px; animation: flotar 3s ease-in-out infinite; }
-        @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .portada-global { color: var(--texto-oscuro); min-height: calc(100vh - 75px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem 1rem; position: relative; overflow: hidden; }
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
+        .portada-contenido { position: relative; z-index: 1; }
+        .portada-global h1 { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2.5rem, 6vw, 4rem); color: var(--rojo-principal); text-transform: uppercase; }
+        .portada-global p { font-size: clamp(1rem, 2.5vw, 1.25rem); max-width: 700px; margin: 1.5rem auto 2.5rem auto; }
+        .boton-principal { background: var(--rojo-principal); color: var(--blanco); padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-family: var(--font-titulo); transition: var(--transicion); box-shadow: var(--sombra-media); }
+        .boton-principal:hover { background: var(--rojo-oscuro); transform: translateY(-3px); }
 
-        .seccion { padding: 4rem 1.5rem; position: relative; background: transparent; }
-        .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-        .titulo-seccion { font-family: var(--font-principal); font-weight: 800; font-size: clamp(1.8rem, 5vw, 2.5rem); color: var(--azul-principal); text-align: center; margin-bottom: 1rem; }
-        .subtitulo-seccion { text-align: center; font-size: clamp(0.95rem, 2.5vw, 1.1rem); max-width: 800px; margin: 0 auto 3rem auto; color: var(--texto-medio); }
-        .info-cards-wrapper { display: flex; flex-wrap: wrap; gap: 2rem; align-items: stretch; margin-bottom: 2rem; }
-        .definicion-oms, .destacado-estadistica { background: var(--fondo-tarjeta-translucido); padding: 2rem; border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); border-left: 5px solid var(--azul-principal); display: flex; flex-direction: column; flex: 1 1 300px; }
-        .definicion-oms h3 { font-family: var(--font-principal); color: var(--azul-principal); font-size: 1.6rem; margin-bottom: 1rem; }
-        .destacado-estadistica { text-align: center; background-color: var(--azul-principal); color: var(--blanco); border-left: 5px solid var(--azul-oscuro); justify-content: center; }
-        .numero-destacado { font-family: var(--font-principal); font-size: clamp(2.8rem, 8vw, 4.5rem); font-weight: 700; line-height: 1; margin-bottom: 0.5rem; }
-        .grid-causas { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-        .causa-card { background: var(--fondo-tarjeta-translucido); border-radius: var(--border-radius-md); padding: 25px; box-shadow: var(--sombra-media); border: 1px solid rgba(0,0,0,0.08); transition: var(--transicion); overflow: hidden; position: relative; display: flex; flex-direction: column; }
-        .causa-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2); }
-        .causa-badge { background: var(--azul-principal); color: var(--blanco); padding: 8px 18px; border-radius: 25px; font-weight: bold; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; text-transform: uppercase; align-self: flex-start; }
-        .consecuencias-badge { background: var(--rojo-oms); }
-        .causa-titulo { color: var(--texto-oscuro); font-family: var(--font-principal); font-size: 1.35em; margin: 0 0 10px; font-weight: 700; }
-        .consecuencias-titulo { color: var(--rojo-oms); }
-        .causa-descripcion { color: var(--texto-medio); line-height: 1.6; font-size: 0.95em; margin-bottom: 15px; }
-        .causa-card.expandible { cursor: pointer; }
-        .causa-info { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s ease; border-top: 2px solid transparent; margin-top: 0; padding-top: 0; }
-        .causa-card.active .causa-info { max-height: 500px; opacity: 1; margin-top: 20px; padding-top: 20px; }
-        .causa-card.active .causa-info.consecuencias-info { border-top-color: var(--rojo-oms); }
-        .causa-card.active .causa-info.causas-info { border-top-color: var(--azul-principal); }
-        .causa-lista { padding-left: 20px; margin: 15px 0; list-style: none; }
-        .causa-lista li { margin: 10px 0; position: relative; padding-left: 25px; color: var(--texto-medio); font-size: 0.9em; }
-        .causa-lista li::before { content: "•"; color: var(--azul-principal); position: absolute; left: 0; font-weight: bold; font-size: 1.4em; line-height: 1; }
-        .consecuencias-lista li::before { color: var(--rojo-oms); }
-        .causa-dato { background: rgba(37, 99, 235, 0.05); padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid var(--azul-principal); font-size: 0.9em; color: var(--azul-oscuro); }
-        .consecuencias-dato { background: rgba(220, 38, 38, 0.05); border-left-color: var(--rojo-oms); color: var(--rojo-oms); }
-        .icono-causa { position: absolute; bottom: 20px; right: 20px; background: var(--azul-principal); color: var(--blanco); width: 45px; height: 45px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.3em; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); transition: var(--transicion); }
-        .icono-consecuencia { background: var(--rojo-oms); box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2); }
-        .mapa-container { max-width: 800px; margin: 0 auto 2rem; text-align: center; }
-        .mapa-img { max-width: 100%; height: auto; border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); }
-        .mapa-leyenda { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
-        .leyenda-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
-        .leyenda-color { width: 16px; height: 16px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); }
-        .contenedor-regiones { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-        .region, .comparativa-global { background: var(--fondo-tarjeta-translucido); padding: 1.5rem; border-radius: var(--border-radius-md); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 4px solid; display: flex; flex-direction: column; }
-        #region-africa { border-top-color: var(--africa); } #region-america { border-top-color: var(--america); } #region-asia { border-top-color: var(--asia); } #region-europa { border-top-color: var(--europa); }
-        .nombre-region { font-family: var(--font-principal); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.4rem; display: flex; align-items: center; justify-content: space-between; }
-        .tasa { font-size: 2.2rem; font-weight: 700; line-height: 1; } .unidad { font-size: 0.9rem; opacity: 0.9; }
-        .ejemplo { font-size: 0.9rem; font-style: italic; margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
-        .ejemplo::before { content: "→"; position: absolute; left: 0; }
-        .factores { background: rgba(0, 0, 0, 0.02); padding: 1rem; border-radius: 8px; margin-top: auto; border-left: 3px solid; }
-        #region-africa .factores { border-left-color: var(--africa); } #region-america .factores { border-left-color: var(--america); } #region-asia .factores { border-left-color: var(--asia); } #region-europa .factores { border-left-color: var(--europa); }
-        .factores-titulo { font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .tendencia { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; padding: 0.3rem 0.7rem; border-radius: 25px; font-weight: 600; }
-        #region-africa .tendencia { background: rgba(229, 62, 62, 0.1); color: var(--africa); } #region-america .tendencia { background: rgba(221, 107, 32, 0.1); color: var(--america); } #region-asia .tendencia { background: rgba(56, 161, 105, 0.1); color: var(--asia); } #region-europa .tendencia { background: rgba(49, 130, 206, 0.1); color: var(--europa); }
-        .comparativa-global { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(255,255,255,0)); border: 1px solid var(--azul-claro); text-align: center; }
-        .comparativa-global h4 { font-family: var(--font-principal); font-size: 1.3rem; margin-bottom: 0.8rem; text-transform: uppercase; }
-        .media-global { font-size: 2.5rem; font-weight: 700; margin: 0.5rem 0; }
-        #ambito-global .titulo-seccion { color: var(--azul-principal); }
-        .grid-global-reimaginado { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; margin-top: 1rem; }
-        .global-card-nueva { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; border-left: 5px solid var(--rojo-oms); transition: var(--transicion); background-color: var(--fondo-tarjeta-translucido); border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); }
-        .global-card-nueva:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(91, 33, 182, 0.2); background-color: var(--blanco); }
-        .global-header { display: flex; flex-direction: column; gap: 0.5rem; text-align: center; }
-        .global-icono { font-size: 2.5rem; color: var(--rojo-oms); margin-bottom: 0.5rem; }
-        .global-titulo-nuevo { font-family: var(--font-principal); font-size: 1.4rem; font-weight: 700; color: var(--rojo-oms); }
-        .global-stat { font-family: var(--font-principal); font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; color: var(--rojo-oms); line-height: 1; text-align: center; margin: 0.5rem 0; }
-        .global-descripcion { font-size: 1rem; color: var(--texto-medio); text-align: center; margin-bottom: 1rem; min-height: 60px; }
-        .global-lista-nueva { list-style: none; padding: 0; margin-top: auto; }
-        .global-lista-nueva li { font-size: 1rem; padding: 0.5rem 0 0.5rem 25px; position: relative; border-top: 1px solid rgba(0,0,0,0.05); }
-        .global-lista-nueva li:before { content: '✓'; position: absolute; left: 0; top: 50%; transform: translateY(-50%); color: var(--rojo-oms); font-weight: bold; }
-        .fuente-dato { font-size: 0.75rem; text-align: center; opacity: 0.7; margin-top: 1rem; }
-        .recursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .recurso-card { background: var(--fondo-tarjeta-translucido); border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); padding: 2rem; text-align: center; border-top: 5px solid var(--verde-oms); transition: var(--transicion); }
-        .recurso-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(22, 163, 74, 0.2); }
-        .recurso-card .icono { font-size: 3rem; color: var(--verde-oms); margin-bottom: 1rem; }
-        .recurso-card h3 { font-family: var(--font-principal); color: var(--texto-oscuro); font-size: 1.5rem; margin-bottom: 0.8rem; }
-        .recurso-card p { font-size: 0.95rem; color: var(--texto-medio); margin-bottom: 1.5rem; }
-        .recurso-card .boton-recurso { background: var(--verde-oms); color: var(--blanco); padding: 0.7rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-family: var(--font-principal); transition: var(--transicion); display: inline-flex; align-items: center; gap: 0.5rem; }
-        .recurso-card .boton-recurso:hover { background: #15803d; transform: translateY(-2px); }
-        .footer { background: var(--azul-oscuro); color: rgba(255,255,255,0.8); padding: 3.5rem 1.5rem 2rem; text-align: center; }
-        .footer-logo { font-family: var(--font-principal); font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; color: var(--blanco); }
-        .footer-text { max-width: 600px; margin: 0 auto 2rem; }
-        .footer-links { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; gap: 1rem 1.5rem; margin-bottom: 2rem; padding: 0; }
-        .footer-link a { color: var(--blanco); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: var(--transicion); }
-        .footer-link a:hover { color: var(--azul-claro); }
-        .creditos { margin: 2rem auto; padding: 1.5rem; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; }
+        .seccion { padding: 5rem 1rem; }
+        .seccion-blanca { background-color: var(--blanco); }
+        .titulo-seccion { font-family: var(--font-titulo); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--rojo-principal); text-align: center; margin-bottom: 1rem; }
+        .subtitulo-seccion { text-align: center; font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 800px; margin: 0 auto 3rem auto; }
+        .decoracion-linea { width: 100px; height: 4px; background: linear-gradient(90deg, var(--rojo-principal), var(--rojo-secundario)); margin: 0 auto 3rem; border-radius: 2px; }
+
+        .grid-cards, .consecuencias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card, .card-consecuencia { background: var(--blanco); border-radius: var(--border-radius-md); transition: var(--transicion); box-shadow: var(--sombra-suave); }
+        .card { padding: 2.5rem 2rem; text-align: center; border-top: 5px solid transparent; }
+        .card:hover { transform: translateY(-8px); box-shadow: var(--sombra-media); border-top-color: var(--rojo-principal); }
+        .card .icono-fa { font-size: 3.5rem; margin-bottom: 1.5rem; color: var(--rojo-principal); }
+        .card h3 { font-family: var(--font-titulo); color: var(--rojo-oscuro); font-size: 1.3rem; margin-bottom: 1rem; }
+        
+        .stat-numero { font-family: var(--font-titulo); font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 800; color: var(--rojo-principal); }
+        .stat-texto { font-weight: 600; color: var(--texto-oscuro); }
+        
+        .card-consecuencia { padding: 2rem; border-left: 5px solid var(--rojo-principal); }
+        .card-consecuencia h3 { font-family: var(--font-titulo); font-size: 1.5rem; color: var(--rojo-principal); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .card-consecuencia h3 .icono-fa { font-size: 1.5rem; margin: 0; }
+        .card-consecuencia ul { list-style: none; padding-left: 0; }
+        .card-consecuencia li { position: relative; padding-left: 25px; margin-bottom: 0.5rem; }
+        .card-consecuencia li::before { content: '›'; position: absolute; left: 0; font-weight: 800; color: var(--rojo-secundario); font-size: 1.5rem; line-height: 1; }
+
+        .acordeon-container { max-width: 800px; margin: auto; }
+        .acordeon-item { background: var(--blanco); margin-bottom: 1rem; border-radius: var(--border-radius-md); box-shadow: var(--sombra-suave); overflow: hidden; }
+        .acordeon-header { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transicion); }
+        .acordeon-header:hover { background-color: #fff9fa; }
+        .acordeon-item.active .acordeon-header { background-color: var(--rojo-principal); color: var(--blanco); }
+        .acordeon-title { font-family: var(--font-titulo); font-weight: 700; display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; }
+        .acordeon-item.active .acordeon-title, .acordeon-item.active .acordeon-icon { color: var(--blanco); }
+        .acordeon-icon { transition: transform 0.3s ease; }
+        .acordeon-item.active .acordeon-icon { transform: rotate(180deg); }
+        .acordeon-contenido { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
+        .acordeon-contenido-inner { padding: 0 1.5rem 1.5rem 1.5rem; border-top: 1px solid #eee; }
+
+        .carrusel-container { position: relative; max-width: 900px; margin: auto; overflow: hidden; border-radius: var(--border-radius-md); box-shadow: var(--sombra-media); }
+        .carrusel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; background: var(--blanco); }
+        .col-mito h3, .col-realidad h3 { font-family: var(--font-titulo); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .col-mito h3 { color: var(--rojo-oscuro); }
+        .col-realidad h3 { color: var(--verde-exito); }
+        .carrusel-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.9); border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; cursor: pointer; color: var(--rojo-principal); box-shadow: var(--sombra-suave); z-index: 10; transition: var(--transicion); }
+        .carrusel-btn:hover { background-color: var(--rojo-principal); color: var(--blanco); }
+        .carrusel-btn.prev { left: 15px; }
+        .carrusel-btn.next { right: 15px; }
+        @media (max-width: 600px) { .slide { grid-template-columns: 1fr; } }
+        
+        .calculadora-container {
+            background: var(--blanco);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--sombra-media);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .calculadora-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .calculadora-header h3 {
+            font-family: var(--font-titulo);
+            color: var(--rojo-oscuro);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .calculadora-header p {
+            font-size: 1rem;
+            color: var(--texto-medio);
+        }
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .input-wrapper label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--rojo-oscuro);
+            display: block;
+        }
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 52px;
+            color: var(--rojo-secundario);
+        }
+        .input-wrapper input {
+            width: 100%;
+            padding: 0.9rem 0.9rem 0.9rem 45px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-texto);
+            transition: border-color 0.3s ease;
+        }
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--rojo-principal);
+        }
+        .boton-calcular {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: var(--rojo-principal);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transicion);
+            width: 100%;
+        }
+        .boton-calcular:hover {
+            background-color: var(--rojo-oscuro);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-media);
+        }
+        .resultado-calculadora {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .resultado-calculadora.visible {
+            display: block;
+            opacity: 1;
+        }
+        .resultado-item {
+            background: var(--fondo-claro);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .resultado-item:first-child {
+            margin-bottom: 1rem;
+        }
+        .resultado-item .icono-resultado {
+            font-size: 2rem;
+            color: var(--rojo-principal);
+        }
+        .resultado-item .texto-resultado strong {
+            display: block;
+            font-family: var(--font-titulo);
+            font-size: 1.1rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 0.2rem;
+        }
+        .resultado-item .texto-resultado span {
+            font-size: 1rem;
+            color: var(--texto-medio);
+        }
+
+        .footer { background-color: var(--rojo-principal); color: rgba(255,255,255,0.8); padding: 3.5rem 1.5rem 2rem; text-align: center; }
+        .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; color: var(--blanco); }
+        .footer-text { color: var(--blanco); max-width: 600px; margin: 0 auto 2rem; }
+        .creditos { margin: 2rem auto; padding: 1.5rem; background-color: rgba(0, 0, 0, 0.15); border-radius: 8px; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
 
-        @media (max-width: 768px) {
-            .grid-causas, .contenedor-regiones, .recursos-grid, .grid-global-reimaginado { grid-template-columns: 1fr; }
-            .botones-accion { flex-direction: column; align-items: center; }
-            .boton-global { width: 100%; max-width: 280px; justify-content: center; }
-            .comparativa-global { grid-column: auto; }
+        /* === NUEVOS ESTILOS AÑADIDOS === */
+        .advertencia-calculadora {
+            max-width: 550px; /* Mismo ancho que la calculadora */
+            margin: 0 auto 2rem auto;
+            padding: 1rem 1.5rem;
+            background-color: #FFF8E1; /* Un amarillo pálido y suave */
+            border-left: 5px solid #FBC02D; /* Un borde de acento amarillo */
+            color: #5D4037;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--sombra-suave);
         }
+        .advertencia-calculadora .fa-exclamation-triangle {
+            font-size: 1.8rem;
+            color: #FBC02D;
+        }
+        .advertencia-calculadora p {
+            margin: 0;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
     </style>
 </head>
 <body>
+
     <div class="loader-wrapper" id="loader-wrapper">
         <div class="loader">
             <svg viewBox="0 0 80 80">
@@ -182,137 +428,66 @@
             </svg>
         </div>
     </div>
-    
+
     <header class="site-header">
         <div class="nav-container">
-            <a href="index.html" class="site-logo">
-                <img src="https://i.ibb.co/qMJ7jy75/40910245-s-mbolo-de-la-mujer-embarazada-dibujo-vectorial-estilizada-Foto-de-archivo-1.png" alt="Logo Prevención Embarazo Adolescente">
+            <a href="#inicio" class="site-logo">
+                <img src="https://i.ibb.co/svrXCpXD/azul-oscuro-1.png" alt="azul-oscuro-1" border="0"></a>
             </a>
             <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="main-nav" id="main-nav">
                 <ul>
-                    <li><a href="index.html">General</a></li>
                     <li class="dropdown">
-                        <a href="global.html" class="active">Global <i class="fas fa-caret-down"></i></a>
+                        <a href="#inicio" class="active">Inicio <i class="fas fa-caret-down"></i></a>
                         <div class="dropdown-content">
-                            <a href="#causas"><i class="fas fa-info-circle"></i> Causas</a>
+                            <a href="#por-que-prevenir"><i class="fas fa-shield-alt"></i> Prevenir</a>
                             <a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a>
-                            <a href="#estadisticas"><i class="fas fa-chart-line"></i> Estadísticas</a>
-                            <a href="#ambito-global"><i class="fas fa-globe"></i> Ámbito Global</a>
-                            <a href="#recursos-ayuda"><i class="fas fa-hands-helping"></i> Recursos y Ayuda</a>
+                            <a href="#its"><i class="fas fa-viruses"></i> Prevención de ITS</a>
+                            <a href="#consentimiento"><i class="fas fa-handshake"></i> El Consentimiento</a>
+                            <a href="#metodos-anticonceptivos"><i class="fas fa-pills"></i> Métodos</a>
+                            <a href="#mitos"><i class="fas fa-comment-slash"></i> Mitos</a>
+                            <a href="#calculadora"><i class="fas fa-calculator"></i> Calculadora</a>
                         </div>
                     </li>
+                    <li><a href="global.html">Global</a></li>
                     <li><a href="nacional.html">Nacional</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div id="particles-js"></div>
-
-    <header class="portada-global" id="inicio">
-        <div class="portada-contenido">
-            <h1>Prevención global del Embarazo Adolescente</h1>
-            <div class="decoracion-global"></div>
-            <p>Información verificada y recursos esenciales para una toma de decisiones informada sobre tu salud sexual y reproductiva.</p>
-            <nav class="botones-accion">
-                <a href="#causas" class="boton-global"><i class="fas fa-info-circle"></i> Conocer Causas</a>
-                <a href="#consecuencias" class="boton-global"><i class="fas fa-exclamation-triangle"></i> Ver Consecuencias</a>
-                <a href="#recursos-ayuda" class="boton-global"><i class="fas fa-hands-helping"></i> Buscar Ayuda</a>
-            </nav>
-        </div>
-    </header>
-
     <main>
-        <section class="seccion">
-            <div class="container">
-                <div class="info-cards-wrapper">
-                    <div class="definicion-oms">
-                        <h3>Según la OMS:</h3>
-                        <p>El embarazo adolescente es aquel que ocurre entre los 10 y 19 años, considerado de alto riesgo por sus implicaciones en la salud, educación y oportunidades futuras de las jóvenes.</p>
-                    </div>
-                    <div class="destacado-estadistica">
-                        <div class="numero-destacado">21 Millones</div>
-                        <p>de embarazos anuales en adolescentes (15-19 años) ocurren en países en desarrollo.</p>
-                    </div>
-                </div>
+        <div id="particles-js"></div>
+        <header class="portada-global" id="inicio">
+            <div class="portada-contenido">
+                <h1>Decide tu Futuro: Prevención del Embarazo Adolescente</h1>
+                <p>Una plataforma con información clara, moderna y sin prejuicios para que tomes el control de tu vida y tus decisiones.</p>
+                <a href="#por-que-prevenir" class="boton-principal">Comienza a Explorar</a>
             </div>
-        </section>
+        </header>
 
-        <section class="seccion" id="causas">
+        <section class="seccion" id="por-que-prevenir">
             <div class="container">
-                <h2 class="titulo-seccion">Principales Causas</h2>
-                <p class="subtitulo-seccion">Factores que contribuyen al embarazo adolescente. Haz clic para expandir.</p>
-                <div class="grid-causas">
-                    <div class="causa-card expandible">
-                        <div class="icono-causa"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <span class="causa-badge">Educación</span>
-                        <h3 class="causa-titulo">Falta de Educación Integral</h3>
-                        <p class="causa-descripcion">Programas educativos incompletos sobre salud sexual y reproductiva.</p>
-                        <div class="causa-info causas-info">
-                            <div class="causa-dato"><strong>UNESCO:</strong> Un alto porcentaje no recibe educación sexual formal.</div>
-                            <ul class="causa-lista"><li>Escasa información sobre anticonceptivos.</li><li>Mitos y desinformación.</li></ul>
-                        </div>
+                <h2 class="titulo-seccion">¿Por Qué es Crucial Prevenir?</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">La prevención va más allá de evitar un embarazo. Se trata de proteger tus sueños, tu salud y tus oportunidades para un futuro brillante.</p>
+                <div class="grid-cards">
+                    <div class="card">
+                        <i class="fas fa-book-open icono-fa"></i>
+                        <h3>Protege tu Educación</h3>
+                        <p>Un embarazo a temprana edad es una de las principales causas de deserción escolar. Continuar tus estudios te abre las puertas a mejores empleos y a la capacidad de cumplir tus metas.</p>
                     </div>
-                    <div class="causa-card expandible">
-                        <div class="icono-causa"><i class="fa-solid fa-pills"></i></div>
-                        <span class="causa-badge">Acceso</span>
-                        <h3 class="causa-titulo">Acceso Limitado a Anticonceptivos</h3>
-                        <p class="causa-descripcion">Barreras económicas, geográficas y culturales.</p>
-                         <div class="causa-info causas-info">
-                            <div class="causa-dato"><strong>Guttmacher Institute:</strong> Millones con necesidades insatisfechas de anticoncepción.</div>
-                            <ul class="causa-lista"><li>Costos prohibitivos.</li><li>Estigma social.</li></ul>
-                        </div>
+                    <div class="card">
+                        <i class="fas fa-heart-pulse icono-fa"></i>
+                        <h3>Cuida tu Salud Integral</h3>
+                        <p>Tu cuerpo aún se está desarrollando y un embarazo adolescente conlleva mayores riesgos. Cuidarte ahora te asegura un bienestar a largo plazo para disfrutar tu vida al máximo.</p>
                     </div>
-                     <div class="causa-card expandible">
-                        <div class="icono-causa"><i class="fa-solid fa-people-group"></i></div>
-                        <span class="causa-badge">Social</span>
-                        <h3 class="causa-titulo">Presión Social y Cultural</h3>
-                        <p class="causa-descripcion">Influencia de normas y desigualdad de género.</p>
-                         <div class="causa-info causas-info">
-                            <ul class="causa-lista"><li>Matrimonio infantil.</li><li>Normalización de la maternidad temprana.</li></ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="seccion" id="consecuencias">
-            <div class="container">
-                <h2 class="titulo-seccion">Principales Consecuencias</h2>
-                <p class="subtitulo-seccion">Impactos negativos en la salud, educación y desarrollo.</p>
-                <div class="grid-causas">
-                    <div class="causa-card expandible">
-                        <div class="icono-causa icono-consecuencia"><i class="fa-solid fa-heart-pulse"></i></div>
-                        <span class="causa-badge consecuencias-badge">Salud</span>
-                        <h3 class="causa-titulo consecuencias-titulo">Riesgos Médicos Graves</h3>
-                        <p class="causa-descripcion">Mayor riesgo de complicaciones en el embarazo y parto.</p>
-                        <div class="causa-info consecuencias-info">
-                            <div class="causa-dato consecuencias-dato"><strong>OMS:</strong> Principal causa de muerte en adolescentes de 15 a 19 años.</div>
-                            <ul class="causa-lista consecuencias-lista"><li>Preeclampsia y anemia.</li><li>Parto prematuro.</li></ul>
-                        </div>
-                    </div>
-                     <div class="causa-card expandible">
-                        <div class="icono-causa icono-consecuencia"><i class="fa-solid fa-book-open-reader"></i></div>
-                        <span class="causa-badge consecuencias-badge">Educación</span>
-                        <h3 class="causa-titulo consecuencias-titulo">Abandono Escolar</h3>
-                        <p class="causa-descripcion">Interrupción de la trayectoria educativa.</p>
-                        <div class="causa-info consecuencias-info">
-                            <div class="causa-dato consecuencias-dato"><strong>UNICEF:</strong> Principal razón de abandono escolar en niñas.</div>
-                            <ul class="causa-lista consecuencias-lista"><li>Menos oportunidades laborales.</li><li>Mayor dependencia económica.</li></ul>
-                        </div>
-                    </div>
-                     <div class="causa-card expandible">
-                        <div class="icono-causa icono-consecuencia"><i class="fa-solid fa-sack-dollar"></i></div>
-                        <span class="causa-badge consecuencias-badge">Económicas</span>
-                        <h3 class="causa-titulo consecuencias-titulo">Impacto Económico</h3>
-                        <p class="causa-descripcion">Reducción del potencial económico, perpetuando la pobreza.</p>
-                        <div class="causa-info consecuencias-info">
-                            <div class="causa-dato consecuencias-dato"><strong>Banco Mundial:</strong> Alto costo para individuos y países.</div>
-                            <ul class="causa-lista consecuencias-lista"><li>Menores ingresos a lo largo de la vida.</li><li>Incremento de gastos en salud.</li></ul>
-                        </div>
+                    <div class="card">
+                        <i class="fas fa-rocket icono-fa"></i>
+                        <h3>Alcanza tus Metas</h3>
+                        <p>Tienes toda una vida para explorar tus pasiones y crecer. La prevención te da el tiempo y la libertad para descubrir quién eres y construir la vida que realmente deseas, sin apuros.</p>
                     </div>
                 </div>
             </div>
@@ -320,96 +495,213 @@
 
         <section class="seccion" id="estadisticas">
             <div class="container">
-                <h2 class="titulo-seccion">Panorama Mundial</h2>
-                <p class="subtitulo-seccion">Tasas por cada 1,000 mujeres de 15 a 19 años (Fuente: OMS, UNFPA).</p>
-                <div class="mapa-container">
-                    <img src="https://i.ibb.co/ycT9WmkP/world-2.png" alt="Mapa mundial de tasas de embarazo adolescente" class="mapa-img">
-                    <div class="mapa-leyenda">
-                        <div class="leyenda-item"><span class="leyenda-color" style="background: var(--africa);"></span> África (100+)</div>
-                        <div class="leyenda-item"><span class="leyenda-color" style="background: var(--america);"></span> América Latina (60-99)</div>
-                        <div class="leyenda-item"><span class="leyenda-color" style="background: var(--asia);"></span> Asia Meridional (30-59)</div>
-                        <div class="leyenda-item"><span class="leyenda-color" style="background: var(--europa);"></span> Europa (&lt;30)</div>
+                <h2 class="titulo-seccion">La Prevención en Números</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Las estadísticas muestran por qué la información y el acceso a métodos preventivos son tan importantes a nivel global.</p>
+                <div class="grid-cards">
+                    <div class="card stat-item">
+                        <div class="stat-numero" data-target="98">0</div>
+                        <div class="stat-texto">% de eficacia del condón si se usa correctamente</div>
                     </div>
-                </div>
-                <div class="contenedor-regiones">
-                    <div class="region" id="region-africa"><h3 class="nombre-region"><i class="fa-solid fa-earth-africa"></i> África Subsahariana <span class="tendencia">Alta</span></h3><div class="tasa">~115</div><p class="ejemplo">Níger: ~175</p></div>
-                    <div class="region" id="region-america"><h3 class="nombre-region"><i class="fa-solid fa-earth-americas"></i> América Latina <span class="tendencia">Estancada</span></h3><div class="tasa">~62</div><p class="ejemplo">Rep. Dominicana: ~90</p></div>
-                    <div class="region" id="region-asia"><h3 class="nombre-region"><i class="fa-solid fa-earth-asia"></i> Asia Meridional <span class="tendencia">En Descenso</span></h3><div class="tasa">~45</div><p class="ejemplo">Bangladesh: ~83</p></div>
-                    <div class="region" id="region-europa"><h3 class="nombre-region"><i class="fa-solid fa-earth-europe"></i> Europa <span class="tendencia">Baja</span></h3><div class="tasa">~8</div><p class="ejemplo">Suiza: ~4</p></div>
-                    <div class="comparativa-global"><h4 class="nombre-region">Media Global</h4><div class="media-global">~46</div></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="seccion" id="ambito-global">
-            <div class="container">
-                <h2 class="titulo-seccion">Contexto y Estrategias Globales</h2>
-                <p class="subtitulo-seccion">Soluciones globales respaldadas por datos y marcos de acción.</p>
-                <div class="grid-global-reimaginado">
-                    <div class="global-card-nueva">
-                        <div class="global-header"><div class="global-icono"><i class="fas fa-exclamation-triangle"></i></div><h3 class="global-titulo-nuevo">Factores de Riesgo Clave</h3></div>
-                        <div class="global-stat">3x</div><p class="global-descripcion">Más probabilidades en zonas rurales y pobres.</p>
-                        <ul class="global-lista-nueva"><li>Educación limitada</li><li>Pobreza y desigualdad</li><li>Falta de acceso a salud</li></ul>
+                    <div class="card stat-item">
+                        <div class="stat-numero" data-target="85">0</div>
+                        <div class="stat-texto">% de embarazos no planificados prevenibles con educación sexual</div>
                     </div>
-                    <div class="global-card-nueva">
-                        <div class="global-header"><div class="global-icono"><i class="fas fa-check-circle"></i></div><h3 class="global-titulo-nuevo">Estrategias Exitosas</h3></div>
-                        <div class="global-stat">-30%</div><p class="global-descripcion">Programas que promueven la igualdad de género.</p>
-                        <ul class="global-lista-nueva"><li>Acceso Universal a anticonceptivos</li><li>Empoderamiento de las niñas</li><li>Inclusión Masculina</li></ul>
-                    </div>
-                    <div class="global-card-nueva">
-                        <div class="global-header"><div class="global-icono"><i class="fas fa-gavel"></i></div><h3 class="global-titulo-nuevo">Marcos Legales</h3></div>
-                        <div class="global-stat">ODS 5</div><p class="global-descripcion">La Igualdad de Género es clave para la prevención.</p>
-                        <ul class="global-lista-nueva"><li>Derechos del Niño (Salud, Educación)</li><li>Agenda 2030 (ODS 3 y 5)</li><li>Leyes contra el matrimonio infantil</li></ul>
+                    <div class="card stat-item">
+                        <div class="stat-numero" data-target="50">0</div>
+                        <div class="stat-texto">% de reducción de ITS con el uso correcto del preservativo</div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="seccion" id="recursos-ayuda">
+        
+        <section class="seccion" id="consecuencias">
             <div class="container">
-                <h2 class="titulo-seccion">Recursos y Organizaciones de Apoyo</h2>
-                <p class="subtitulo-seccion">Organizaciones internacionales que trabajan en la prevención.</p>
-                <div class="recursos-grid">
-                    <div class="recurso-card">
-                        <div class="icono"><i class="fas fa-globe"></i></div><h3>UNFPA</h3>
-                        <p>Fondo de Población de las Naciones Unidas.</p>
-                        <a href="https://www.unfpa.org/es" target="_blank" class="boton-recurso"><i class="fas fa-external-link-alt"></i> Visitar</a>
+                <h2 class="titulo-seccion">Consecuencias: Un Impacto que Transforma Vidas</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Un embarazo no planificado en la adolescencia tiene efectos profundos y duraderos en múltiples áreas de la vida.</p>
+                <div class="consecuencias-grid">
+                    <div class="card-consecuencia">
+                        <h3><i class="fas fa-stethoscope icono-fa"></i> En la Salud</h3>
+                        <ul>
+                            <li>Mayor probabilidad de complicaciones como preeclampsia y anemia.</li>
+                            <li>Riesgo elevado de parto prematuro y bajo peso al nacer del bebé.</li>
+                            <li>Tasas más altas de depresión postparto y estrés emocional.</li>
+                        </ul>
                     </div>
-                    <div class="recurso-card">
-                        <div class="icono"><i class="fas fa-hospital"></i></div><h3>OMS</h3>
-                        <p>Organización Mundial de la Salud.</p>
-                        <a href="https://www.who.int/es/news-room/fact-sheets/detail/adolescent-pregnancy" target="_blank" class="boton-recurso"><i class="fas fa-external-link-alt"></i> Visitar</a>
+                    <div class="card-consecuencia">
+                        <h3><i class="fas fa-graduation-cap icono-fa"></i> En la Educación</h3>
+                        <ul>
+                            <li>Alta tasa de deserción escolar para continuar con el embarazo.</li>
+                            <li>Dificultad para retomar los estudios en el futuro.</li>
+                            <li>Limitación de acceso a la educación superior y técnica.</li>
+                        </ul>
                     </div>
-                    <div class="recurso-card">
-                        <div class="icono"><i class="fas fa-child"></i></div><h3>UNICEF</h3>
-                        <p>Fondo de las Naciones Unidas para la Infancia.</p>
-                        <a href="https://www.unicef.org/es/salud/embarazo-adolescente" target="_blank" class="boton-recurso"><i class="fas fa-external-link-alt"></i> Visitar</a>
-                    </div>
-                    <div class="recurso-card">
-                        <div class="icono"><i class="fas fa-book"></i></div><h3>UNESCO</h3>
-                        <p>Organización para la Educación, la Ciencia y la Cultura.</p>
-                        <a href="https://www.unesco.org/es/themes/health-education/sexuality-education" target="_blank" class="boton-recurso"><i class="fas fa-external-link-alt"></i> Visitar</a>
+                    <div class="card-consecuencia">
+                        <h3><i class="fas fa-chart-line icono-fa"></i> En el Futuro</h3>
+                        <ul>
+                            <li>Reducción del potencial de ingresos a lo largo de la vida.</li>
+                            <li>Mayor probabilidad de empleos informales o precarios.</li>
+                            <li>Perpetuación de ciclos de pobreza intergeneracional.</li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+        </section>
+        
+        <section class="seccion seccion-blanca" id="its">
+            <div class="container">
+                <h2 class="titulo-seccion">ITS: Más Allá del Embarazo</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">La salud sexual es integral. Además de prevenir un embarazo, es vital protegerte de las Infecciones de Transmisión Sexual (ITS).</p>
+                <div class="grid-cards">
+                    <div class="card">
+                        <i class="fas fa-viruses icono-fa"></i>
+                        <h3>¿Qué son las ITS?</h3>
+                        <p>Son infecciones que se transmiten durante el contacto sexual. Pueden ser causadas por virus, bacterias o parásitos y muchas veces no presentan síntomas visibles.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-user-shield icono-fa"></i>
+                        <h3>Doble Protección</h3>
+                        <p>El condón (preservativo), usado correcta y consistentemente, es el único método que ofrece doble protección: previene el embarazo y reduce el riesgo de contraer la mayoría de las ITS.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-comments icono-fa"></i>
+                        <h3>Comunicación y Exámenes</h3>
+                        <p>Hablar abiertamente con tu pareja sobre salud sexual es un acto de cuidado mutuo. Si eres sexualmente activo, realizarse pruebas de ITS es una decisión responsable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="seccion" id="consentimiento">
+            <div class="container">
+                <h2 class="titulo-seccion">El Consentimiento es Clave</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Una relación sexual sana, respetuosa y segura se basa en el consentimiento. Es un acuerdo mutuo que debe ser claro, libre y continuo.</p>
+                <div class="grid-cards">
+                    <div class="card">
+                        <i class="fas fa-check-double icono-fa"></i>
+                        <h3>Entusiasta y Claro</h3>
+                        <p>El consentimiento debe ser un "SÍ" entusiasta y evidente. El silencio, la duda, la falta de respuesta o estar bajo la influencia del alcohol o drogas no significa consentir.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-exchange-alt icono-fa"></i>
+                        <h3>Es Reversible</h3>
+                        <p>Cualquier persona puede cambiar de opinión en cualquier momento, sin importar lo que haya sucedido antes. Decir "sí" a una cosa no significa decir "sí" a todo, ni para siempre.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-ban icono-fa"></i>
+                        <h3>Presión NO es Consentimiento</h3>
+                        <p>Insistir, manipular, amenazar o presionar a alguien para que tenga relaciones sexuales no es obtener consentimiento, es coacción. Debe darse de forma libre y voluntaria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="seccion seccion-blanca" id="metodos-anticonceptivos">
+            <div class="container">
+                <h2 class="titulo-seccion">Métodos Anticonceptivos Modernos</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Conoce tus opciones. Haz clic en cada método para ver los detalles y recuerda consultar siempre a un profesional de la salud.</p>
+                <div class="acordeon-container">
+                    <div class="acordeon-item">
+                        <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-user-shield"></i>Preservativo (Condón)</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Funda de látex o poliuretano que se coloca en el pene erecto. Es una barrera física que impide el paso de espermatozoides y fluidos.</p></div></div>
+                    </div>
+                    <div class="acordeon-item">
+                        <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-pills"></i>Pastillas Anticonceptivas</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Píldoras hormonales que se toman diariamente para impedir la ovulación. Requieren constancia y disciplina para ser efectivas.</p></div></div>
+                    </div>
+                    <div class="acordeon-item">
+                        <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-syringe"></i>Implante Subdérmico</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeña varilla flexible que un profesional de la salud inserta bajo la piel del brazo. Libera hormonas de forma continua y dura hasta 3 años.</p></div></div>
+                    </div>
+                    <div class="acordeon-item">
+                        <div class="acordeon-header"><div class="acordeon-title"><i class="fas fa-crosshairs"></i>DIU (Dispositivo Intrauterino)</div><div class="acordeon-icon"><i class="fas fa-chevron-down"></i></div></div>
+                        <div class="acordeon-contenido"><div class="acordeon-contenido-inner"><p>Pequeño dispositivo en forma de T que un médico coloca dentro del útero. Los hay hormonales (SIU) y de cobre. Duran de 5 a 10 años.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion" id="mitos">
+            <div class="container">
+                <h2 class="titulo-seccion">Mitos vs. Realidades</h2>
+                <div class="decoracion-linea"></div>
+                <p class="subtitulo-seccion">Desliza para desmentir la información falsa. El conocimiento es tu mejor herramienta de prevención.</p>
+                <div class="carrusel-container">
+                    <div class="carrusel-track">
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"No puedes quedar embarazada la primera vez."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Si hay ovulación, hay riesgo de embarazo en cualquier relación sexual sin protección, incluyendo la primera.</p></div></div>
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"Usar dos condones es más seguro que uno."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. La fricción entre los dos condones aumenta la probabilidad de que se rompan. Siempre usa solo uno y de forma correcta.</p></div></div>
+                        <div class="slide"><div class="col-mito"><h3><i class="fas fa-times-circle"></i> MITO</h3><p>"La 'marcha atrás' (coito interrumpido) es segura."</p></div><div class="col-realidad"><h3><i class="fas fa-check-circle"></i> REALIDAD</h3><p>FALSO. Es muy poco fiable. El líquido preseminal puede contener espermatozoides y no protege de ninguna ITS.</p></div></div>
+                    </div>
+                    <button class="carrusel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carrusel-btn next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion seccion-blanca" id="calculadora">
+            <div class="container">
+                <h2 class="titulo-seccion">Calculadora de Ciclo Menstrual</h2>
+                <div class="decoracion-linea"></div>
+
+                <p class="subtitulo-seccion">Estima tus días fértiles y tu próximo periodo.</p>
+                <div class="advertencia-calculadora">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p><strong>Atención:</strong> Esta herramienta es solo una <strong>estimación</strong>. No debe ser utilizada bajo ninguna circunstancia como un método anticonceptivo. Consulta siempre a un profesional de la salud.</p>
+                </div>
+                
+                <div class="calculadora-container">
+                    <div class="calculadora-header">
+                        <h3>Estima tu Ciclo</h3>
+                        <p>Ingresa los datos para conocer tus fechas probables.</p>
+                    </div>
+                    <form id="calculadora-form">
+                        <div class="input-wrapper">
+                            <label for="fecha-ultimo-periodo">Fecha de inicio de tu último periodo</label>
+                            <i class="fas fa-calendar-alt"></i>
+                            <input type="date" id="fecha-ultimo-periodo" required>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="duracion-ciclo">Duración promedio de tu ciclo (días)</label>
+                            <i class="fas fa-history"></i>
+                            <input type="number" id="duracion-ciclo" min="20" max="45" value="28" required>
+                        </div>
+                        <button type="submit" class="boton-calcular">
+                            <i class="fas fa-calculator"></i> Calcular Ahora
+                        </button>
+                    </form>
+                    <div class="resultado-calculadora" id="resultado-calculadora">
+                        <div class="resultado-item">
+                            <i class="fas fa-calendar-check icono-resultado"></i>
+                            <div class="texto-resultado">
+                                <strong>Próximo periodo estimado</strong>
+                                <span id="proximo-periodo-resultado"></span>
+                            </div>
+                        </div>
+                        <div class="resultado-item">
+                            <i class="fas fa-heartbeat icono-resultado"></i>
+                            <div class="texto-resultado">
+                                <strong>Ventana de días fértiles</strong>
+                                <span id="dias-fertiles-resultado"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">Educación Sexual Integral</div>
-            <p class="footer-text">Proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela y el mundo.</p>
-            <ul class="footer-links">
-                <li class="footer-link"><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
-                <li class="footer-link"><a href="#causas"><i class="fas fa-info-circle"></i> Causas</a></li>
-                <li class="footer-link"><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
-				<li class="footer-link"><a href="#estadisticas"><i class="fas fa-chart-bar"></i> Estadísticas</a></li>
-                <li class="footer-link"><a href="#recursos-ayuda"><i class="fas fa-hands-helping"></i> Recursos</a></li>
-            </ul>
+    <footer class="footer" id="contacto">
+        <div class="footer-content">
+            <div class="footer-logo">Educación Sexual Integral Venezuela</div>
+            <p class="footer-text">Plataforma informativa como parte de un proyecto de investigación sobre la prevención del embarazo adolescente en Venezuela.</p>
             <div class="creditos">
                 <p>Proyecto de investigación realizado por:</p>
                 <p><strong>JHANBERN AMAYA & SOLISMAR DIAZ</strong></p>
-                <p>Liceo Nacional Hugo Chávez Frías, Falcón - Venezuela</p>
+                <p>Estudiantes del Liceo Nacional Hugo Chávez Frías</p>
+                <p>Municipio Los Taques, Estado Falcón - Venezuela</p>
             </div>
             <p class="footer-copyright">© 2025 Proyecto TESI Venezuela. Todos los derechos reservados.</p>
         </div>
@@ -417,64 +709,137 @@
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        window.onload = () => {
-            const loader = document.getElementById('loader-wrapper');
-            if (loader) {
-                loader.classList.add('hidden');
-            }
-        };
+    document.addEventListener('DOMContentLoaded', () => {
         
-        document.addEventListener('DOMContentLoaded', () => {
-            if (document.getElementById('particles-js')) {
-                particlesJS("particles-js", {
-                    "particles": { "number": { "value": 60 }, "color": { "value": "#3B82F6" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#93C5FD", "opacity": 0.4 }, "move": { "enable": true, "speed": 2 } },
-                    "interactivity": { "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "push" } }, "modes": { "bubble": { "distance": 250, "size": 5, "duration": 2 }, "push": { "particles_nb": 4 } } },
-                    "retina_detect": true
-                });
-            }
+        // --- SCRIPT PARA OCULTAR LA PANTALLA DE CARGA ---
+        const loader = document.getElementById('loader-wrapper');
+        window.addEventListener('load', () => {
+            loader.classList.add('hidden');
+        });
 
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
-            if (menuToggle && mainNav) {
-                menuToggle.addEventListener('click', () => {
-                    mainNav.classList.toggle('active');
-                });
-            }
-
-            const dropdownLinks = document.querySelectorAll('.main-nav .dropdown > a');
-            dropdownLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        link.parentElement.classList.toggle('active');
-                    }
-                });
+        if(document.getElementById('particles-js')){
+            particlesJS("particles-js", {
+                particles: { number: { value: 40, density: { enable: true, value_area: 800 } }, color: { value: "#e63946" }, shape: { type: "circle" }, opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: "none", out_mode: "out" } },
+                interactivity: { events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } }, modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } } },
+                retina_detect: true
             });
-
-            document.querySelectorAll('.causa-card.expandible').forEach(card => {
-                card.addEventListener('click', (event) => {
-                    if (event.target.tagName === 'A' || event.target.closest('A')) return;
-                    card.classList.toggle('active');
-                });
+        }
+        
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
             });
+        }
 
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+        const dropdowns = document.querySelectorAll('.main-nav .dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
                     e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const headerOffset = 75;
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                        if (window.innerWidth <= 768 && mainNav.classList.contains('active')) {
-                            mainNav.classList.remove('active');
-                        }
-                    }
-                });
+                    dropdown.classList.toggle('active');
+                }
             });
         });
+
+        const statsSection = document.getElementById('estadisticas');
+        if (statsSection) {
+            const counters = document.querySelectorAll('.stat-numero');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        const counter = entry.target;
+                        const target = +counter.getAttribute('data-target');
+                        const speed = 200;
+                        const increment = target / speed;
+                        let count = 0;
+                        const animate = () => {
+                            if (count < target) {
+                                count += increment;
+                                counter.innerText = Math.ceil(count);
+                                setTimeout(animate, 15);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        animate();
+                        counter.dataset.animated = "true";
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(c => observer.observe(c));
+        }
+
+        const acordeonItems = document.querySelectorAll('.acordeon-item');
+        acordeonItems.forEach(item => {
+            const header = item.querySelector('.acordeon-header');
+            header.addEventListener('click', () => {
+                const openItem = document.querySelector('.acordeon-item.active');
+                if(openItem && openItem !== item) {
+                    openItem.classList.remove('active');
+                    openItem.querySelector('.acordeon-contenido').style.maxHeight = '0px';
+                }
+                item.classList.toggle('active');
+                const contenido = item.querySelector('.acordeon-contenido');
+                contenido.style.maxHeight = item.classList.contains('active') ? contenido.scrollHeight + "px" : '0px';
+            });
+        });
+
+        const track = document.querySelector('.carrusel-track');
+        if (track) {
+            const slides = Array.from(track.children);
+            const nextButton = document.querySelector('.carrusel-btn.next');
+            const prevButton = document.querySelector('.carrusel-btn.prev');
+            let currentIndex = 0;
+            let slideInterval;
+            const moveToSlide = (index) => {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                currentIndex = index;
+            };
+            const startSlideShow = () => {
+                slideInterval = setInterval(() => moveToSlide((currentIndex + 1) % slides.length), 7000);
+            };
+            const stopSlideShow = () => clearInterval(slideInterval);
+            nextButton.addEventListener('click', () => { stopSlideShow(); moveToSlide((currentIndex + 1) % slides.length); startSlideShow(); });
+            prevButton.addEventListener('click', () => { stopSlideShow(); moveToSlide((currentIndex - 1 + slides.length) % slides.length); startSlideShow(); });
+            startSlideShow();
+        }
+		
+        const formCalculadora = document.getElementById('calculadora-form');
+        if(formCalculadora) {
+            formCalculadora.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const fechaInicioStr = document.getElementById('fecha-ultimo-periodo').value;
+                const duracionCiclo = parseInt(document.getElementById('duracion-ciclo').value, 10);
+                const resultadoDiv = document.getElementById('resultado-calculadora');
+                
+                if(!fechaInicioStr){ alert("Por favor, selecciona la fecha de inicio de tu último periodo."); return; }
+                
+                const fechaInicio = new Date(fechaInicioStr + 'T00:00:00');
+                
+                const proximoPeriodo = new Date(fechaInicio);
+                proximoPeriodo.setDate(proximoPeriodo.getDate() + duracionCiclo);
+                
+                const ovulacion = new Date(proximoPeriodo);
+                ovulacion.setDate(ovulacion.getDate() - 14);
+                
+                const inicioFertil = new Date(ovulacion);
+                inicioFertil.setDate(ovulacion.getDate() - 5);
+                
+                const finFertil = new Date(ovulacion);
+                finFertil.setDate(ovulacion.getDate() + 1);
+                
+                const formatoFecha = { day: 'numeric', month: 'long', year: 'numeric' };
+                
+                document.getElementById('proximo-periodo-resultado').textContent = proximoPeriodo.toLocaleDateString('es-VE', formatoFecha);
+                document.getElementById('dias-fertiles-resultado').textContent = `Del ${inicioFertil.toLocaleDateString('es-VE')} al ${finFertil.toLocaleDateString('es-VE')}`;
+                
+                resultadoDiv.classList.add('visible');
+            });
+        }
+    });
     </script>
 </body>
 </html>
