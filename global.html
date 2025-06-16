@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Información completa sobre la prevención del embarazo adolescente: causas, consecuencias, estadísticas y recursos de ayuda a nivel global.">
-    <title>Prevención Global del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
+    <title>Prevención del Embarazo Adolescente | Jhanbern Amaya & Solismar Diaz</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
             --font-texto: 'Open Sans', sans-serif;
         }
 
-        /* === PANTALLA DE CARGA AZUL === */
+        /* === ESTILOS PARA LA PANTALLA DE CARGA === */
         .loader-wrapper {
             position: fixed;
             top: 0;
@@ -262,7 +262,7 @@
     <main>
         <header class="portada-global" id="inicio">
             <div class="container">
-                <h1>Prevención Global del Embarazo Adolescente</h1>
+                <h1>Prevención global del Embarazo Adolescente</h1>
                 <p>Información verificada y recursos esenciales para una toma de decisiones informada sobre tu salud sexual y reproductiva a nivel mundial.</p>
                 <a href="#causas" class="boton-principal" style="background:var(--azul-principal); color:white;">Empieza a Explorar</a>
             </div>
@@ -337,7 +337,7 @@
                 </div>
             </div>
         </section>
-
+        
         </main>
 
     <footer class="footer">
@@ -348,7 +348,6 @@
                 <li class="footer-link"><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
                 <li class="footer-link"><a href="#causas"><i class="fas fa-info-circle"></i> Causas</a></li>
                 <li class="footer-link"><a href="#consecuencias"><i class="fas fa-exclamation-triangle"></i> Consecuencias</a></li>
-                <li class="footer-link"><a href="#estadisticas"><i class="fas fa-chart-line"></i> Estadísticas</a></li>
             </ul>
             <div class="creditos">
                 <p>Proyecto de investigación realizado por:</p>
@@ -390,7 +389,7 @@
         dropdowns.forEach(dropdown => {
             const link = dropdown.querySelector('a');
             link.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 768px) {
                     e.preventDefault();
                     dropdown.classList.toggle('active');
                 }
@@ -400,12 +399,14 @@
         document.querySelectorAll('.causa-card.expandible').forEach(card => {
             card.addEventListener('click', () => {
                 const info = card.querySelector('.causa-info');
-                if (info.style.maxHeight && info.style.maxHeight !== '0px') {
-                    info.style.maxHeight = '0px';
-                    info.style.opacity = '0';
-                } else {
-                    info.style.maxHeight = info.scrollHeight + 'px';
-                    info.style.opacity = '1';
+                if (info) {
+                    if (info.style.maxHeight && info.style.maxHeight !== '0px') {
+                        info.style.maxHeight = '0px';
+                        info.style.opacity = '0';
+                    } else {
+                        info.style.maxHeight = info.scrollHeight + 'px';
+                        info.style.opacity = '1';
+                    }
                 }
             });
         });
