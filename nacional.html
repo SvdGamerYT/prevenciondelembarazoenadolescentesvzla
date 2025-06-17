@@ -118,7 +118,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: 20px 1rem;
+            padding: 20px 1rem; /* Espaciado interno */
         }
         .portada-content {
             position: relative;
@@ -131,11 +131,13 @@
         .portada-content h1 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: clamp(2rem, 6vw, 3.5rem); /* Tamaño adaptable */
+            /* CAMBIO: Tamaño de fuente adaptable y más controlado */
+            font-size: clamp(2rem, 6vw, 3.5rem); 
             line-height: 1.25;
             color: var(--blanco);
             margin-bottom: 1.5rem;
-            text-transform: none; /* CAMBIO CLAVE: quitamos las mayúsculas */
+            /* CAMBIO CLAVE: quitamos la transformación a mayúsculas */
+            text-transform: none; 
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         }
         .tricolor-divider {
@@ -270,32 +272,39 @@
         .creditos p { margin: 0.5rem 0; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
 
-        /* MEDIA QUERIES ADICIONALES PARA LA PORTADA */
-        @media (max-width: 768px) {
-            .portada-content h1 {
-                font-size: 2.2rem;
-            }
+        /* MEDIA QUERIES ADICIONALES PARA LA PORTADA Y OTROS */
+        @media (max-width: 992px) { .section-title { font-size: 1.8rem; } .section-content { padding: 30px; } .card { padding: 25px; } }
+        
+        @media (max-width: 768px) { 
+            .container { padding: 15px; } 
+            .portada-content h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.5rem; } 
+            .section-content { padding: 25px; } 
+            .card { padding: 20px; } 
+            .stat-card { padding: 30px 20px; } 
+            .stat-value { font-size: 2.5rem; } 
+            .btn { padding: 12px 25px; font-size: 0.9rem; } 
         }
+
+        @media (max-width: 576px) { 
+            .card-grid { grid-template-columns: 1fr; } 
+            .tricolor-divider { width: 100%; }
+        }
+
+        /* CAMBIO: Media query específico para celulares muy angostos */
         @media (max-width: 420px) {
             .portada-content h1 {
                 font-size: 1.8rem;
+                line-height: 1.3;
             }
             .botones {
                 flex-direction: column;
                 align-items: center;
             }
-            .tricolor-divider {
-                width: 100%;
-            }
         }
-
-        @media (max-width: 992px) { .section-title { font-size: 1.8rem; } .section-content { padding: 30px; } .card { padding: 25px; } }
-        @media (max-width: 768px) { .container { padding: 15px; } .section-title { font-size: 1.5rem; } .section-content { padding: 25px; } .card { padding: 20px; } .stat-card { padding: 30px 20px; } .stat-value { font-size: 2.5rem; } .btn { padding: 12px 25px; font-size: 0.9rem; } }
-        @media (max-width: 576px) { .card-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <header class="site-header">
         <div class="nav-container">
             <a href="index.html" class="site-logo">
