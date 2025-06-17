@@ -48,7 +48,7 @@
         /* --- NAVEGACIÓN DESPLEGABLE --- */
         .main-nav > ul > li.dropdown { position: relative; }
         .dropdown-content {
-            display: none; position: absolute; top: 100%; right: 0; /* CAMBIO: Alineado a la derecha */
+            display: none; position: absolute; top: 100%; right: 0;
             background-color: rgba(0, 31, 63, 0.95);
             backdrop-filter: blur(5px);
             min-width: 250px;
@@ -89,7 +89,7 @@
             .menu-toggle { display: block; }
             
             .dropdown-content {
-                position: static; display: none; box-shadow: none; border-radius: 0; right: auto; /* Reset para móvil */
+                position: static; display: none; box-shadow: none; border-radius: 0; right: auto;
                 padding-left: 1.5rem; background-color: rgba(0,0,0,0.2);
                 opacity: 1; visibility: visible; width: 100%; max-height: 0;
                 overflow: hidden; transition: max-height 0.4s ease;
@@ -110,32 +110,73 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        /* PORTADA */
+        /* PORTADA - ESTILOS CORREGIDOS */
         .interactive-portada {
-            position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;
+            position: relative;
+            min-height: calc(100vh - 75px); /* Resta la altura del header */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
         .portada-content {
-            position: relative; z-index: 10; text-align: center; padding: 2rem; max-width: 900px; margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 1rem;
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
         }
         .portada-content h1 {
-            font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(2rem, 6vw, 3.5rem);
-            color: var(--blanco); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -1px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            line-height: 1.2;
+            color: var(--blanco);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            padding: 0 10px;
         }
         .tricolor-divider {
-            height: 8px; background: linear-gradient(to right, var(--amarillo) 33%, var(--azul) 33% 66%, var(--rojo) 66%);
-            width: 80%; margin: 20px auto 30px; border-radius: 3px; border: 1px solid white;
+            height: 8px;
+            background: linear-gradient(to right, var(--amarillo) 33%, var(--azul) 33% 66%, var(--rojo) 66%);
+            width: 80%;
+            margin: 20px auto 30px;
+            border-radius: 3px;
+            border: 1px solid white;
         }
         .portada-content p {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem); color: var(--texto-claro);
-            margin-bottom: 3rem; line-height: 1.6; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: var(--texto-claro);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
-        .botones { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .botones {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
         .boton {
-            padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700;
-            font-family: 'Montserrat', sans-serif; display: inline-flex; align-items: center;
-            gap: 0.8rem; transition: var(--transicion); box-shadow: var(--sombra);
-            border: 2px solid rgba(255, 255, 255, 0.3); position: relative; overflow: hidden; z-index: 1;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transicion);
+            box-shadow: var(--sombra);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
         .boton i { font-size: 1.2rem; }
         .boton-amarillo { background: var(--amarillo); color: var(--azul); }
@@ -273,7 +314,6 @@
             75% { transform: translate(0, -40px); } 100% { transform: translate(-20px, -20px); }
         }
 
-
         /* --- FOOTER --- */
         .footer {
             background: #001a33;
@@ -292,9 +332,37 @@
         .creditos p { margin: 0.5rem 0; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
 
+        /* MEDIA QUERIES ADICIONALES PARA LA PORTADA */
+        @media (max-width: 768px) {
+            .portada-content {
+                padding: 1rem 0.5rem;
+            }
+            .portada-content h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            .portada-content p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .portada-content h1 {
+                font-size: 1.6rem;
+            }
+            .botones {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tricolor-divider {
+                width: 100%;
+            }
+        }
+
         @media (max-width: 992px) { .section-title { font-size: 1.8rem; } .section-content { padding: 30px; } .card { padding: 25px; } }
-        @media (max-width: 768px) { .container { padding: 15px; } .portada-content h1 { font-size: 2.2rem; } .portada-content p { font-size: 1.1rem; } .section-title { font-size: 1.5rem; } .section-content { padding: 25px; } .card { padding: 20px; } .stat-card { padding: 30px 20px; } .stat-value { font-size: 2.5rem; } .btn { padding: 12px 25px; font-size: 0.9rem; } }
-        @media (max-width: 576px) { .card-grid { grid-template-columns: 1fr; } .tricolor-divider { width: 100%; } }
+        @media (max-width: 768px) { .container { padding: 15px; } .section-title { font-size: 1.5rem; } .section-content { padding: 25px; } .card { padding: 20px; } .stat-card { padding: 30px 20px; } .stat-value { font-size: 2.5rem; } .btn { padding: 12px 25px; font-size: 0.9rem; } }
+        @media (max-width: 576px) { .card-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -487,8 +555,8 @@
                 loader.classList.add('hidden');
             }
         };
-		
-		// 2. Ejecutar scripts de interactividad cuando el DOM esté listo
+        
+        // 2. Ejecutar scripts de interactividad cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', () => {
 
             const menuToggle = document.getElementById('menu-toggle');
