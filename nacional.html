@@ -110,34 +110,33 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        /* PORTADA - ESTILOS CORREGIDOS */
+        /* === PORTADA - ESTILOS CORREGIDOS GUIADOS POR GLOBAL.HTML === */
         .interactive-portada {
             position: relative;
-            min-height: calc(100vh - 75px); /* Ocupa toda la pantalla menos el header */
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             overflow: hidden;
-            padding: 20px 1rem; /* Espaciado interno */
+            padding: 2rem 1rem;
         }
         .portada-content {
             position: relative;
-            z-index: 10;
-            text-align: center;
+            z-index: 1;
             width: 100%;
             max-width: 900px;
-            margin: 0 auto;
+            padding: 0 1rem;
         }
         .portada-content h1 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            /* CAMBIO: Tamaño de fuente adaptable y más controlado */
-            font-size: clamp(2rem, 6vw, 3.5rem); 
-            line-height: 1.25;
+            font-size: clamp(2rem, 6vw, 3.5rem); /* Clave: Misma función clamp que en global.html */
+            line-height: 1.2;
             color: var(--blanco);
-            margin-bottom: 1.5rem;
-            /* CAMBIO CLAVE: quitamos la transformación a mayúsculas */
-            text-transform: none; 
+            text-transform: uppercase; /* Usamos uppercase como en global.html */
+            letter-spacing: -0.5px;
+            margin: 0 auto 1.5rem auto;
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         }
         .tricolor-divider {
@@ -149,12 +148,15 @@
             border: 1px solid white;
         }
         .portada-content p {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            font-size: clamp(1rem, 2.5vw, 1.2rem); /* Adaptado de global.html */
             color: var(--texto-claro);
-            margin-bottom: 3rem;
+            max-width: 700px;
+            margin: 1.2rem auto 2rem auto;
             line-height: 1.6;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
+        /* --- FIN DE ESTILOS CORREGIDOS DE PORTADA --- */
+
         .botones {
             display: flex;
             gap: 1.5rem;
@@ -272,31 +274,11 @@
         .creditos p { margin: 0.5rem 0; }
         .footer-copyright { font-size: 0.85rem; opacity: 0.7; margin-top: 2rem; }
 
-        /* MEDIA QUERIES ADICIONALES PARA LA PORTADA Y OTROS */
+        /* --- MEDIA QUERIES GENERALES --- */
         @media (max-width: 992px) { .section-title { font-size: 1.8rem; } .section-content { padding: 30px; } .card { padding: 25px; } }
-        
-        @media (max-width: 768px) { 
-            .container { padding: 15px; } 
-            .portada-content h1 { font-size: 2.2rem; }
-            .section-title { font-size: 1.5rem; } 
-            .section-content { padding: 25px; } 
-            .card { padding: 20px; } 
-            .stat-card { padding: 30px 20px; } 
-            .stat-value { font-size: 2.5rem; } 
-            .btn { padding: 12px 25px; font-size: 0.9rem; } 
-        }
-
-        @media (max-width: 576px) { 
-            .card-grid { grid-template-columns: 1fr; } 
-            .tricolor-divider { width: 100%; }
-        }
-
-        /* CAMBIO: Media query específico para celulares muy angostos */
+        @media (max-width: 768px) { .container { padding: 15px; } .section-title { font-size: 1.5rem; } .section-content { padding: 25px; } .card { padding: 20px; } .stat-card { padding: 30px 20px; } .stat-value { font-size: 2.5rem; } .btn { padding: 12px 25px; font-size: 0.9rem; } }
+        @media (max-width: 576px) { .card-grid { grid-template-columns: 1fr; } .tricolor-divider { width: 100%; } }
         @media (max-width: 420px) {
-            .portada-content h1 {
-                font-size: 1.8rem;
-                line-height: 1.3;
-            }
             .botones {
                 flex-direction: column;
                 align-items: center;
